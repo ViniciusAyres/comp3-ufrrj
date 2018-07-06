@@ -10,7 +10,7 @@ import java.sql.ResultSetMetaData;
 
 public class Restaurants
 {
-    private static String dbURL = "jdbc:derby://localhost:1527/sorveteDB;";
+    private static String dbURL = "jdbc:derby://ruralcomp3.dlinkddns.com:1527/NatacaoDB;create=true;";
     private static String tableName = "RESTAURANTS";
     // jdbc Connection
     private static Connection conn = null;
@@ -19,8 +19,8 @@ public class Restaurants
     public static void main(String[] args)
     {
         createConnection();
-        insertRestaurants(6, "LaVals", "Berkeley");
-        selectRestaurants();
+        //createTable();
+        //insertPessoa(1, "João", "Pedro");
         shutdown();
     }
 
@@ -104,5 +104,34 @@ public class Restaurants
 
         }
 
+    }
+
+    public static void createTable(){
+        String sql = "create table PEIDINHO ( ID INTEGER, RESTNAME VARCHAR(50), CITYNAME VARCHAR(50) )";
+
+        try
+        {
+            stmt = conn.createStatement();
+            stmt.execute(sql);
+            stmt.close();
+        }
+        catch (SQLException sqlExcept)
+        {
+            sqlExcept.printStackTrace();
+        }
+    }
+
+    public static void insertPeido(int id, String firstName, String lastName){
+        try
+        {
+            stmt = conn.createStatement();
+            stmt.execute("insert into PESSOA values (" +
+                    id + ",'" + firstName + "','" + lastName +"')");
+            stmt.close();
+        }
+        catch (SQLException sqlExcept)
+        {
+            sqlExcept.printStackTrace();
+        }
     }
 }
