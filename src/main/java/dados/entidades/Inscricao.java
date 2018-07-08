@@ -7,23 +7,23 @@ public class Inscricao {
   private String numeroPagamento;
   private String numeroOficio;
   private java.sql.Date dataOficio;
-  private Atleta atleta;
-  private Associacao associacao;
+  private long idAtleta;
+  private long idAssociacao;
 
-    public Atleta getAtleta() {
-        return atleta;
+    public long getIdAtleta() {
+        return idAtleta;
     }
 
-    public void setAtleta(Atleta atleta) {
-        this.atleta = atleta;
+    public void setIdAtleta(long idAtleta) {
+        this.idAtleta = idAtleta;
     }
 
-    public Associacao getAssociacao() {
-        return associacao;
+    public long getIdAssociacao() {
+        return idAssociacao;
     }
 
-    public void setAssociacao(Associacao associacao) {
-        this.associacao = associacao;
+    public void setIdAssociacao(long idAssociacao) {
+        this.idAssociacao = idAssociacao;
     }
 
     public java.sql.Date getDataEntrada() {

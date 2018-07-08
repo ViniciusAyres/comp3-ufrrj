@@ -7,7 +7,7 @@ public class Atleta {
   private String matricula;
   private String nome;
   private java.sql.Date dataNascimento;
-  private Equipe equipe;
+  private long idEquipe;
   private String categoria;
 
   public Atleta(String nome, String matricula, Date dataNascimento, String categoria) {
@@ -17,15 +17,15 @@ public class Atleta {
     this.categoria = categoria;
   }
 
-  public Equipe getEquipe() {
-    return equipe;
-  }
+    public long getIdEquipe() {
+        return idEquipe;
+    }
 
-  public void setEquipe(Equipe equipe) {
-    this.equipe = equipe;
-  }
+    public void setIdEquipe(long idEquipe) {
+        this.idEquipe = idEquipe;
+    }
 
-  public String getCategoria() {
+    public String getCategoria() {
     return categoria;
   }
 

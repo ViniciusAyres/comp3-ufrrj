@@ -10,14 +10,14 @@ public class Endereco {
   private String logradouro;
   private String cep;
   private long id;
-  private Uf Uf;
+  private long idUf;
 
-    public dados.entidades.Uf getUf() {
-        return Uf;
+    public long getIdUf() {
+        return idUf;
     }
 
-    public void setUf(dados.entidades.Uf uf) {
-        Uf = uf;
+    public void setIdUf(long idUf) {
+        this.idUf = idUf;
     }
 
     public String getComplemento() {

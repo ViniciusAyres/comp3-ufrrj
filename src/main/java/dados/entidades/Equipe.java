@@ -7,17 +7,17 @@ public class Equipe {
 
   private long id;
   private String nome;
-  private List<Atleta> atletas;
+  private List<Long> idAtletas;
 
-  public List<Atleta> getAtletas() {
-    return atletas;
-  }
+    public List<Long> getIdAtletas() {
+        return idAtletas;
+    }
 
-  public void setAtletas(List<Atleta> atletas) {
-    this.atletas = atletas;
-  }
+    public void setIdAtletas(List<Long> idAtletas) {
+        this.idAtletas = idAtletas;
+    }
 
-  public String getNome() {
+    public String getNome() {
     return nome;
   }
 

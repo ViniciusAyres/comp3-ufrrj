@@ -7,8 +7,13 @@ public class Colocacao {
   private long id;
   private long posicao;
 
+    public Colocacao(long id, long pontuacao, long posicao) {
+        this.id = id;
+        this.pontuacao = pontuacao;
+        this.posicao = posicao;
+    }
 
-  public long getPontuacao() {
+    public long getPontuacao() {
     return pontuacao;
   }
 
