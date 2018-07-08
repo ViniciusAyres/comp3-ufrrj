@@ -1,31 +1,23 @@
 package dados.datamappers;
 import org.junit.Test;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import static org.junit.Assert.assertEquals;
 
 public class PerfilDataMapperTest {
 
     @Test
-    public void testBuscarPerfil(){
+    public void testBuscarPerfil() throws SQLException {
 
-        /*
+
         PerfilDataMapper perfildatamapper = new PerfilDataMapper();
-        Perfil perfil = perfildatamapper.buscarPorId(1);
 
-        assertEquals(1, perfil.getId());
-        assertEquals("Secretário", perfil.getNome());
-        */
+        ResultSet resultSet = perfildatamapper.buscarPorId(1);
+        assertEquals(1, resultSet.getInt("ID"));
+        assertEquals("Secretário", resultSet.getString("NOME"));
+
      }
 
-    @Test
-    public void testBuscarPerfil2(){
-
-        /*
-        PerfilDataMapper perfildatamapper = new PerfilDataMapper();
-        Perfil perfil = perfildatamapper.buscarPorId(2);
-
-        assertEquals(2, perfil.getId());
-        assertEquals("Diretor Técnico", perfil.getNome());
-        */
-    }
 }
