@@ -3,7 +3,8 @@
 
 ### Java-Web ###
 ## ignoring target file
-.idea/
+*.idea/
+misc.xml/
 lib/
 out/
 
