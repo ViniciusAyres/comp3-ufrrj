@@ -1,4 +1,5 @@
 package dados.datamappers;
+
 import org.junit.Test;
 
 import java.sql.ResultSet;
@@ -11,7 +12,6 @@ public class PerfilDataMapperTest {
 
     @Test
     public void testBuscarPerfil() throws SQLException {
-
 
         PerfilDataMapper perfildatamapper = new PerfilDataMapper();
 
