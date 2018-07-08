@@ -42,4 +42,12 @@ public class PessoaDataMapperTest {
         assertEquals(1, resultSet.getInt("ID_PERFIL"));
 
     }
+
+
+    @Test
+    public void criarPessoa() throws SQLException {
+
+
+
+    }
 }

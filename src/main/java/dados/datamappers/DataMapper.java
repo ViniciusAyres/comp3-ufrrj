@@ -5,6 +5,7 @@ import dados.bancos.derbyDB.ConnectionSingleton;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public abstract class DataMapper {
 
@@ -37,5 +38,17 @@ public abstract class DataMapper {
         ResultSet resultSet = statement.executeQuery();
         resultSet.next();
         return resultSet;
+    }
+
+    public static boolean criar(String tabela, String paramentros, String valores) throws SQLException{
+
+        String sql = "INSERT INTO" + tabela + "(" + paramentros + ")" + "VALUES (" +  valores + ")";
+
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        statement.execute();
+
+        return  true;
     }
 }
