@@ -5,8 +5,14 @@ public class Classe {
 
   private long id;
   private String nome;
-  private String idadeMinima;
-  private String idadeMaxima;
+  private int idadeMinima;
+  private int idadeMaxima;
+
+  public Classe(String nome, int idadeMinima, int idadeMaxima) {
+      this.nome = nome;
+      this.idadeMinima = idadeMinima;
+      this.idadeMaxima = idadeMaxima;
+  }
 
 
   public long getId() {
@@ -27,20 +33,20 @@ public class Classe {
   }
 
 
-  public String getIdadeMinima() {
+  public int getIdadeMinima() {
     return idadeMinima;
   }
 
-  public void setIdadeMinima(String idadeMinima) {
+  public void setIdadeMinima(int idadeMinima) {
     this.idadeMinima = idadeMinima;
   }
 
 
-  public String getIdadeMaxima() {
+  public int getIdadeMaxima() {
     return idadeMaxima;
   }
 
-  public void setIdadeMaxima(String idadeMaxima) {
+  public void setIdadeMaxima(int idadeMaxima) {
     this.idadeMaxima = idadeMaxima;
   }
 
