@@ -26,7 +26,7 @@ public abstract class DataMapper {
 
     public static ResultSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException {
 
-        String sql = "SELECT * FROM " + nomeTabela + " WHERE ID = ? ";
+        String sql = "SELECT * FROM " + nomeTabela + " WHERE MATRICULA = ? ";
 
         PreparedStatement statement;
 
