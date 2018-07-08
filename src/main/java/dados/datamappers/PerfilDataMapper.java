@@ -46,12 +46,12 @@ public class PerfilDataMapper implements IntDataMapper,DataMapper {
             statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setInt(1, id);
+            statement.setLong(1, id);
             ResultSet resultSet = statement.executeQuery();
             Perfil perfil = null;
 
             if(resultSet.next()){
-                perfil = new Perfil(resultSet.getString("NOME"));
+                perfil = new Perfil(resultSet.getLong("ID"),resultSet.getString("NOME"));
             }
 
             statement.close();

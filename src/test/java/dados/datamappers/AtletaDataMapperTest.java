@@ -20,7 +20,7 @@ public class AtletaDataMapperTest {
     public void setUp() throws Exception {
         PreparedStatement statement;
 
-        String sql = "DELETE FROM ATLETA";
+        String sql = "DELETE CASCADE FROM ATLETA";
         try {
             statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
@@ -73,7 +73,7 @@ public class AtletaDataMapperTest {
                     .prepareStatement(sql);
 
             statement.setString(1, "Vinicius");
-            statement.setString(2, "2015780481");
+            statement.setString(2, "2015780482");
             statement.setDate(3, new Date(1995, 12, 03));
             statement.setString(4, "MASCULINO");
             statement.execute();
@@ -83,9 +83,9 @@ public class AtletaDataMapperTest {
         }
 
         AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
-        Atleta atleta = atletaDataMapper.buscarPorMatricula("2015780481");
+        Atleta atleta = atletaDataMapper.buscarPorMatricula("2015780482");
 
-        assertEquals("2015780481", atleta.getMatricula());
+        assertEquals("2015780482", atleta.getMatricula());
         assertEquals("Vinicius", atleta.getNome());
         assertEquals(new Date(1995, 12, 03), atleta.getDataNascimento());
         assertEquals("MASCULINO", atleta.getCategoria());
