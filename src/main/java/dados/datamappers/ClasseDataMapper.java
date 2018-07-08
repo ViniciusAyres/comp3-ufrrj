@@ -53,7 +53,7 @@ public class ClasseDataMapper implements IntDataMapper, DataMapper {
             Classe classe = null;
 
             if(resultSet.next()){
-                classe = new Classe(resultSet.getString("NOME"), resultSet.getInt("IDADE_MINIMA"),
+                classe = new Classe(resultSet.getInt("ID"), resultSet.getString("NOME"), resultSet.getInt("IDADE_MINIMA"),
                         resultSet.getInt("IDADE_MAXIMA"));
             }
 

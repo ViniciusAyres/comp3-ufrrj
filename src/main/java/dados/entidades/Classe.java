@@ -8,7 +8,8 @@ public class Classe {
   private int idadeMinima;
   private int idadeMaxima;
 
-  public Classe(String nome, int idadeMinima, int idadeMaxima) {
+  public Classe(long id, String nome, int idadeMinima, int idadeMaxima) {
+      this.id = id;
       this.nome = nome;
       this.idadeMinima = idadeMinima;
       this.idadeMaxima = idadeMaxima;
