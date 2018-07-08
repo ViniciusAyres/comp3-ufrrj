@@ -1,7 +1,7 @@
 package dados.datamappers.interfaces;
 
 public interface DataMapper {
-    public boolean criar(Object object);
+    boolean criar(Object object);
 
-    public boolean atualizar(Object object);
+    boolean atualizar(Object object);
 }

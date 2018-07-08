@@ -1,5 +1,5 @@
 package dados.datamappers.interfaces;
 
 public interface IntDataMapper extends DataMapper {
-    public Object buscarPorId(int id);
+    Object buscarPorId(int id);
 }
