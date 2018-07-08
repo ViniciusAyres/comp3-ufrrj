@@ -66,33 +66,63 @@ public class AtletaDataMapperTest {
 
     @Test
     public void testBuscarAtleta(){
-        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(1995, 12, 3), "MASCULINO");
+        String sql = "INSERT INTO ATLETA (NOME, MATRICULA, DATA_NASCIMENTO, CATEGORIA) " +
+                "VALUES (?, ?, ?, ?)";
+        PreparedStatement statement;
+
+        try{
+            statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                    .prepareStatement(sql);
+
+            statement.setString(1, "Vinicius");
+            statement.setString(2, "2015780481");
+            statement.setDate(3, new Date(1995, 12, 03));
+            statement.setString(4, "MASCULINO");
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
+        Atleta atleta = atletaDataMapper.buscarPorMatricula("2015780481");
 
-        atletaDataMapper.criar(atleta);
-        Atleta atletaBuscado = atletaDataMapper.buscarPorMatricula("2015780481");
-
-        assertEquals(atleta.getMatricula(), atletaBuscado.getMatricula());
-        assertEquals(atleta.getNome(), atletaBuscado.getNome());
-        assertEquals(atleta.getDataNascimento(), atletaBuscado.getDataNascimento());
-        assertEquals(atleta.getCategoria(), atletaBuscado.getCategoria());
+        assertEquals("2015780481", atleta.getMatricula());
+        assertEquals("Vinicius", atleta.getNome());
+        assertEquals(new Date(1995, 12, 03), atleta.getDataNascimento());
+        assertEquals("MASCULINO", atleta.getCategoria());
     }
 
     @Test
     public void testAtualizarAtleta(){
-        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(1995, 12, 3), "MASCULINO");
-        AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
+        String sql = "INSERT INTO ATLETA (NOME, MATRICULA, DATA_NASCIMENTO, CATEGORIA) " +
+                "VALUES (?, ?, ?, ?)";
+        PreparedStatement statement;
 
-        atletaDataMapper.criar(atleta);
-        Atleta novoAtleta = new Atleta("Jorge", "2015780481", new Date(1995, 12, 3), "FEMININO");
-        atletaDataMapper.atualizar(novoAtleta);
+        try{
+            statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                    .prepareStatement(sql);
+
+            statement.setString(1, "Vinicius");
+            statement.setString(2, "2015780481");
+            statement.setDate(3, new Date(1995, 12, 03));
+            statement.setString(4, "MASCULINO");
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        Atleta atleta = new Atleta("Julia", "2015780481", new Date(2000, 11, 20), "FEMININO");
+        AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
+        atletaDataMapper.atualizar(atleta);
 
         Atleta atletaBuscado = atletaDataMapper.buscarPorMatricula("2015780481");
 
-        assertEquals(novoAtleta.getMatricula(), atletaBuscado.getMatricula());
-        assertEquals(novoAtleta.getNome(), atletaBuscado.getNome());
-        assertEquals(novoAtleta.getDataNascimento(), atletaBuscado.getDataNascimento());
-        assertEquals(novoAtleta.getCategoria(), atletaBuscado.getCategoria());
+        assertEquals("2015780481", atletaBuscado.getMatricula());
+        assertEquals("Julia", atletaBuscado.getNome());
+        assertEquals(new Date(2000, 11, 20), atletaBuscado.getDataNascimento());
+        assertEquals("FEMININO", atletaBuscado.getCategoria());
     }
 
 }
