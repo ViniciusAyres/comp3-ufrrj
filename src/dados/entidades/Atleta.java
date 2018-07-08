@@ -51,11 +51,11 @@ public class Atleta {
   }
 
 
-  public java.sql.Date getDataNascimento() {
+  public Date getDataNascimento() {
     return dataNascimento;
   }
 
-  public void setDataNascimento(java.sql.Date dataNascimento) {
+  public void setDataNascimento(Date dataNascimento) {
     this.dataNascimento = dataNascimento;
   }
 

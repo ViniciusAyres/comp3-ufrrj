@@ -11,7 +11,7 @@ import org.junit.Test;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
+import java.sql.Date;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -40,7 +40,7 @@ public class AtletaDataMapperTest {
 
     @Test
     public void testCriarAtleta() {
-        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(), "MASCULINO");
+        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(1995, 12, 3), "MASCULINO");
         AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
 
         atletaDataMapper.criar(atleta);
@@ -66,7 +66,7 @@ public class AtletaDataMapperTest {
 
     @Test
     public void testBuscarAtleta(){
-        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(), "MASCULINO");
+        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(1995, 12, 3), "MASCULINO");
         AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
 
         atletaDataMapper.criar(atleta);
@@ -80,11 +80,11 @@ public class AtletaDataMapperTest {
 
     @Test
     public void testAtualizarAtleta(){
-        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(), "MASCULINO");
+        Atleta atleta = new Atleta("Vinicius", "2015780481", new Date(1995, 12, 3), "MASCULINO");
         AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
 
         atletaDataMapper.criar(atleta);
-        Atleta novoAtleta = new Atleta("Jorge", "2015780481", new Date(), "FEMININO");
+        Atleta novoAtleta = new Atleta("Jorge", "2015780481", new Date(1995, 12, 3), "FEMININO");
         atletaDataMapper.atualizar(novoAtleta);
 
         Atleta atletaBuscado = atletaDataMapper.buscarPorMatricula("2015780481");
