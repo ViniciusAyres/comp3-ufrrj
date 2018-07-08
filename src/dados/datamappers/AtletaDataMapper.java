@@ -10,7 +10,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AtletaDataMapper implements StringDataMapper {
-    public boolean criar(Atleta atleta){
+    @Override
+    public boolean criar(Object object){
+        Atleta atleta = (Atleta) object;
         if (atleta == null){
             return true;
         }
@@ -36,6 +38,7 @@ public class AtletaDataMapper implements StringDataMapper {
         }
     }
 
+    @Override
     public Atleta buscarPorMatricula(String matricula){
         String sql = "SELECT * FROM TABELA WHERE MATRICULA = ?";
 
@@ -67,7 +70,9 @@ public class AtletaDataMapper implements StringDataMapper {
         return null;
     }
 
-    public boolean atualizar(Atleta atleta){
+    @Override
+    public boolean atualizar(Object object){
+        Atleta atleta = (Atleta) object;
         if (atleta == null){
             return true;
         }
