@@ -1,50 +1,64 @@
 package dados.entidades;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Atleta {
-    public String nome;
-    public String matricula;
-    public Date dataNascimento;
-    public String categoria;
 
-    public Atleta(String nome, String matricula, Date dataNascimento, String categoria) {
+  private String matricula;
+  private String nome;
+  private java.sql.Date dataNascimento;
+  private long idEquipe;
+  private String categoria;
 
-        this.nome = nome;
-        this.matricula = matricula;
-        this.dataNascimento = dataNascimento;
-        this.categoria = categoria;
-    }
+  public Atleta(String nome, String matricula, Date dataNascimento, String categoria) {
+    this.matricula = matricula;
+    this.nome = nome;
+    this.dataNascimento = dataNascimento;
+    this.idEquipe = idEquipe;
+    this.categoria = categoria;
+  }
 
-    public String getNome() {
-        return nome;
-    }
+  public String getCategoria() {
+    return categoria;
+  }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
 
-    public String getMatricula() {
-        return matricula;
-    }
+  public String getMatricula() {
+    return matricula;
+  }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
+  public void setMatricula(String matricula) {
+    this.matricula = matricula;
+  }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
 
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+  public String getNome() {
+    return nome;
+  }
 
-    public String getCategoria() {
-        return categoria;
-    }
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+
+  public java.sql.Date getDataNascimento() {
+    return dataNascimento;
+  }
+
+  public void setDataNascimento(java.sql.Date dataNascimento) {
+    this.dataNascimento = dataNascimento;
+  }
+
+
+  public long getIdEquipe() {
+    return idEquipe;
+  }
+
+  public void setIdEquipe(long idEquipe) {
+    this.idEquipe = idEquipe;
+  }
+
 }
