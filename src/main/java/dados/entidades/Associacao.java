@@ -7,7 +7,15 @@ public class Associacao {
   private String sigla;
   private String nome;
   private String matricula;
-  private Endereco endereco;
+  private long id_endereco;
+
+  public Associacao(String telefone, String sigla, String nome, String matricula, long id_endereco) {
+    this.telefone = telefone;
+    this.sigla = sigla;
+    this.nome = nome;
+    this.matricula = matricula;
+    this.id_endereco = id_endereco;
+  }
 
 
   public String getTelefone() {
@@ -46,12 +54,12 @@ public class Associacao {
   }
 
 
-  public Endereco getEndereco() {
-    return endereco;
+  public long getEnderecoId() {
+    return id_endereco;
   }
 
-  public void setEndereco(Endereco endereco) {
-    this.endereco = endereco;
+  public void setEnderecoId(int id_endereco) {
+    this.id_endereco = id_endereco;
   }
 
 }
