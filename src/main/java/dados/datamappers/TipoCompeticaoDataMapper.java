@@ -2,7 +2,7 @@ package dados.datamappers;
 
 import java.sql.ResultSet;
 
-public class TipoCompeticaoMapper {
+public class TipoCompeticaoDataMapper {
 
     public ResultSet buscarPorId(int id){
 

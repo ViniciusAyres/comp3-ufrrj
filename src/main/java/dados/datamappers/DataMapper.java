@@ -20,7 +20,7 @@ public abstract class DataMapper {
 
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
-
+        resultSet.next();
         return resultSet;
     }
 }
