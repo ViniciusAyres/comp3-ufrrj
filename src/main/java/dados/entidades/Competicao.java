@@ -7,14 +7,14 @@ public class Competicao {
   private String categoria;
   private java.sql.Date data;
   private String nome;
-  private TipoCompeticao tipoCompeticao;
+  private long idTipoCompeticao;
 
-    public TipoCompeticao getTipoCompeticao() {
-        return tipoCompeticao;
+    public long getIdTipoCompeticao() {
+        return idTipoCompeticao;
     }
 
-    public void setTipoCompeticao(TipoCompeticao tipoCompeticao) {
-        this.tipoCompeticao = tipoCompeticao;
+    public void setIdTipoCompeticao(long idTipoCompeticao) {
+        this.idTipoCompeticao = idTipoCompeticao;
     }
 
     public String getCategoria() {

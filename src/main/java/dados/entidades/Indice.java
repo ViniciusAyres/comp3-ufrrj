@@ -5,32 +5,32 @@ public class Indice {
   private String categoria;
   private java.sql.Time tempo;
   private long id;
-  private Nado nado;
-  private TamanhoPiscina tamanhoPiscina;
-  private Classe classe;
+  private long idNado;
+  private long idTamanhoPiscina;
+  private long idClasse;
 
-    public Nado getNado() {
-        return nado;
+    public long getIdNado() {
+        return idNado;
     }
 
-    public void setNado(Nado nado) {
-        this.nado = nado;
+    public void setIdNado(long idNado) {
+        this.idNado = idNado;
     }
 
-    public TamanhoPiscina getTamanhoPiscina() {
-        return tamanhoPiscina;
+    public long getIdTamanhoPiscina() {
+        return idTamanhoPiscina;
     }
 
-    public void setTamanhoPiscina(TamanhoPiscina tamanhoPiscina) {
-        this.tamanhoPiscina = tamanhoPiscina;
+    public void setIdTamanhoPiscina(long idTamanhoPiscina) {
+        this.idTamanhoPiscina = idTamanhoPiscina;
     }
 
-    public Classe getClasse() {
-        return classe;
+    public long getIdClasse() {
+        return idClasse;
     }
 
-    public void setClasse(Classe classe) {
-        this.classe = classe;
+    public void setIdClasse(long idClasse) {
+        this.idClasse = idClasse;
     }
 
     public String getCategoria() {
