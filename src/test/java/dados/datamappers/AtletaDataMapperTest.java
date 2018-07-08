@@ -1,20 +1,18 @@
-package testes.dados.datamappers;
-
+package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
-import dados.datamappers.AtletaDataMapper;
 import dados.entidades.Atleta;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class AtletaDataMapperTest {
 
@@ -124,5 +122,4 @@ public class AtletaDataMapperTest {
         assertEquals(new Date(2000, 11, 20), atletaBuscado.getDataNascimento());
         assertEquals("FEMININO", atletaBuscado.getCategoria());
     }
-
 }
