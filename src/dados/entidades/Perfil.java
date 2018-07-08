@@ -6,6 +6,9 @@ public class Perfil {
   private String nome;
   private long id;
 
+  public Perfil(String nome) {
+    this.nome = nome;
+  }
 
   public String getNome() {
     return nome;
