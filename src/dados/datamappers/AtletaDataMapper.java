@@ -8,9 +8,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class AtletaDataMapper {
-    public int criar(Atleta atleta){
+    public boolean criar(Atleta atleta){
         if (atleta == null){
-            return 0;
+            return true;
         }
 
         String sql = "INSERT INTO ATLETA (NOME, MATRICULA, DATA_NASCIMENTO, CATEGORIA) " +
@@ -27,8 +27,10 @@ public class AtletaDataMapper {
             statement.setString(4, atleta.getCategoria());
             statement.execute();
             statement.close();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
     }
 }
