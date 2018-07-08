@@ -18,6 +18,7 @@ public abstract class DataMapper {
         statement = (PreparedStatement) ConnectionSingleton.getInstance()
                 .prepareStatement(sql);
 
+        statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
 
         return resultSet;
