@@ -18,15 +18,14 @@ public class PerfilDataMapper implements IntDataMapper,DataMapper {
             return true;
         }
 
-        String sql = "INSERT INTO PERFIL (ID, NOME) " +
-                "VALUES (?, ?)";
+        String sql = "INSERT INTO PERFIL (NOME) " +
+                "VALUES (?)";
         PreparedStatement statement;
 
         try{
             statement = (PreparedStatement) ConnectionSingleton.getInstance().prepareStatement(sql);
 
-            statement.setLong(2, perfil.getId());
-            statement.setString(2, perfil.getNome());
+            statement.setString(1, perfil.getNome());
             statement.execute();
             statement.close();
             return true;

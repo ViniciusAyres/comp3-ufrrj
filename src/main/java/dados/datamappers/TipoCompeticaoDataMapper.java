@@ -50,7 +50,7 @@ public class TipoCompeticaoDataMapper implements DataMapper, IntDataMapper {
             TipoCompeticao tipocompeticao = null;
 
             if(resultSet.next()){
-                tipocompeticao = new TipoCompeticao(resultSet.getString("NOME"));
+                tipocompeticao = new TipoCompeticao(resultSet.getLong("ID"), resultSet.getString("NOME"));
             }
 
             statement.close();

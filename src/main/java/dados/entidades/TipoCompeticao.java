@@ -6,7 +6,8 @@ public class TipoCompeticao {
   private String nome;
   private long id;
 
-  public TipoCompeticao(String nome) {
+  public TipoCompeticao(long id, String nome) {
+    this.id = id;
     this.nome = nome;
   }
   public String getNome() {
