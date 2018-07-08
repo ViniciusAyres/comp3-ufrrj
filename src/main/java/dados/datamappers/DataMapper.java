@@ -23,4 +23,19 @@ public abstract class DataMapper {
         resultSet.next();
         return resultSet;
     }
+
+    public static ResultSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException {
+
+        String sql = "SELECT * FROM " + nomeTabela + " WHERE ID = ? ";
+
+        PreparedStatement statement;
+
+        statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        statement.setString(1, matricula);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        return resultSet;
+    }
 }
