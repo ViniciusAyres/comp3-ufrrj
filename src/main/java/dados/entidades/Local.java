@@ -6,17 +6,17 @@ public class Local {
 
   private String nome;
   private long id;
-  private List<TamanhoPiscina> tamanhoPiscina;
+  private List<Long> idTamanhosPiscinas;
 
-  public List<TamanhoPiscina> getTamanhoPiscina() {
-    return tamanhoPiscina;
-  }
+    public List<Long> getIdTamanhosPiscinas() {
+        return idTamanhosPiscinas;
+    }
 
-  public void setTamanhoPiscina(List<TamanhoPiscina> tamanhoPiscina) {
-    this.tamanhoPiscina = tamanhoPiscina;
-  }
+    public void setIdTamanhosPiscinas(List<Long> idTamanhosPiscinas) {
+        this.idTamanhosPiscinas = idTamanhosPiscinas;
+    }
 
-  public String getNome() {
+    public String getNome() {
     return nome;
   }
 

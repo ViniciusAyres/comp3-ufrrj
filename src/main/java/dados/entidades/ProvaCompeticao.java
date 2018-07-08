@@ -3,27 +3,26 @@ package dados.entidades;
 public class ProvaCompeticao {
 
   private long id;
-  private Prova prova;
-  private Competicao competicao;
+  private long idProva;
+  private long idCompeticao;
 
+    public long getIdProva() {
+        return idProva;
+    }
 
-  public Prova getProva() {
-    return prova;
-  }
+    public void setIdProva(long idProva) {
+        this.idProva = idProva;
+    }
 
-  public void setProva(Prova prova) {
-    this.prova = prova;
-  }
+    public long getIdCompeticao() {
+        return idCompeticao;
+    }
 
-  public Competicao getCompeticao() {
-    return competicao;
-  }
+    public void setIdCompeticao(long idCompeticao) {
+        this.idCompeticao = idCompeticao;
+    }
 
-  public void setCompeticao(Competicao competicao) {
-    this.competicao = competicao;
-  }
-
-  public long getId() {
+    public long getId() {
     return id;
   }
 

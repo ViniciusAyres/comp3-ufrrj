@@ -8,8 +8,8 @@ public class Prova {
   private String nome;
   private String categoria;
   private long id;
-  private TipoProva tipoProva;
-  private Classe classe;
+  private long idTipoProva;
+  private long idClasse;
 
 
   public long getLimiteParticipantes() {
