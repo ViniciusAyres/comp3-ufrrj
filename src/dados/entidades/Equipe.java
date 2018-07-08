@@ -1,11 +1,21 @@
 package dados.entidades;
 
 
+import java.util.List;
+
 public class Equipe {
 
-  private String nome;
   private long id;
+  private String nome;
+  private List<Atleta> atletas;
 
+  public List<Atleta> getAtletas() {
+    return atletas;
+  }
+
+  public void setAtletas(List<Atleta> atletas) {
+    this.atletas = atletas;
+  }
 
   public String getNome() {
     return nome;

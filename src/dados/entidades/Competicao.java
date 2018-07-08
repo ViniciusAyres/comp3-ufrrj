@@ -3,14 +3,21 @@ package dados.entidades;
 
 public class Competicao {
 
+  private long id;
   private String categoria;
   private java.sql.Date data;
   private String nome;
-  private long id;
-  private long idTipoCompeticao;
+  private TipoCompeticao tipoCompeticao;
 
+    public TipoCompeticao getTipoCompeticao() {
+        return tipoCompeticao;
+    }
 
-  public String getCategoria() {
+    public void setTipoCompeticao(TipoCompeticao tipoCompeticao) {
+        this.tipoCompeticao = tipoCompeticao;
+    }
+
+    public String getCategoria() {
     return categoria;
   }
 
@@ -43,15 +50,6 @@ public class Competicao {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-
-  public long getIdTipoCompeticao() {
-    return idTipoCompeticao;
-  }
-
-  public void setIdTipoCompeticao(long idTipoCompeticao) {
-    this.idTipoCompeticao = idTipoCompeticao;
   }
 
 }

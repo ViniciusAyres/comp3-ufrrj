@@ -7,7 +7,7 @@ public class Associacao {
   private String sigla;
   private String nome;
   private String matricula;
-  private long idEndereco;
+  private Endereco endereco;
 
 
   public String getTelefone() {
@@ -46,12 +46,12 @@ public class Associacao {
   }
 
 
-  public long getIdEndereco() {
-    return idEndereco;
+  public Endereco getEndereco() {
+    return endereco;
   }
 
-  public void setIdEndereco(long idEndereco) {
-    this.idEndereco = idEndereco;
+  public void setEndereco(Endereco endereco) {
+    this.endereco = endereco;
   }
 
 }
