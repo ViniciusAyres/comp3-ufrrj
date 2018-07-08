@@ -2,10 +2,16 @@ package dados.entidades;
 
 public class Recorde {
 
-  private long pontuacao;
-  private String nome;
   private long id;
+  private String nome;
+  private long pontuacao;
 
+
+  public Recorde(long id, String nome, long pontuacao) {
+    this.id = id;
+    this.nome = nome;
+    this.pontuacao = pontuacao;
+  }
 
   public long getPontuacao() {
     return pontuacao;
