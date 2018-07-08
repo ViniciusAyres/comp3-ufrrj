@@ -4,28 +4,27 @@ import dados.bancos.derbyDB.ConnectionSingleton;
 import dados.datamappers.interfaces.DataMapper;
 import dados.datamappers.interfaces.IntDataMapper;
 import dados.entidades.Perfil;
+import dados.entidades.TipoCompeticao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PerfilDataMapper implements IntDataMapper,DataMapper {
-
+public class TipoCompeticaoDataMapper implements DataMapper, IntDataMapper {
     @Override
     public boolean criar(Object object) {
-        Perfil perfil = (Perfil) object;
-        if (perfil == null){
+        TipoCompeticao tipocompeticao = (TipoCompeticao) object;
+        if (tipocompeticao == null){
             return true;
         }
 
-        String sql = "INSERT INTO PERFIL (NOME) " +
+        String sql = "INSERT INTO TIPO_COMPETICAO (NOME) " +
                 "VALUES (?)";
         PreparedStatement statement;
 
         try{
             statement = (PreparedStatement) ConnectionSingleton.getInstance().prepareStatement(sql);
-
-            statement.setString(1, perfil.getNome());
+            statement.setString(1, tipocompeticao.getNome());
             statement.execute();
             statement.close();
             return true;
@@ -37,8 +36,8 @@ public class PerfilDataMapper implements IntDataMapper,DataMapper {
     }
 
     @Override
-    public Perfil buscarPorId(int id){
-        String sql = "SELECT * FROM PERFIL WHERE ID = ?";
+    public TipoCompeticao buscarPorId(int id){
+        String sql = "SELECT * FROM TIPO_COMPETICAO WHERE ID = ?";
 
         PreparedStatement statement;
 
@@ -48,15 +47,15 @@ public class PerfilDataMapper implements IntDataMapper,DataMapper {
 
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            Perfil perfil = null;
+            TipoCompeticao tipocompeticao = null;
 
             if(resultSet.next()){
-                perfil = new Perfil(resultSet.getString("NOME"));
+                tipocompeticao = new TipoCompeticao(resultSet.getString("NOME"));
             }
 
             statement.close();
             resultSet.close();
-            return perfil;
+            return tipocompeticao;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -65,14 +64,13 @@ public class PerfilDataMapper implements IntDataMapper,DataMapper {
     }
 
 
-    @Override
     public boolean atualizar(Object object){
-        Perfil perfil = (Perfil) object;
-        if (perfil == null){
+        TipoCompeticao tipocompeticao = (TipoCompeticao) object;
+        if (tipocompeticao == null){
             return true;
         }
 
-        String sql = "UPDATE PERFIL " +
+        String sql = "UPDATE TIPO_COMPETICAO " +
                 "SET NOME = ? " +
                 "WHERE ID = ?";
         PreparedStatement statement;
@@ -81,8 +79,8 @@ public class PerfilDataMapper implements IntDataMapper,DataMapper {
             statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setString(1, perfil.getNome());
-            statement.setLong(2, perfil.getId());
+            statement.setString(1, tipocompeticao.getNome());
+            statement.setLong(2, tipocompeticao.getId());
             statement.execute();
             statement.close();
             return true;
@@ -91,4 +89,5 @@ public class PerfilDataMapper implements IntDataMapper,DataMapper {
             return false;
         }
     }
+
 }
