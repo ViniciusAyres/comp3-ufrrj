@@ -27,7 +27,7 @@ public class AtletaDataMapper implements StringDataMapper {
 
             statement.setString(1, atleta.getNome());
             statement.setString(2, atleta.getMatricula());
-            statement.setDate(3, (Date) atleta.getDataNascimento());
+            statement.setDate(3, new Date(atleta.getDataNascimento().getTime()));
             statement.setString(4, atleta.getCategoria());
             statement.execute();
             statement.close();
@@ -40,7 +40,7 @@ public class AtletaDataMapper implements StringDataMapper {
 
     @Override
     public Atleta buscarPorMatricula(String matricula){
-        String sql = "SELECT * FROM TABELA WHERE MATRICULA = ?";
+        String sql = "SELECT * FROM ATLETA WHERE MATRICULA = ?";
 
         PreparedStatement statement;
 
