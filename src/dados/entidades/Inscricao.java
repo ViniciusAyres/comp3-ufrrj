@@ -3,24 +3,30 @@ package dados.entidades;
 
 public class Inscricao {
 
-  private String matriculaAssociacao;
   private java.sql.Date dataEntrada;
   private String numeroPagamento;
   private String numeroOficio;
   private java.sql.Date dataOficio;
-  private String matriculaAtleta;
+  private Atleta atleta;
+  private Associacao associacao;
 
+    public Atleta getAtleta() {
+        return atleta;
+    }
 
-  public String getMatriculaAssociacao() {
-    return matriculaAssociacao;
-  }
+    public void setAtleta(Atleta atleta) {
+        this.atleta = atleta;
+    }
 
-  public void setMatriculaAssociacao(String matriculaAssociacao) {
-    this.matriculaAssociacao = matriculaAssociacao;
-  }
+    public Associacao getAssociacao() {
+        return associacao;
+    }
 
+    public void setAssociacao(Associacao associacao) {
+        this.associacao = associacao;
+    }
 
-  public java.sql.Date getDataEntrada() {
+    public java.sql.Date getDataEntrada() {
     return dataEntrada;
   }
 
@@ -53,15 +59,6 @@ public class Inscricao {
 
   public void setDataOficio(java.sql.Date dataOficio) {
     this.dataOficio = dataOficio;
-  }
-
-
-  public String getMatriculaAtleta() {
-    return matriculaAtleta;
-  }
-
-  public void setMatriculaAtleta(String matriculaAtleta) {
-    this.matriculaAtleta = matriculaAtleta;
   }
 
 }

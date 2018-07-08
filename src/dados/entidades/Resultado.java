@@ -5,8 +5,15 @@ public class Resultado {
 
   private long id;
   private java.sql.Time tempo;
-  private long idColocacao;
+  private Colocacao colocacao;
 
+  public Colocacao getColocacao() {
+    return colocacao;
+  }
+
+  public void setColocacao(Colocacao colocacao) {
+    this.colocacao = colocacao;
+  }
 
   public long getId() {
     return id;
@@ -25,13 +32,5 @@ public class Resultado {
     this.tempo = tempo;
   }
 
-
-  public long getIdColocacao() {
-    return idColocacao;
-  }
-
-  public void setIdColocacao(long idColocacao) {
-    this.idColocacao = idColocacao;
-  }
 
 }

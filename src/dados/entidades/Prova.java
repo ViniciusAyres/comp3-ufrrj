@@ -8,8 +8,8 @@ public class Prova {
   private String nome;
   private String categoria;
   private long id;
-  private long idTipoProva;
-  private long idClasse;
+  private TipoProva tipoProva;
+  private Classe classe;
 
 
   public long getLimiteParticipantes() {
@@ -56,22 +56,5 @@ public class Prova {
     this.id = id;
   }
 
-
-  public long getIdTipoProva() {
-    return idTipoProva;
-  }
-
-  public void setIdTipoProva(long idTipoProva) {
-    this.idTipoProva = idTipoProva;
-  }
-
-
-  public long getIdClasse() {
-    return idClasse;
-  }
-
-  public void setIdClasse(long idClasse) {
-    this.idClasse = idClasse;
-  }
 
 }

@@ -1,11 +1,20 @@
 package dados.entidades;
 
+import java.util.List;
+
 public class Local {
 
   private String nome;
   private long id;
-  private long idTamanhoPiscina;
+  private List<TamanhoPiscina> tamanhoPiscina;
 
+  public List<TamanhoPiscina> getTamanhoPiscina() {
+    return tamanhoPiscina;
+  }
+
+  public void setTamanhoPiscina(List<TamanhoPiscina> tamanhoPiscina) {
+    this.tamanhoPiscina = tamanhoPiscina;
+  }
 
   public String getNome() {
     return nome;
@@ -22,15 +31,6 @@ public class Local {
 
   public void setId(long id) {
     this.id = id;
-  }
-
-
-  public long getIdTamanhoPiscina() {
-    return idTamanhoPiscina;
-  }
-
-  public void setIdTamanhoPiscina(long idTamanhoPiscina) {
-    this.idTamanhoPiscina = idTamanhoPiscina;
   }
 
 }
