@@ -1,0 +1,25 @@
+package dados.datamappers;
+
+import dados.bancos.derbyDB.ConnectionSingleton;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public abstract class DataMapper {
+
+
+    public static ResultSet buscarPorId(int id, String nomeTabela) throws SQLException {
+
+        String sql = "SELECT * FROM " + nomeTabela + " WHERE ID = ? ";
+
+        PreparedStatement statement;
+
+        statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        ResultSet resultSet = statement.executeQuery();
+
+        return resultSet;
+    }
+}

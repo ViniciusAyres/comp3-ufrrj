@@ -1,18 +1,14 @@
 package dados.datamappers;
 
-import dados.bancos.derbyDB.ConnectionSingleton;
-
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class PerfilDataMapper   {
-
+public class TipoCompeticaoMapper {
 
     public ResultSet buscarPorId(int id){
 
         try{
 
-            return  DataMapper.buscarPorId(id, "PERFIL");
+            return  DataMapper.buscarPorId(id, "TIPO_COMPETICAO");
 
         }
         catch (Exception ex){
@@ -22,6 +18,6 @@ public class PerfilDataMapper   {
         return  null;
     }
 
-
-
 }
+
+
