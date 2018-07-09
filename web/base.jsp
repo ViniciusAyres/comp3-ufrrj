@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/15c50bb637.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <!-- HEADER -->
@@ -25,21 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link text-white" href="/">Início</a>
-            </li>
-            <li class="nav-item dropdown has-mega-menu">
-                <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                   aria-expanded="false">Competições</a>
-                <div class="dropdown-menu dropdown-menu-left">
-                    <div class="px-0 container container-sm">
-                        <div class="row">
-                            <a class="dropdown-item text-white" href="#">TESTE</a>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="/autenticacao.jsp">Filiar Associação</a>
+                <a class="nav-link text-white" href="/index.jsp">Início</a>
             </li>
         </ul>
     </div>
@@ -47,3 +34,7 @@
 
 </body>
 </html>
+
+<script type="text/javascript">
+    swal("Here's a message!", "It's pretty, isn't it?")
+</script>

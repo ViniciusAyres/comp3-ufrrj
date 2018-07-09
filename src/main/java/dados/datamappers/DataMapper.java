@@ -40,15 +40,4 @@ public abstract class DataMapper {
         return resultSet;
     }
 
-    public static boolean criar(String tabela, String paramentros, String valores) throws SQLException{
-
-        String sql = "INSERT INTO" + tabela + "(" + paramentros + ")" + "VALUES (" +  valores + ")";
-
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
-
-        statement.execute();
-
-        return  true;
-    }
 }

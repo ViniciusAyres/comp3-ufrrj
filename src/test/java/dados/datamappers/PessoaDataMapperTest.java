@@ -2,6 +2,7 @@ package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -47,7 +48,8 @@ public class PessoaDataMapperTest {
     @Test
     public void criarPessoa() throws SQLException {
 
-
-
+        PessoaDataMapper pessoaDataMapper = new PessoaDataMapper();
+        Assert.assertEquals(true,  pessoaDataMapper.criar("Lucas", "asa2",
+               1, "12312",  null));
     }
 }
