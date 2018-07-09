@@ -2,10 +2,7 @@ package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class ParticipacaoDataMapper {
     public ResultSet buscarPorId(int id){
@@ -18,9 +15,8 @@ public class ParticipacaoDataMapper {
 
         return  null;
     }
-    //TODO: Conferir horario
     public boolean criar(int idCompeticao, int idProva, int idResultado, String matriculaAtleta,
-                         Date horario, int idEquipe){
+                         Time horario, int idEquipe){
         String sql = "INSERT INTO PARTICIPACAO (ID_COMPETICAO, ID_PROVA, ID_RESULTADO, MATRICULA_ATLETA, HORARIO, ID_EQUIPE) " +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -32,7 +28,7 @@ public class ParticipacaoDataMapper {
             statement.setInt(2, idProva);
             statement.setInt(3, idResultado);
             statement.setString(4, matriculaAtleta);
-            statement.setDate(5, horario);
+            statement.setTime(5, horario);
             statement.setInt(6, idEquipe);
 
             return statement.execute();
@@ -45,7 +41,7 @@ public class ParticipacaoDataMapper {
     }
 
     public boolean atualizar(int id, int idCompeticao, int idProva, int idResultado,
-                             String matriculaAtleta, Date horario, int idEquipe){
+                             String matriculaAtleta, Time horario, int idEquipe){
         String sql = "UPDATE PARTICIPACAO " +
                 "SET ID_COMPETICAO = ?, ID_PROVA = ?, ID_RESULTADO = ?," +
                 "MATRICULA_ATLETA = ?, HORARIO = ?, ID_EQUIPE = ? " +
@@ -59,7 +55,7 @@ public class ParticipacaoDataMapper {
             statement.setInt(2, idProva);
             statement.setInt(3, idResultado);
             statement.setString(4, matriculaAtleta);
-            statement.setDate(2, horario);
+            statement.setTime(2, horario);
             statement.setInt(3, idEquipe);
             statement.setInt(7, id);
 
