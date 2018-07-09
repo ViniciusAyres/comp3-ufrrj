@@ -68,4 +68,30 @@ public abstract class DataMapper {
         return resultSet;
     }
 
+    public static boolean criar(String tabela, String paramentros, String valores) throws SQLException{
+
+        String sql = "INSERT INTO" + tabela + "(" + paramentros + ")" + "VALUES (" +  valores + ")";
+
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        statement.execute();
+
+        return  true;
+    }
+
+    public static ResultSet buscarPorNumeroOficio(String numero_oficio, String nomeTabela) throws SQLException {
+
+        String sql = "SELECT * FROM " + nomeTabela + " WHERE NUMERO_OFICIO = ? ";
+
+        PreparedStatement statement;
+
+        statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        statement.setString(1, numero_oficio);
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        return resultSet;
+    }
 }
