@@ -6,11 +6,12 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 
-public class Atleta {
+public class ResultadoDataMapper {
     public ResultSet buscarPorId(int id){
         try{
-            return  DataMapper.buscarPorId(id, "ATLETA");
+            return  DataMapper.buscarPorId(id, "RESULTADO");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -19,18 +20,16 @@ public class Atleta {
         return  null;
     }
 
-    public boolean criar(String matricula, String nome, String categoria, Date dataNascimento){
-        String sql = "INSERT INTO ATLETA (MATRICULA, NOME, CATEGORIA, DATA_NASCIMENTO) " +
-                "VALUES (?, ?, ?, ?)";
+    public boolean criar(Time tempo, int id_colocacao){
+        String sql = "INSERT INTO RESULTADO(TEMPO, ID_COLOCACAO) " +
+                "VALUES (?, ?)";
 
         try {
             PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setString(1, matricula);
-            statement.setString(2, nome);
-            statement.setString(3, categoria);
-            statement.setDate(4, dataNascimento);
+            statement.setTime(1, tempo);
+            statement.setInt(2, id_colocacao);
 
             return statement.execute();
 
@@ -41,19 +40,18 @@ public class Atleta {
         return false;
     }
 
-    public boolean atualizar(String matricula, String nome, String categoria, Date dataNascimento){
-        String sql = "UPDATE ATLETA " +
-                "SET NOME = ?, CATEGORIA = ?, DATA_NASCIMENTO = ? " +
-                "WHERE MATRICULA = ?";
+    public boolean atualizar(Time tempo, int id_colocacao, int id){
+        String sql = "UPDATE RESULTADO " +
+                "SET TEMPO = ?, ID_COLOCACAO = ? " +
+                "WHERE ID = ?";
 
         try {
             PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setString(1, nome);
-            statement.setString(2, categoria);
-            statement.setDate(3, dataNascimento);
-            statement.setString(4, matricula);
+            statement.setTime(1, tempo);
+            statement.setInt(2, id_colocacao);
+            statement.setInt(3, id);
 
             return statement.execute();
 

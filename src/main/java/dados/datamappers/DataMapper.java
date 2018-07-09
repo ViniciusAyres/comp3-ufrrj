@@ -53,6 +53,7 @@ public abstract class DataMapper {
     }
 
 
+
     public static ResultSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException {
 
         String sql = "SELECT * FROM " + nomeTabela + " WHERE MATRICULA = ? ";
@@ -94,4 +95,17 @@ public abstract class DataMapper {
         resultSet.next();
         return resultSet;
     }
+
+    public  static  boolean excluirPorId(String tabela, int valor) throws SQLException {
+
+        String sql = "DELETE FROM " + tabela + " WHERE ID =? ";
+
+        PreparedStatement statement;
+        statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+        statement.setInt(1, valor);
+
+        return statement.execute();
+    }
+
 }
