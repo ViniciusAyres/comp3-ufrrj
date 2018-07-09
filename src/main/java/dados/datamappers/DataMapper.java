@@ -25,6 +25,34 @@ public abstract class DataMapper {
         return resultSet;
     }
 
+    public  static  ResultSet buscarPorChave(String tabela, String chave, String valor) throws SQLException {
+
+        String sql = "SELECT * FROM " + tabela + " WHERE " + chave +  "=? ";
+
+        PreparedStatement statement;
+        statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+        statement.setString(1, valor);
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        return resultSet;
+
+    }
+
+    public  static  boolean excluirPorChave(String tabela, String chave, String valor) throws SQLException {
+
+        String sql = "DELETE FROM " + tabela + " WHERE " + chave +  "=? ";
+
+        PreparedStatement statement;
+        statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+        statement.setString(1, valor);
+
+        return statement.execute();
+    }
+
+
     public static ResultSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException {
 
         String sql = "SELECT * FROM " + nomeTabela + " WHERE MATRICULA = ? ";
