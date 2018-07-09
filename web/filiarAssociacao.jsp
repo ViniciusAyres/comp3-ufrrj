@@ -10,7 +10,7 @@
             }
         }
     </style>
-    <title>Filiar Associacao</title>
+    <title>Filiar Associação</title>
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
@@ -42,7 +42,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="date" name="dataOficio" class="form-control" id="dataOficio" required maxlength="50">
+                            <input type="date" name="dataOficio" class="form-control" id="dataOficio" required>
                         </div>
                     </div>
                 </div>
@@ -50,13 +50,13 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="nome"> Nome</label>
+                    <label for="nome"> Nome da Associação</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="nome" class="form-control" maxlength="50" id="nome" placeholder="Cesar Ciélo"
+                            <input type="text" name="nome" class="form-control" maxlength="50" id="nome" placeholder="Nome da Associação"
                                    required >
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="sigla" class="form-control" id="sigla" placeholder="sigla" required>
+                            <input type="text" name="sigla" class="form-control" id="sigla" placeholder="Sigla" required maxlength="30">
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="numeroLogradouro" class="form-control" id="numeroLogradouro" maxlength="30" placeholder="Número do Logradouro">
+                            <input type="text" name="numeroLogradouro" class="form-control" id="numeroLogradouro" maxlength="30" placeholder="Número do Logradouro" required>
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="complemento" class="form-control" id="complemento" maxlength="30" placeholder="Complemento">
+                            <input type="text" name="complemento" class="form-control" id="complemento" maxlength="30" placeholder="Complemento" required>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="cep" class="form-control" id="cep" required maxlength="30" placeholder="CEP">
+                            <input type="text" name="cep" class="form-control" id="cep" required maxlength="8" placeholder="CEP">
                         </div>
                     </div>
                 </div>
@@ -168,7 +168,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="dropdown">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" name="uf" id="uf" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="form-control btn-sm dropdown-toggle" type="button" name="uf" id="uf" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Selecionar UF
                         </button>
                         <div class="dropdown-menu" aria-labelledby="uf">
@@ -188,7 +188,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="telefone" class="form-control" id="telefone" required maxlength="30" placeholder="Telefone">
+                            <input type="text" name="telefone" class="form-control" id="telefone" required maxlength="15" placeholder="Telefone">
                         </div>
                     </div>
                 </div>

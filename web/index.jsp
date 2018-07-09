@@ -150,7 +150,7 @@
                 <div class="collapse" id="menu3" data-parent="#sidebar">
                     <a href="#" class="list-group-item text-dark">Incluir Locais de Competição</a>
                     <a href="#" class="list-group-item text-dark">Alterar Locais de Competição</a>
-                    <a href="#" class="list-group-item text-dark">Listar Locais de Competição</a>
+                    <a href="/listarLocaisCompeticao.jsp" class="list-group-item text-dark">Listar Locais de Competição</a>
                     <a href="#" class="list-group-item text-dark">Alterar Competição</a>
                     <a href="/listarCompeticoes.jsp" class="list-group-item text-dark">Listar Competições</a>
                     <a href="#" class="list-group-item text-dark">Listar Balizamento de Competição</a>
@@ -175,7 +175,7 @@
                         <div class="col-md-4">
                         </div>
                     </div>
-                    <p class="mt-4">Competições para atletas de todas as idades, dividos em suas devidas classes para competir em provas com outros atletas de mesma classe.</p>
+                    <p class="mt-4">Competições para atletas de todas as idades, dividos em suas devidas classes para competir em provas com outros atletas de acordo com suas classes específicas.</p>
                 </div>
             </div>
         </main>
