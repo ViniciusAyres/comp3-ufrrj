@@ -6,10 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AssociacaoDataMapper {
-    public ResultSet buscarPorMatricula(String matricula){
+public class LocalDataMapper {
+    public ResultSet buscarPorId(int id){
         try{
-            return  DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
+            return  DataMapper.buscarPorId(id, "LOCAL");
         }
         catch (Exception ex){
             ex.printStackTrace();
@@ -18,19 +18,18 @@ public class AssociacaoDataMapper {
         return  null;
     }
 
-    public boolean criar(String matricula, String nome, String sigla, String telefone, int idEndereco){
-        String sql = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ID_ENDERECO) " +
+    public boolean criar(int id, String nome, int idTamanhoPiscina, int idEndereco){
+        String sql = "INSERT INTO LOCAL (ID, NOME, ID_TAMANHO_PISCINA, ID_ENDERECO) " +
                 "VALUES (?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setString(1, matricula);
+            statement.setInt(1, id);
             statement.setString(2, nome);
-            statement.setString(3, sigla);
-            statement.setString(4, telefone);
-            statement.setInt(5, idEndereco);
+            statement.setInt(3, idTamanhoPiscina);
+            statement.setInt(4, idEndereco);
             return statement.execute();
 
         } catch (SQLException e) {
@@ -40,20 +39,19 @@ public class AssociacaoDataMapper {
         return false;
     }
 
-    public boolean atualizar(String matricula, String nome, String sigla, String telefone, int idEndereco){
-        String sql = "UPDATE ASSOCIACAO " +
-                "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ID_ENDERECO = ? " +
-                "WHERE MATRICULA = ?";
+    public boolean atualizar(int id, String nome, int idTamanhoPiscina, int idEndereco){
+        String sql = "UPDATE LOCAL " +
+                "SET NOME = ?, ID_TAMANHO_PISCINA = ?, ID_ENDERECO = ? " +
+                "WHERE ID = ?";
 
         try {
             PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
             statement.setString(1, nome);
-            statement.setString(2, sigla);
-            statement.setString(3, telefone);
-            statement.setInt(4, idEndereco);
-            statement.setString(5, matricula);
+            statement.setInt(2, idTamanhoPiscina);
+            statement.setInt(3, idEndereco);
+            statement.setInt(4, id);
 
             return statement.execute();
 
@@ -64,4 +62,3 @@ public class AssociacaoDataMapper {
         return false;
     }
 }
-

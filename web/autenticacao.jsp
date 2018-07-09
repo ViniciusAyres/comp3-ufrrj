@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <form class="form" action="/usuario" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
                                 <div class="form-group">
-                                    <label for="uname1">Matrícula</label>
+                                    <label for="matricula">Matrícula</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="matricula" id="matricula">
                                     <div class="invalid-feedback">Esqueceu a matrícula.</div>
                                 </div>
