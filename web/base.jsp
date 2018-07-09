@@ -36,5 +36,13 @@
 </html>
 
 <script type="text/javascript">
-    swal("Here's a message!", "It's pretty, isn't it?")
+    var erroMensagem = "<%=request.getAttribute("erro")%>"
+    if(erroMensagem != "null"){
+        swal("Ops, algo deu errado...", erroMensagem, "error")
+    }
+
+    var sucessoMensagem = "<%=request.getAttribute("sucesso")%>"
+    if(sucessoMensagem != "null"){
+        swal("Sucesso!!", sucessoMensagem, "success")
+    }
 </script>
