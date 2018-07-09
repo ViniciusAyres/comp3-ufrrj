@@ -39,7 +39,7 @@ public class FiliacaoDataMapper {
         return false;
     }
 
-    public boolean atualizar(String numero_oficio, SQLData dataoficio, String numeropagamento,SQLData dataentrada, String matriculaassociacao){
+    public boolean atualizar(String numero_oficio, Date dataoficio, String numeropagamento,Date dataentrada, String matriculaassociacao){
         String sql = "UPDATE ASSOCIACAO " +
                 "SET DATA_OFICIO = ?, NUMERO_PAGAMENTO = ?, DATA_ENTRADA = ?, MATRICULA_ASSOCIACAO = ? " +
                 "WHERE NUMERO_OFICIO = ?";
@@ -48,9 +48,9 @@ public class FiliacaoDataMapper {
             PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setDate(1, (Date) dataoficio);
+            statement.setDate(1,  dataoficio);
             statement.setString(2, numeropagamento);
-            statement.setDate(3, (Date) dataentrada);
+            statement.setDate(3,  dataentrada);
             statement.setString(4, matriculaassociacao);
             statement.setString(5, numero_oficio);
 
