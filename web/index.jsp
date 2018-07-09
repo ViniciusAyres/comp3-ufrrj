@@ -126,7 +126,7 @@
         transition-timing-function: ease-out;
     }
 </style>
-
+<title>Início</title>
 <div class="container-fluid">
     <div class="row d-flex d-md-block flex-nowrap wrapper">
         <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
@@ -134,9 +134,9 @@
             <div class="list-group border-0 card text-center text-md-left">
                 <a href="#menu1" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-university" aria-hidden="true"></i> <span class="d-none d-md-inline">Associação</span></a>
                 <div class="collapse" id="menu1" data-parent="#sidebar">
-                    <a href="#" class="list-group-item text-dark">Filiar uma Associação</a>
+                    <a href="/filiarAssociacao.jsp" class="list-group-item text-dark">Filiar uma Associação</a>
                     <a href="#" class="list-group-item text-dark">Alterar Filiação da Associação</a>
-                    <a href="#" class="list-group-item text-dark">Listar Associações</a>
+                    <a href="/listarAssociacoes.jsp" class="list-group-item text-dark">Listar Associações</a>
                 </div>
                 <a href="#menu2" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> <span class="d-none d-md-inline">Atleta</span></a>
                 <div class="collapse" id="menu2" data-parent="#sidebar">
@@ -152,7 +152,7 @@
                     <a href="#" class="list-group-item text-dark">Alterar Locais de Competição</a>
                     <a href="#" class="list-group-item text-dark">Listar Locais de Competição</a>
                     <a href="#" class="list-group-item text-dark">Alterar Competição</a>
-                    <a href="#" class="list-group-item text-dark">Listar Competições</a>
+                    <a href="/listarCompeticoes.jsp" class="list-group-item text-dark">Listar Competições</a>
                     <a href="#" class="list-group-item text-dark">Listar Balizamento de Competição</a>
                     <a href="#" class="list-group-item text-dark">Listar Pontuação de Competição</a>
                     <a href="#" class="list-group-item text-dark">Listar Pontuação Final de Competição</a>
@@ -161,15 +161,21 @@
         </div>
         <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
             <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
-            <div class="mx-auto">
+            <div>
                 <div class="jumbotron">
                     <h1 class="display-4">SISFARJ</h1>
                     <p class="lead">Filie-se e participe de competições de natação amadoras, estaduais e a nível mundial.</p>
                     <hr class="my-4">
-                    <p>Competições para atletas de todas as idades, dividos em suas devidas classes para competir em provas com outros atletas de mesma classe.</p>
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Saiba mais</a>
-                    </p>
+                     <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                            <img src="/sw.jpg" class="img-fluid" alt="Responsive image" width="782" height="250">
+                        </div>
+                        <div class="col-md-4">
+                        </div>
+                    </div>
+                    <p class="mt-4">Competições para atletas de todas as idades, dividos em suas devidas classes para competir em provas com outros atletas de mesma classe.</p>
                 </div>
             </div>
         </main>

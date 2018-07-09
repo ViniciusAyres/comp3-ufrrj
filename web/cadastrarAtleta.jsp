@@ -10,6 +10,7 @@
             }
         }
     </style>
+    <title>Cadastro Atleta</title>
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
