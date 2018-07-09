@@ -132,7 +132,7 @@
         <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
 
             <div class="list-group border-0 card text-center text-md-left">
-                <a href="#menu1" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-university" aria-hidden="true"></i> <span class="d-none d-md-inline">Associação</span></a>
+                <a href="#menu1" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-handshake-o" aria-hidden="true"></i> <span class="d-none d-md-inline">Associação</span></a>
                 <div class="collapse" id="menu1" data-parent="#sidebar">
                     <a href="/filiarAssociacao.jsp" class="list-group-item text-dark">Filiar uma Associação</a>
                     <a href="#" class="list-group-item text-dark">Alterar Filiação da Associação</a>
@@ -170,7 +170,7 @@
                         <div class="col-md-4">
                         </div>
                         <div class="col-md-4">
-                            <img src="/sw.jpg" class="img-fluid" alt="Responsive image" width="782" height="250">
+                            <img src="/img/sw.jpg" class="img-fluid" alt="Responsive image" width="782" height="250">
                         </div>
                         <div class="col-md-4">
                         </div>

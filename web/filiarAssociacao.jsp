@@ -18,12 +18,12 @@
 
         <div class="card-header text-center">
             <h4>
-                Filiar Associação</h4>
+                <i class="fa fa-handshake-o" aria-hidden="true"></i> Filiar Associação</h4>
         </div>
         <div class="card-body">
             <div class="row mt-4">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="numeroOficio"><i class="fa fa-file-text" aria-hidden="true"></i> Número de Ofício</label>
+                    <label for="numeroOficio"> Número de Ofício</label>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
@@ -37,7 +37,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="dataOficio"><i class="fa fa-calendar" aria-hidden="true"></i> Data de ofício</label>
+                    <label for="dataOficio"> Data de ofício</label>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
@@ -50,7 +50,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="nome"><i class="fa fa-user-o" aria-hidden="true"></i> Nome</label>
+                    <label for="nome"> Nome</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -65,7 +65,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="sigla"><i class="fa fa-calendar-o" aria-hidden="true"></i> Sigla</label>
+                    <label for="sigla"> Sigla</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -79,7 +79,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="logradouro"><i class="fa fa-calendar-o" aria-hidden="true"></i> Logradouro</label>
+                    <label for="logradouro"> Logradouro</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -93,7 +93,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="numeroLogradouro"><i class="fa fa-calendar-o" aria-hidden="true"></i> Número do Logradouro</label>
+                    <label for="numeroLogradouro"> Número do Logradouro</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -107,7 +107,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="complemento"><i class="fa fa-calendar-o" aria-hidden="true"></i> Complemento</label>
+                    <label for="complemento"> Complemento</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -121,7 +121,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="cidade"><i class="fa fa-calendar-o" aria-hidden="true"></i> Cidade</label>
+                    <label for="cidade"> Cidade</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -135,7 +135,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="bairro"><i class="fa fa-calendar-o" aria-hidden="true"></i> Bairro</label>
+                    <label for="bairro"> Bairro</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -149,7 +149,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="cep"><i class="fa fa-calendar-o" aria-hidden="true"></i> CEP</label>
+                    <label for="cep"> CEP</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -163,15 +163,15 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="cep"><i class="fa fa-calendar-o" aria-hidden="true"></i> CEP</label>
+                    <label for="uf"> UF</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
                     <div class="dropdown">
-                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" name="uf" id="uf" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Selecionar UF
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu" aria-labelledby="uf">
                             <a class="dropdown-item" href="#">RJ</a>
                             <a class="dropdown-item" href="#">SP</a>
                             <a class="dropdown-item" href="#">AC</a>
@@ -182,7 +182,7 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="telefone"><i class="fa fa-calendar-o" aria-hidden="true"></i> Telefone</label>
+                    <label for="telefone"> Telefone</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
@@ -196,7 +196,7 @@
 
             <div class="row">
                 <div class="col-md-6 field-label-responsive text-left">
-                    <label for="numeroComprovante"><i class="fa fa-file-o" aria-hidden="true"></i> Número de Comprovante de Pagamento</label>
+                    <label for="numeroComprovante"> Número de Comprovante de Pagamento</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-6">
