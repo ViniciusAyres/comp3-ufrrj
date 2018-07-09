@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Atleta {
+public class AtletaDataMapper {
     public ResultSet buscarPorId(int id){
         try{
             return  DataMapper.buscarPorId(id, "ATLETA");
