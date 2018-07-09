@@ -5,7 +5,6 @@ import dados.bancos.derbyDB.ConnectionSingleton;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 
 public class ParticipacaoRecordeDataMapper {
     public ResultSet buscarPorId(int id){
