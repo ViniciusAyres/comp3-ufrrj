@@ -10,6 +10,7 @@ out/
 .settings/
 target/
 *.iml
+*.log
 
 
 
