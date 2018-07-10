@@ -32,7 +32,7 @@ public class UsuarioDominio extends HttpServlet {
             try {
                 if (resultSet.next() == false){
                     request.setAttribute("erro", "Usuário ou senha incorreto.");
-                    request.getRequestDispatcher("/autenticacao.jsp").forward(request, response);
+                    request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
                 }
                 else{
                     //request.setAttribute("sucesso", msg.getResposta());
@@ -45,7 +45,7 @@ public class UsuarioDominio extends HttpServlet {
         }
         else {
             request.setAttribute("erro", msg.getResposta());
-            request.getRequestDispatcher("/autenticacao.jsp").forward(request, response);
+            request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
         }
 
 

@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
+
 <style>
     #sidebar {
         overflow: hidden;
@@ -130,54 +131,47 @@
 <div class="container-fluid">
     <div class="row d-flex d-md-block flex-nowrap wrapper">
         <div class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar">
-
             <div class="list-group border-0 card text-center text-md-left">
                 <a href="#menu1" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-handshake-o" aria-hidden="true"></i> <span class="d-none d-md-inline">Associação</span></a>
                 <div class="collapse" id="menu1" data-parent="#sidebar">
-                    <a href="/filiarAssociacao.jsp" class="list-group-item text-dark">Filiar uma Associação</a>
                     <a href="#" class="list-group-item text-dark">Alterar Filiação da Associação</a>
+                    <a href="/filiarAssociacao.jsp" class="list-group-item text-dark">Filiar uma Associação</a>
                     <a href="/listarAssociacoes.jsp" class="list-group-item text-dark">Listar Associações</a>
                 </div>
                 <a href="#menu2" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> <span class="d-none d-md-inline">Atleta</span></a>
                 <div class="collapse" id="menu2" data-parent="#sidebar">
-                    <a href="/cadastrarAtleta.jsp" class="list-group-item text-dark">Cadastrar Atleta</a>
                     <a href="#" class="list-group-item text-dark">Alterar Cadastro do Atleta</a>
-                    <a href="#" class="list-group-item text-dark">Transferir Atleta</a>
-                    <a href="#" class="list-group-item text-dark">Inserir resultado do Atleta</a>
+                    <a href="/cadastrarAtleta.jsp" class="list-group-item text-dark">Cadastrar Atleta</a>
                     <a href="#" class="list-group-item text-dark">Inscrever Atleta em Competição</a>
+                    <a href="#" class="list-group-item text-dark">Inserir resultado do Atleta</a>
+                    <a href="#" class="list-group-item text-dark">Transferir Atleta</a>
                 </div>
                 <a href="#menu3" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-trophy" aria-hidden="true"></i> <span class="d-none d-md-inline">Competição</span></a>
                 <div class="collapse" id="menu3" data-parent="#sidebar">
-                    <a href="#" class="list-group-item text-dark">Incluir Locais de Competição</a>
-                    <a href="#" class="list-group-item text-dark">Alterar Locais de Competição</a>
-                    <a href="/listarLocaisCompeticao.jsp" class="list-group-item text-dark">Listar Locais de Competição</a>
                     <a href="#" class="list-group-item text-dark">Alterar Competição</a>
+                    <a href="#" class="list-group-item text-dark">Alterar Locais de Competição</a>
+                    <a href="#" class="list-group-item text-dark">Incluir Locais de Competição</a>
                     <a href="/listarCompeticoes.jsp" class="list-group-item text-dark">Listar Competições</a>
                     <a href="#" class="list-group-item text-dark">Listar Balizamento de Competição</a>
-                    <a href="#" class="list-group-item text-dark">Listar Pontuação de Competição</a>
+                    <a href="/listarLocaisCompeticao.jsp" class="list-group-item text-dark">Listar Locais de Competição</a>
+                    <a href="/listarPontuacaoCompeticao.jsp" class="list-group-item text-dark">Listar Pontuação de Competição</a>
                     <a href="#" class="list-group-item text-dark">Listar Pontuação Final de Competição</a>
                 </div>
             </div>
         </div>
         <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
-            <a href="#" data-target="#sidebar" data-toggle="collapse"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
-            <div>
-                <div class="jumbotron">
-                    <h1 class="display-4">SISFARJ</h1>
-                    <p class="lead">Filie-se e participe de competições de natação amadoras, estaduais e a nível mundial.</p>
+            <a href="#" data-target="#sidebar" data-toggle="collapse" style="color:#17a2b8" title="Mover Menu"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
+                <div class="jumbotron jumbotron-fluid">
+                    <h1 class="display-4 ml-3 text-center">SISFARJ</h1>
+                    <p class="lead ml-3 text-center">Filie-se e participe de competições de natação amadoras, estaduais e a nível mundial.</p>
                     <hr class="my-4">
                      <div class="row">
-                        <div class="col-md-4">
-                        </div>
-                        <div class="col-md-4">
-                            <img src="/img/sw.jpg" class="img-fluid" alt="Responsive image" width="782" height="250">
-                        </div>
-                        <div class="col-md-4">
+                        <div class="mx-auto">
+                            <img src="/img/Swimming.jpg" class="img-responsive" alt="Responsive image" width="430">
                         </div>
                     </div>
-                    <p class="mt-4">Competições para atletas de todas as idades, dividos em suas devidas classes para competir em provas com outros atletas de acordo com suas classes específicas.</p>
+                    <p class="mt-4 ml-3 text-center">Competições para atletas de todas as idades, divididos em suas devidas classes para competir em provas com outros atletas.</p>
                 </div>
-            </div>
         </main>
     </div>
 </div>

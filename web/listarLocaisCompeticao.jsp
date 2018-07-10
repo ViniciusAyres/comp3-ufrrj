@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
+<%
+    String[] stArrayLocais={"Brás de Pina","Jundiaí","Morro do Macaco","Vila Vintem"};
+%>
 <html>
 <head>
     <title>Locais de Competição</title>
@@ -17,46 +20,30 @@
                     <th>Bairro</th>
                     <th>CEP</th>
                     <th>Complemento</th>
-                    <th>Numero</th>
+                    <th>Número</th>
                     <th>Cidade</th>
                     <th>UF</th>
                     <th>Tipo da Piscina</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                </tr>
-                <tr>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                </tr>
-                <tr>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                    <th>BUNDA MOLES</th>
-                </tr>
+                <%
+                    int a=0;
+                    for(a=0;a<stArrayLocais.length;a++)
+                    {
+                        out.print("<tr class=\"text-center\">");
+                        out.print("<th>"+stArrayLocais[a]+"</th>");
+                        out.print("<th>Rua Xablau</th>");
+                        out.print("<th>Belford Roxo</th>");
+                        out.print("<th>2424242424</th>");
+                        out.print("<th>Próximo a boca de fumo</th>");
+                        out.print("<th>71</th>");
+                        out.print("<th>Rio de Janeiro</th>");
+                        out.print("<th>RJ</th>");
+                        out.print("<th>50 metros</th>");
+                        out.print("</tr>");
+                    }
+                %>
                 </tbody>
             </table>
         </div>

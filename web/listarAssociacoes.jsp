@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
+<%
+    String[] stArrayAssociacoes={"BRASILEIROS","BRASADORES","BRASANTES","BRASIMORFOS"};
+%>
 <html>
 <head>
     <title>Associações</title>
@@ -17,22 +20,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>1231321</th>
-                        <th>BUNDA MOLES</th>
-                    </tr>
-                    <tr>
-                        <th>1231321</th>
-                        <th>BUNDA MOLES</th>
-                    </tr>
-                    <tr>
-                        <th>1231321</th>
-                        <th>BUNDA MOLES</th>
-                    </tr>
-                    <tr>
-                        <th>1231321</th>
-                        <th>BUNDA MOLES</th>
-                    </tr>
+                    <%
+                        int a=0;
+                        for(a=0;a<stArrayAssociacoes.length;a++)
+                        {
+                            out.print("<tr class=\"text-center\">");
+                            out.print("<th>2015780589</th>");
+                            out.print("<th>"+stArrayAssociacoes[a]+"</th>");
+                            out.print("</tr>");
+                        }
+                    %>
                     </tbody>
                 </table>
         </div>
