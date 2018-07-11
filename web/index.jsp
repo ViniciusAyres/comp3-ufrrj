@@ -151,7 +151,7 @@
                     <a href="#" class="list-group-item text-dark">Alterar Competição</a>
                     <a href="#" class="list-group-item text-dark">Alterar Locais de Competição</a>
                     <a href="#" class="list-group-item text-dark">Incluir Locais de Competição</a>
-                    <a href="/listarCompeticoes.jsp" class="list-group-item text-dark">Listar Competições</a>
+                    <a href="/listarCompeticoes" class="list-group-item text-dark">Listar Competições</a>
                     <a href="#" class="list-group-item text-dark">Listar Balizamento de Competição</a>
                     <a href="/listarLocaisCompeticao" class="list-group-item text-dark">Listar Locais de Competição</a>
                     <a href="/listarPontuacaoCompeticao" class="list-group-item text-dark">Listar Pontuação de Competição</a>
