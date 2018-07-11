@@ -27,16 +27,5 @@ public class Utils {
         return true;
     }
 
-    public static String getProximaPagina(HttpServletRequest request){
-        String proximaPagina = (String) request.getAttribute("proximaPagina");
-        System.out.println("PROXIMA PAGINA: " + proximaPagina);
-
-        if(proximaPagina == null){
-            return INDEX;
-        }
-
-        return proximaPagina;
-
-    }
 }
 

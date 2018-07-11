@@ -23,7 +23,7 @@ public class IdentificarUsuario extends HttpServlet {
         String senha = request.getParameter("senha");
 
         request.getSession().setAttribute("matricula", matricula);
-        request.getRequestDispatcher(Utils.getProximaPagina(request)).forward(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
 }
