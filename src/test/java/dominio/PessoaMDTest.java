@@ -5,6 +5,7 @@ import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import utils.SQL;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -35,10 +36,11 @@ public class PessoaMDTest {
 
     @Test
     public void testBuscarPessoa() throws SQLException, RegistroNaoEncontradoException {
-        String query = "SELECT * FROM PESSOA";
-        ResultSet resultSet = ConnectionSingleton.getInstance()
-                                .createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY)
-                                .executeQuery(query);
+        String query = "SELECT * FROM PESSOA WHERE ID_PERFIL = ?";
+        PreparedStatement preparedStatement = SQL.getPreparedStatement(query);
+
+        preparedStatement.setInt(1, 1);
+        ResultSet resultSet = preparedStatement.executeQuery();
 
         PessoaMD pessoaMD = new PessoaMD(resultSet);
 
