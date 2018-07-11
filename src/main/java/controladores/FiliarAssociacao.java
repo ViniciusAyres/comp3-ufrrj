@@ -1,6 +1,5 @@
 package controladores;
 
-import dados.datamappers.excecoes.RegistroNaoEncontrado;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -10,19 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "IdentificarUsuario", urlPatterns = "/identificarUsuario")
-public class IdentificarUsuario extends HttpServlet {
-
+@WebServlet(name = "FiliarAssociacao", urlPatterns = "/filiarAssociacao")
+public class FiliarAssociacao extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().invalidate();
-        request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
+        if(!Utils.isAutenticado(request)){
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+            System.out.println("INVALIDO");
+        }else {
+            request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request, response);
+            System.out.println("VALIDO");
+        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String matricula = request.getParameter("matricula");
-        String senha = request.getParameter("senha");
-
-        request.getSession().setAttribute("matricula", matricula);
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

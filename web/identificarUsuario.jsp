@@ -14,7 +14,7 @@
                             <h3 class="mb-0"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Autenticar-se</h3>
                         </div>
                         <div class="card-body">
-                            <form class="form" action="/usuario" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+                            <form class="form" action="/identificarUsuario" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
                                 <div class="form-group">
                                     <label for="matricula">Matrícula</label>
                                     <input type="text" class="form-control form-control-lg rounded-0" name="matricula" id="matricula" placeholder="Matricula">

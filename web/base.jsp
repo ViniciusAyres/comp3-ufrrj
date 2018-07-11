@@ -30,13 +30,13 @@
 </html>
 
 <script type="text/javascript">
-    var erroMensagem = "<%=request.getAttribute("erro")%>"
-    if(erroMensagem != "null"){
-        swal("Ops, algo deu errado...", erroMensagem, "error")
+    var mensagemErro = "<%=request.getAttribute("mensagemErro")%>"
+    if(mensagemErro != "null"){
+        swal("Ops, algo deu errado...", mensagemErro, "error")
     }
 
-    var sucessoMensagem = "<%=request.getAttribute("sucesso")%>"
-    if(sucessoMensagem != "null"){
-        swal("Sucesso!!", sucessoMensagem, "success")
+    var mensagemSucesso = "<%=request.getAttribute("mensagemSucesso")%>"
+    if(mensagemSucesso != "null"){
+        swal("Sucesso!!", mensagemSucesso, "success")
     }
 </script>

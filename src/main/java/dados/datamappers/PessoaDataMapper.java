@@ -8,6 +8,17 @@ import java.sql.ResultSet;
 
 public class PessoaDataMapper {
 
+    public ResultSet buscar(){
+        try{
+            return  DataMapper.buscar("PESSOA");
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return  null;
+    }
+
     public ResultSet buscarPorMatricula(String matricula){
         try{
             return  DataMapper.buscarPorMatricula(matricula, "PESSOA");

@@ -10,6 +10,20 @@ import java.util.ArrayList;
 public abstract class DataMapper {
 
 
+    public static ResultSet buscar(String nomeTabela) throws SQLException {
+
+        String sql = "SELECT * FROM " + nomeTabela;
+
+        PreparedStatement statement;
+
+        statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        return resultSet;
+    }
+
     public static ResultSet buscarPorId(int id, String nomeTabela) throws SQLException {
 
         String sql = "SELECT * FROM " + nomeTabela + " WHERE ID = ? ";
