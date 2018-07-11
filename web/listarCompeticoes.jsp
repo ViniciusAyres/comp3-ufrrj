@@ -21,7 +21,7 @@
     </script>
 </head>
 <body>
-<h3 class="font-weight-light mt-4 ml-2">Lista de Competições</h3>
+<h3 class="font-weight-light mt-4 ml-2">Selecione uma das Competições abaixo para saber dos resultados dos Atletas em suas Provas.</h3>
 <div class="container">
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
@@ -41,7 +41,7 @@
                         out.print("<tr class=\"text-center\">");
                         out.print("<th>"+stArrayCompeticoes[a]+"</th>");
                         out.print("<th>12/03/2017</th>");
-                        out.print("<th><button class=\"btn btn-outline-info\" data-toggle=\"modal\" data-target=\"#modalProvas\">Ver Provas</button></th>");
+                        out.print("<th><button class=\"btn btn-outline-info\" data-toggle=\"modal\" data-target=\"#modalProvas\">Selecionar</button></th>");
                         out.print("</tr>");
                     }
                 %>
@@ -56,7 +56,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content" ng-cloak>
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalProvas">Provas da Competição selecionada</h5>
+                <h5 class="modal-title" id="exampleModalProvas">Selecione a Prova a qual deseja saber os resultados dos Atletas.</h5>
                 <button type="button" class="close" data-number="1" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -85,7 +85,7 @@
                                         out.print("<th>Masculino</th>");
                                         out.print("<th>Infantil</th>");
                                         out.print("<th>50 metros</th>");
-                                        out.print("<th><button class=\"btn btn-outline-info\" data-toggle=\"modal\" data-target=\"#modalAtletas\">Ver Atletas</button></th>");
+                                        out.print("<th><button class=\"btn btn-outline-info\" data-toggle=\"modal\" data-target=\"#modalAtletas\">Selecionar</button></th>");
                                         out.print("</tr>");
                                     }
                                 %>
