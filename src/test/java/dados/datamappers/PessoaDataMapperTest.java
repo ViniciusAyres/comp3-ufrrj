@@ -15,31 +15,33 @@ import static org.junit.Assert.assertEquals;
 public class PessoaDataMapperTest {
     @Before
     public void setUp() throws Exception {
-        String sql = "INSERT INTO PESSOA (SENHA, NOME, MATRICULA , ID_PERFIL)\n" +
-                "VALUES ('123123', 'Teste', '1212',  1)";
+        String insert = "INSERT INTO PESSOA (SENHA, NOME, ID_PERFIL, MATRICULA)\n" +
+                "    VALUES ('123456', 'usuario-teste', 1, '2015')";
 
         PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+                .prepareStatement(insert);
 
         statement.execute();
     }
 
     @After
     public void tearDown() throws Exception {
-        String sql = "DELETE FROM PESSOA WHERE MATRICULA = '1212'";
+        String delete = "DELETE FROM PESSOA WHERE NOME = 'usuario-teste'";
         PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+                .prepareStatement(delete);
 
         statement.execute();
     }
 
     @Test
     public void testBuscarPorMatricula() throws SQLException {
-        ResultSet resultSet = new PessoaDataMapper().buscarPorMatricula("1212");
+        ResultSet resultSet = new PessoaDataMapper().buscarPorMatricula("2015");
 
-        assertEquals("1212", resultSet.getString("MATRICULA"));
-        assertEquals("Teste", resultSet.getString("NOME"));
-        assertEquals("123123", resultSet.getString("SENHA"));
+        resultSet.next();
+
+        assertEquals("2015", resultSet.getString("MATRICULA"));
+        assertEquals("usuario-teste", resultSet.getString("NOME"));
+        assertEquals("123456", resultSet.getString("SENHA"));
         assertEquals(1, resultSet.getInt("ID_PERFIL"));
 
     }
@@ -50,7 +52,9 @@ public class PessoaDataMapperTest {
 
         PessoaDataMapper pessoaDataMapper = new PessoaDataMapper();
 
-       Assert.assertEquals(true,  pessoaDataMapper.criar("Lucas", "asa2",
-               1, "12312",  null));
+        Assert.assertEquals(true, pessoaDataMapper.criar("usuario-teste", "senha",
+                1, "matricula", null));
+
+
     }
 }
