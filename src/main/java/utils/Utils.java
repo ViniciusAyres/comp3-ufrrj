@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.SQLException;
 
 public class Utils {
+    private static String INDEX = "index.jsp";
 
     public static boolean isValido(String matricula, String senha) throws SQLException, RegistroNaoEncontrado {
         PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscar());
@@ -24,6 +25,18 @@ public class Utils {
         }
 
         return true;
+    }
+
+    public static String getProximaPagina(HttpServletRequest request){
+        String proximaPagina = (String) request.getAttribute("proximaPagina");
+        System.out.println("PROXIMA PAGINA: " + proximaPagina);
+
+        if(proximaPagina == null){
+            return INDEX;
+        }
+
+        return proximaPagina;
+
     }
 }
 

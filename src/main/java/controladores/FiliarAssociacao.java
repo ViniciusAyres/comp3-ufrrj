@@ -13,6 +13,7 @@ import java.io.IOException;
 public class FiliarAssociacao extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if(!Utils.isAutenticado(request)){
+            request.setAttribute("proximaPagina", "/filiarAssociacao");
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);
             System.out.println("INVALIDO");
         }else {
