@@ -141,7 +141,7 @@
                 <a href="#menu2" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> <span class="d-none d-md-inline">Atleta</span></a>
                 <div class="collapse" id="menu2" data-parent="#sidebar">
                     <a href="#" class="list-group-item text-dark">Alterar Cadastro do Atleta</a>
-                    <a href="/cadastrarAtleta.jsp" class="list-group-item text-dark">Cadastrar Atleta</a>
+                    <a href="/cadastrarAtleta" class="list-group-item text-dark">Cadastrar Atleta</a>
                     <a href="#" class="list-group-item text-dark">Inscrever Atleta em Competição</a>
                     <a href="#" class="list-group-item text-dark">Inserir resultado do Atleta</a>
                     <a href="#" class="list-group-item text-dark">Transferir Atleta</a>
