@@ -1,9 +1,9 @@
 package dados.datamappers.excecoes;
 
-public class RegistroNaoEncontrado extends Exception {
+public class RegistroNaoEncontradoException extends Exception {
     private String tabelaRegistro;
 
-    public RegistroNaoEncontrado(String message, String tabelaRegistro){
+    public RegistroNaoEncontradoException(String message, String tabelaRegistro){
         super(message);
         this.tabelaRegistro = tabelaRegistro;
     }

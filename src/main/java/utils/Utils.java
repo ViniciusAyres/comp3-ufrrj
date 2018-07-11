@@ -1,7 +1,7 @@
 package utils;
 
 import dados.datamappers.PessoaDataMapper;
-import dados.datamappers.excecoes.RegistroNaoEncontrado;
+import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import dominio.PessoaMD;
 
 import javax.servlet.ServletException;
@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class Utils {
     private static String INDEX = "index.jsp";
 
-    public static boolean isValido(String matricula, String senha) throws SQLException, RegistroNaoEncontrado {
+    public static boolean isValido(String matricula, String senha) throws SQLException, RegistroNaoEncontradoException {
         PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscar());
 
         return pessoaMD.getSenha(matricula).equals(senha);
