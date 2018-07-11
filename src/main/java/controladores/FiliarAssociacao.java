@@ -12,13 +12,7 @@ import java.io.IOException;
 @WebServlet(name = "FiliarAssociacao", urlPatterns = "/filiarAssociacao")
 public class FiliarAssociacao extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if(!Utils.isAutenticado(request)){
-            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-            System.out.println("INVALIDO");
-        }else {
-            request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request, response);
-            System.out.println("VALIDO");
-        }
+        Utils.autenticar(request, response, "/filiarAssociacao.jsp");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

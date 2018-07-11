@@ -4,7 +4,10 @@ import dados.datamappers.PessoaDataMapper;
 import dados.datamappers.excecoes.RegistroNaoEncontrado;
 import dominio.PessoaMD;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class Utils {
@@ -14,6 +17,16 @@ public class Utils {
         PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscar());
 
         return pessoaMD.getSenha(matricula).equals(senha);
+    }
+
+    public static void autenticar(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
+        if(!Utils.isAutenticado(request)){
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+            System.out.println("INVALIDO");
+        }else {
+            request.getRequestDispatcher(url).forward(request, response);
+            System.out.println("VALIDO");
+        }
     }
 
     public static boolean isAutenticado(HttpServletRequest request){
