@@ -9,11 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "listarLocaisCompeticao", urlPatterns = {"/listarLocaisCompeticao"})
-public class listarLocaisCompeticao extends HttpServlet {
-
+@WebServlet(name = "ListarPontuacaoCompeticao", urlPatterns = {"/listarPontuacaoCompeticao"})
+public class ListarPontuacaoCompeticao extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils.autenticar(request, response, "/listarLocaisCompeticao.jsp");
-
+        Utils.autenticar(request, response, "listarPontuacaoCompeticao.jsp");
     }
 }
