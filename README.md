@@ -1,6 +1,6 @@
 ## Configurando o projeto
 
-1. Baixe o repositorio no diretório em que preferir
+1. Baixe o repositorio, **utilizando o git clone**, no diretório em que preferir
 2. Abra o IntelliJ
 3. Se você estiver com algum projeto aberto, feche o projeto. Para isso, vá em File > Close Project
 4. Na tela inicial do Intellij selecione Import Project.
