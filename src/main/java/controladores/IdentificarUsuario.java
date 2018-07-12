@@ -25,8 +25,10 @@ public class IdentificarUsuario extends HttpServlet {
 
         if(Utils.isValido(matricula, senha)){
             request.getSession().setAttribute("matricula", matricula);
+            request.setAttribute("mensagemSucesso", "Você logou");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }else{
+            request.setAttribute("mensagemErro", "Você falhou");
             request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
         }
 
