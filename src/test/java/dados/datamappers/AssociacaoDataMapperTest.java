@@ -28,12 +28,10 @@ public class AssociacaoDataMapperTest {
 
         statement2.executeUpdate(sql2, Statement.RETURN_GENERATED_KEYS);
 
-
         ResultSet rs = statement2.getGeneratedKeys();
         if (rs.next()){
             idEndereco = rs.getInt(1);
         }
-
 
         String sql = "INSERT INTO ASSOCIACAO (TELEFONE, SIGLA, NOME, MATRICULA, ID_ENDERECO)\n" +
                 "VALUES ('27567580', 'CBF', 'CONFEDERACAO', 'MAT123',"+Integer.toString(idEndereco)+" )";
@@ -41,10 +39,7 @@ public class AssociacaoDataMapperTest {
 
         PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                 .prepareStatement(sql);
-
         statement.execute();
-
-
     }
 
     @After
