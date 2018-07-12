@@ -1,5 +1,6 @@
 package utils;
 
+import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.PessoaDataMapper;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import dominio.PessoaMD;
@@ -24,15 +25,12 @@ public class Utils {
         }
     }
 
-    public static boolean autenticar(HttpServletRequest request, HttpServletResponse response, String url, int perfilExigido) throws ServletException, IOException {
+    public static boolean autenticar(HttpServletRequest request, int perfilExigido) throws ServletException, IOException, UsuarioNaoAutenticadoException {
         if(!Utils.isAutenticado(request, perfilExigido)){
-            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-            return false;
+            throw new UsuarioNaoAutenticadoException();
         }else if (!Utils.hasAutorizacao((String) request.getSession().getAttribute("matricula"), perfilExigido)){
-            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-            return false;
+            throw new UsuarioNaoAutenticadoException();
         }else {
-            request.getRequestDispatcher(url).forward(request, response);
             return true;
         }
     }

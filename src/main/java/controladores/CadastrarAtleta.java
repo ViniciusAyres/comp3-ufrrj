@@ -1,5 +1,6 @@
 package controladores;
 
+import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dominio.Perfil;
 import utils.Utils;
 
@@ -13,6 +14,11 @@ import java.io.IOException;
 @WebServlet(name = "CadastrarAtleta", urlPatterns = "/cadastrarAtleta")
 public class CadastrarAtleta extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils.autenticar(request, response, "/cadastrarAtleta.jsp", Perfil.SECRETARIO.getId());
+        try {
+            Utils.autenticar(request, Perfil.SECRETARIO.getId());
+            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request, response);
+        } catch (UsuarioNaoAutenticadoException e) {
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+        }
     }
 }

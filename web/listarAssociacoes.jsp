@@ -4,10 +4,7 @@
 <%@ include file="base.jsp" %>
 <%
     AssociacaoMD associacaoMD = (AssociacaoMD) request.getAttribute("associacaoMD");
-    String s = (String) request.getAttribute("msg");
-    //String s = associacaoMD.test();
-    //ArrayList<String> matriculas = associacaoMD.getMatriculas();
-    String[] stArrayAssociacoes={"BRASILEIROS","BRASADORES","BRASANTES","BRASIMORFOS"};
+    ArrayList<String> matriculas = associacaoMD.getMatriculas();
 %>
 <html>
 <head>
@@ -27,12 +24,10 @@
                     </thead>
                     <tbody>
                     <%
-                        int a=0;
-                        for(a=0;a<2;a++)
-                        {
+                        for(String matricula : matriculas) {
                             out.print("<tr class=\"text-center\">");
-                            out.print("<th>2015780589</th>");
-                            out.print("<th>" + s +"</th>");
+                            out.print("<th>" + matricula + "</th>");
+                            out.print("<th>" + associacaoMD.getNome(matricula) +"</th>");
                             out.print("</tr>");
                         }
                     %>

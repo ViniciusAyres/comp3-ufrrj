@@ -1,5 +1,7 @@
 package controladores;
 
+import controladores.exceptions.UsuarioNaoAutenticadoException;
+import dominio.Perfil;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -13,6 +15,11 @@ import java.io.IOException;
 public class ListarLocaisCompeticao extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils.autenticar(request, response, "/listarLocaisCompeticao.jsp", 1);
+        try {
+            Utils.autenticar(request, Perfil.SECRETARIO.getId());
+            request.getRequestDispatcher("/listarLocaisCompeticao.jsp").forward(request, response);
+        } catch (UsuarioNaoAutenticadoException e) {
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+        }
     }
 }
