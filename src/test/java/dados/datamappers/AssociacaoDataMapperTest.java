@@ -4,6 +4,7 @@ import dados.bancos.derbyDB.ConnectionSingleton;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import utils.SQL;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -33,19 +34,27 @@ public class AssociacaoDataMapperTest {
             idEndereco = rs.getInt(1);
         }
 
-        String sql = "INSERT INTO ASSOCIACAO (TELEFONE, SIGLA, NOME, MATRICULA, ID_ENDERECO)\n" +
-                "VALUES ('27567580', 'CBF', 'CONFEDERACAO', 'MAT123',"+Integer.toString(idEndereco)+" )";
 
+        String insert_1 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
+                " VALUES ('A', '1', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
+        String insert_2 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
+                " VALUES ('A', '2', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
+        String insert_3 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
+                " VALUES ('A', '3', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
+        String insert_4 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
+                " VALUES ('A', '4', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
 
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
-        statement.execute();
+        SQL.getPreparedStatement(insert_1).execute();
+        SQL.getPreparedStatement(insert_2).execute();
+        SQL.getPreparedStatement(insert_3).execute();
+        SQL.getPreparedStatement(insert_4).execute();
+
     }
 
     @After
     public void tearDown() throws Exception {
         String sql = "DELETE FROM ASSOCIACAO\n" +
-                "WHERE MATRICULA = 'MAT123'";
+                "WHERE TELEFONE = '1'";
 
         PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                 .prepareStatement(sql);
@@ -64,14 +73,27 @@ public class AssociacaoDataMapperTest {
 
 
     @Test
-    public void testBuscarPorMatricula() throws SQLException {
-        ResultSet resultSet = new AssociacaoDataMapper().buscarPorMatricula("MAT123");
+    public void testBuscar() throws SQLException {
+        ResultSet resultSet = new AssociacaoDataMapper().buscar();
+        int cont = 0;
+        while(resultSet.next()){
+            assertEquals("CBF", resultSet.getString("SIGLA"));
+            cont++;
+        }
 
-        assertEquals("MAT123", resultSet.getString("MATRICULA"));
+        assertEquals(4, cont);
+    }
+
+    @Test
+    public void testBuscarPorMatricula() throws SQLException {
+        ResultSet resultSet = new AssociacaoDataMapper().buscarPorMatricula("1");
+        resultSet.next();
+
+        assertEquals("1", resultSet.getString("MATRICULA"));
         assertEquals("CBF", resultSet.getString("SIGLA"));
-        assertEquals("CONFEDERACAO", resultSet.getString("NOME"));
+        assertEquals("A", resultSet.getString("NOME"));
         assertEquals(Integer.toString(idEndereco), resultSet.getString("ID_ENDERECO"));
-        assertEquals("27567580", resultSet.getString("TELEFONE"));
+        assertEquals("1", resultSet.getString("TELEFONE"));
 
         }
 

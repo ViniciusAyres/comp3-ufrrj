@@ -14,7 +14,6 @@ public class Utils {
     private static String INDEX = "index.jsp";
 
     public static boolean isValido(String matricula, String senha) {
-        System.out.println("passei3");
         PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
         try {
             return pessoaMD.getSenha(matricula).equals(senha);
@@ -25,13 +24,16 @@ public class Utils {
         }
     }
 
-    public static void autenticar(HttpServletRequest request, HttpServletResponse response, String url, int perfilExigido) throws ServletException, IOException {
+    public static boolean autenticar(HttpServletRequest request, HttpServletResponse response, String url, int perfilExigido) throws ServletException, IOException {
         if(!Utils.isAutenticado(request, perfilExigido)){
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+            return false;
         }else if (!Utils.hasAutorizacao((String) request.getSession().getAttribute("matricula"), perfilExigido)){
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+            return false;
         }else {
             request.getRequestDispatcher(url).forward(request, response);
+            return true;
         }
     }
 

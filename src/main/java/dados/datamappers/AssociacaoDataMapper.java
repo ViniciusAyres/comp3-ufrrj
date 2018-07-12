@@ -20,6 +20,18 @@ public class AssociacaoDataMapper {
         return  null;
     }
 
+    public ResultSet buscar(){
+        try{
+            return  DataMapper.buscar("ASSOCIACAO");
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return  null;
+    }
+
+
     public boolean verficarAssociacaoPorMatricula(String matricula) {
         try {
             ResultSet resultSet = DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
@@ -108,7 +120,6 @@ public class AssociacaoDataMapper {
         return quantidade;
 
     }
-
 
 }
 
