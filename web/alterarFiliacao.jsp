@@ -215,11 +215,13 @@
         </div>
     </form>
 </div>
-<div class="row mt-5">
-    <small class="mx-auto">
-        <span style="color:red">*</span> Campos obrigatórios
-        <br/>
-    </small>
+<div class="container">
+    <div class="row mt-2">
+        <small class="mx-auto">
+            <span style="color:red">*</span> Campos obrigatórios
+            <br/>
+        </small>
+    </div>
 </div>
 </body>
 </html>

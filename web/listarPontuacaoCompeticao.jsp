@@ -54,7 +54,7 @@
 
 <div class="modal fade" id="modalProvas" tabindex="-1" role="dialog" aria-labelledby="modalProvas" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content" ng-cloak>
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModaProvas">Selecione a Prova a qual deseja saber a Pontuação dos Atletas.</h5>
                 <button type="button" class="close" data-number="1" aria-label="Close">
@@ -98,9 +98,11 @@
         </div>
     </div>
 </div>
+
+
 <div class="modal fade" id="modalAtletas" tabindex="-1" role="dialog" aria-labelledby="modalAtletas" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content" ng-cloak>
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalAtletas">Pontuação dos Atletas da Prova selecionada</h5>
                 <button type="button" class="close" data-number="2" aria-label="Close">

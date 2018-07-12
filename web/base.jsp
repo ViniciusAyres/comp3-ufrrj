@@ -23,6 +23,11 @@
                 <a class="nav-link text-white" href="/index.jsp">Início</a>
             </li>
         </ul>
+        <ul class="navbar-nav mr-3">
+            <li class="nav-item">
+                <a href="/sair" class="text-white" title="Sair do SISFARJ"><i class="fa fa-sign-out" aria-hidden="true"></i> Sair</a>
+            </li>
+        </ul>
     </div>
 </nav>
 

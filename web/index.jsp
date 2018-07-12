@@ -144,7 +144,7 @@
                     <a href="/cadastrarAtleta" class="list-group-item text-dark">Cadastrar Atleta</a>
                     <a href="#" class="list-group-item text-dark">Inscrever Atleta em Competição</a>
                     <a href="#" class="list-group-item text-dark">Inserir resultado do Atleta</a>
-                    <a href="#" class="list-group-item text-dark">Transferir Atleta</a>
+                    <a href="/transferirAtleta.jsp" class="list-group-item text-dark">Transferir Atleta</a>
                 </div>
                 <a href="#menu3" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-trophy" aria-hidden="true"></i> <span class="d-none d-md-inline">Competição</span></a>
                 <div class="collapse" id="menu3" data-parent="#sidebar">
@@ -160,7 +160,7 @@
             </div>
         </div>
         <main class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
-            <a href="#" data-target="#sidebar" data-toggle="collapse" style="color:#17a2b8" title="Mover Menu"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
+            <a href="#" data-target="#sidebar" data-toggle="collapse" style="color:#17a2b8" title="Mover Menu"><i class="fa fa-outdent fa-2x py-2 p-1"></i></a>
                 <div class="jumbotron jumbotron-fluid">
                     <h1 class="display-4 ml-3 text-center">SISFARJ</h1>
                     <p class="lead ml-3 text-center">Filie-se e participe de competições de natação amadoras, estaduais e a nível mundial.</p>
