@@ -1,6 +1,8 @@
 package controladores;
 
 import controladores.exceptions.UsuarioNaoAutenticadoException;
+import dados.datamappers.AssociacaoFiliacaoEnderecoDataMapper;
+import dados.datamappers.EnderecoDataMapper;
 import dominio.Perfil;
 import utils.Utils;
 
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Date;
 
 @WebServlet(name = "FiliarAssociacao", urlPatterns = "/filiarAssociacao")
 public class FiliarAssociacao extends HttpServlet {
@@ -23,6 +26,31 @@ public class FiliarAssociacao extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String numeroOficio = request.getParameter("numeroOficio");
+        Date dataOficio = Date.valueOf(request.getParameter("dataOficio"));
+        String numeroComprovante = request.getParameter("numeroComprovante");
+
+        String nome = request.getParameter("nome");
+        String sigla = request.getParameter("sigla");
+        String telefone = request.getParameter("telefone");
+
+        String logradouro = request.getParameter("logradouro");
+        int numeroLogradouro = Integer.parseInt(request.getParameter("numeroLogradouro"));
+        String complemento = request.getParameter("complemento");
+        String cidade = request.getParameter("cidade");
+        String bairro = request.getParameter("bairro");
+        String cep = request.getParameter("cep");
+
+        System.out.println("NOME: " + nome);
+        System.out.println("DATA_OFICIO: " + dataOficio);
+        System.out.println("NUMERO_LOGRADOURO: " + numeroLogradouro);
+
+
+        AssociacaoFiliacaoEnderecoDataMapper associacaoFiliacaoEnderecoDataMapper = new AssociacaoFiliacaoEnderecoDataMapper();
+        associacaoFiliacaoEnderecoDataMapper.criar(nome, sigla, telefone,
+                                                    logradouro, numeroLogradouro, cidade, bairro, cep, 1,
+                                                    numeroOficio, dataOficio, numeroComprovante);
+
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 
