@@ -63,5 +63,40 @@ public class AssociacaoDataMapper {
 
         return false;
     }
+
+    public String gerarMatricula() throws SQLException {
+
+        String matricula = null;
+        Object matriculaBD;
+
+        do {
+
+            int quantidadeAssociacoes =  this.buscarQuantidadesAssociados();
+            quantidadeAssociacoes =  quantidadeAssociacoes == 0  ? quantidadeAssociacoes + 1 : quantidadeAssociacoes;
+            String quantidadeAssociacoesStr = Integer.toString(quantidadeAssociacoes);
+           //s matricula = Criptografia.gerarMatricula(quantidadeAssociacoes);
+            matriculaBD = this.buscarPorMatricula(matricula);
+        }while (matriculaBD != null);
+
+        return  matricula;
+    }
+
+    public int buscarQuantidadesAssociados() throws SQLException {
+
+        int quantidade = 0;
+        String sql = "SELECT COUNT(*) AS TOTAL FROM ASSOCIACAO";
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+        ResultSet result = statement.executeQuery();
+
+        while (result.next()) {
+            quantidade = result.getInt(1);
+        }
+
+        return quantidade;
+
+    }
+
+
 }
 
