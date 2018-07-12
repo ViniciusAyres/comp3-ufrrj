@@ -13,19 +13,21 @@ import java.sql.SQLException;
 public class Utils {
     private static String INDEX = "index.jsp";
 
-    public static boolean isValido(String matricula, String senha) throws SQLException, RegistroNaoEncontradoException {
+    public static boolean isValido(String matricula, String senha, int perfilExigido) throws SQLException {
         PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscar());
-
-        return pessoaMD.getSenha(matricula).equals(senha);
+        try {
+            return pessoaMD.getSenha(matricula).equals(senha) &&
+                    pessoaMD.getPerfil(matricula) == perfilExigido;
+        }catch (RegistroNaoEncontradoException e) {
+            return false;
+        }
     }
 
     public static void autenticar(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
         if(!Utils.isAutenticado(request)){
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-            System.out.println("INVALIDO");
         }else {
             request.getRequestDispatcher(url).forward(request, response);
-            System.out.println("VALIDO");
         }
     }
 

@@ -1,6 +1,7 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import utils.SQL;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,10 +15,7 @@ public abstract class DataMapper {
 
         String sql = "SELECT * FROM " + nomeTabela;
 
-        PreparedStatement statement;
-
-        statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
 
         ResultSet resultSet = statement.executeQuery();
         return resultSet;
@@ -27,10 +25,7 @@ public abstract class DataMapper {
 
         String sql = "SELECT * FROM " + nomeTabela + " WHERE ID = ? ";
 
-        PreparedStatement statement;
-
-        statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
 
         statement.setInt(1, id);
         ResultSet resultSet = statement.executeQuery();
@@ -41,9 +36,8 @@ public abstract class DataMapper {
 
         String sql = "SELECT * FROM " + tabela + " WHERE " + chave +  "=? ";
 
-        PreparedStatement statement;
-        statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+
         statement.setString(1, valor);
 
         ResultSet resultSet = statement.executeQuery();
@@ -55,9 +49,8 @@ public abstract class DataMapper {
 
         String sql = "DELETE FROM " + tabela + " WHERE " + chave +  "=? ";
 
-        PreparedStatement statement;
-        statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+
         statement.setString(1, valor);
 
         return statement.execute();
@@ -69,12 +62,10 @@ public abstract class DataMapper {
 
         String sql = "SELECT * FROM " + nomeTabela + " WHERE MATRICULA = ? ";
 
-        PreparedStatement statement;
-
-        statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
 
         statement.setString(1, matricula);
+
         ResultSet resultSet = statement.executeQuery();
         return resultSet;
     }
@@ -95,10 +86,7 @@ public abstract class DataMapper {
 
         String sql = "SELECT * FROM " + nomeTabela + " WHERE NUMERO_OFICIO = ? ";
 
-        PreparedStatement statement;
-
-        statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
 
         statement.setString(1, numero_oficio);
         ResultSet resultSet = statement.executeQuery();
