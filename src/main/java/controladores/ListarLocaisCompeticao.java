@@ -13,7 +13,6 @@ import java.io.IOException;
 public class ListarLocaisCompeticao extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils.autenticar(request, response, "/listarLocaisCompeticao.jsp");
-
+        Utils.autenticar(request, response, "/listarLocaisCompeticao.jsp", 1);
     }
 }

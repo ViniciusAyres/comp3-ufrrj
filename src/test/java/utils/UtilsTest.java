@@ -37,9 +37,8 @@ public class UtilsTest {
     public void testAutenticarIdMesmoPerfil() throws RegistroNaoEncontradoException, SQLException {
         String matricula = "2015";
         String senha = "123456";
-        int perfilExigido = 1;
 
-        assertTrue(Utils.isValido(matricula, senha, perfilExigido));
+        assertTrue(Utils.isValido(matricula, senha));
     }
 
 

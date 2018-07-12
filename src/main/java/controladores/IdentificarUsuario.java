@@ -1,5 +1,7 @@
 package controladores;
 
+import utils.Utils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,9 +20,14 @@ public class IdentificarUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
+        int perfilExigido = Integer.parseInt(request.getParameter("perfilExigido"));
 
-        request.getSession().setAttribute("matricula", matricula);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        if(Utils.isValido(matricula, senha)){
+            request.getSession().setAttribute("matricula", matricula);
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
+
+        request.getRequestDispatcher("/identificarUsuario").forward(request, response);
     }
 
 }
