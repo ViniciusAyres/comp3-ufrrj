@@ -1,12 +1,14 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import utils.Criptografia;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class AssociacaoDataMapper {
+
     public ResultSet buscarPorMatricula(String matricula){
         try{
             return  DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
@@ -16,6 +18,17 @@ public class AssociacaoDataMapper {
         }
 
         return  null;
+    }
+
+    public boolean verficarAssociacaoPorMatricula(String matricula) {
+        try {
+            ResultSet resultSet = DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
+            return  resultSet.next();
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return  false;
+        }
     }
 
     public boolean criar(String matricula, String nome, String sigla, String telefone, int idEndereco){
@@ -67,16 +80,15 @@ public class AssociacaoDataMapper {
     public String gerarMatricula() throws SQLException {
 
         String matricula = null;
-        Object matriculaBD;
+        boolean  existMatriculaBD;
 
         do {
-
             int quantidadeAssociacoes =  this.buscarQuantidadesAssociados();
             quantidadeAssociacoes =  quantidadeAssociacoes == 0  ? quantidadeAssociacoes + 1 : quantidadeAssociacoes;
             String quantidadeAssociacoesStr = Integer.toString(quantidadeAssociacoes);
-           //s matricula = Criptografia.gerarMatricula(quantidadeAssociacoes);
-            matriculaBD = this.buscarPorMatricula(matricula);
-        }while (matriculaBD != null);
+            matricula = Criptografia.gerarMatricula(quantidadeAssociacoes);
+            existMatriculaBD = this.verficarAssociacaoPorMatricula(matricula);
+        }while (existMatriculaBD);
 
         return  matricula;
     }

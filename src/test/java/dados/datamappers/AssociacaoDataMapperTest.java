@@ -11,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class AssociacaoDataMapperTest {
 
@@ -77,5 +79,21 @@ public class AssociacaoDataMapperTest {
         assertEquals("27567580", resultSet.getString("TELEFONE"));
 
         }
+
+    @Test
+    public void testeBuscarQuantidadesAssociados() throws SQLException {
+
+        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
+        int quantidadeAssociado = associacaoDataMapper.buscarQuantidadesAssociados();
+        assertNotEquals(0,  quantidadeAssociado);
+    }
+
+    @Test
+    public void testeGerarMatricula() throws  SQLException {
+        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
+        String teste = null;
+        teste = associacaoDataMapper.gerarMatricula();
+        assertNotNull(teste);
+    }
 }
 
