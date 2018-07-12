@@ -13,25 +13,41 @@ import java.sql.SQLException;
 public class Utils {
     private static String INDEX = "index.jsp";
 
-    public static boolean isValido(String matricula, String senha, int perfilExigido) throws SQLException {
-        PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscar());
+    public static boolean isValido(String matricula, String senha) {
+        System.out.println("passei3");
+        PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
         try {
-            return pessoaMD.getSenha(matricula).equals(senha) &&
-                    pessoaMD.getPerfil(matricula) == perfilExigido;
+            return pessoaMD.getSenha(matricula).equals(senha);
         }catch (RegistroNaoEncontradoException e) {
+            return false;
+        } catch (SQLException e) {
             return false;
         }
     }
 
-    public static void autenticar(HttpServletRequest request, HttpServletResponse response, String url) throws ServletException, IOException {
-        if(!Utils.isAutenticado(request)){
+    public static void autenticar(HttpServletRequest request, HttpServletResponse response, String url, int perfilExigido) throws ServletException, IOException {
+        if(!Utils.isAutenticado(request, perfilExigido)){
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+        }else if (!Utils.hasAutorizacao((String) request.getSession().getAttribute("matricula"), perfilExigido)){
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);
         }else {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
-    public static boolean isAutenticado(HttpServletRequest request){
+    private static boolean hasAutorizacao(String matricula, int perfilExigido) {
+        PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
+
+        try {
+            return pessoaMD.getPerfil(matricula) == perfilExigido;
+        } catch (SQLException e) {
+            return false;
+        } catch (RegistroNaoEncontradoException e) {
+            return false;
+        }
+    }
+
+    public static boolean isAutenticado(HttpServletRequest request, int perfilExigido){
         String matricula = (String) request.getSession().getAttribute("matricula");
         System.out.println("MATRICULA: " + matricula);
 
@@ -41,6 +57,5 @@ public class Utils {
 
         return true;
     }
-
 }
 

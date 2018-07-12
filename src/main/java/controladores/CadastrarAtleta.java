@@ -1,5 +1,6 @@
 package controladores;
 
+import dominio.Perfil;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -12,6 +13,6 @@ import java.io.IOException;
 @WebServlet(name = "CadastrarAtleta", urlPatterns = "/cadastrarAtleta")
 public class CadastrarAtleta extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils.autenticar(request, response, "/cadastrarAtleta.jsp");
+        Utils.autenticar(request, response, "/cadastrarAtleta.jsp", Perfil.SECRETARIO.getId());
     }
 }

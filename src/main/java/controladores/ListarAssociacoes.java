@@ -1,5 +1,6 @@
 package controladores;
 
+import dominio.Perfil;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -13,7 +14,7 @@ import java.io.IOException;
 public class ListarAssociacoes extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Utils.autenticar(request, response, "/listarAssociacoes.jsp");
+        Utils.autenticar(request, response, "/listarAssociacoes.jsp", Perfil.SECRETARIO.getId());
     }
 
 }
