@@ -43,7 +43,7 @@
 
 <div class="modal fade" id="modalFiliados" tabindex="-1" role="dialog" aria-labelledby="modalFiliados" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-        <div class="modal-content" ng-cloak>
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalAssociacoes">Selecione a Filiação que deseja alterar.</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
