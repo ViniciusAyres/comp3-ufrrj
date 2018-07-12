@@ -116,8 +116,8 @@
                             <table class="table table-bordered" style="min-height:350px;max-height:400px;overflow-y:auto">
                                 <thead class="thead-light">
                                 <tr>
+                                    <th>Nome do Atleta</th>
                                     <th>Matrícula</th>
-                                    <th>Nome</th>
                                     <th>Sigla da Associação</th>
                                     <th>Tempo</th>
                                     <th>Pontos</th>
@@ -129,8 +129,8 @@
                                     for(c=0;c<stArrayAtletas.length;c++)
                                     {
                                         out.print("<tr class=\"text-center\">");
-                                        out.print("<th>2015780589</th>");
                                         out.print("<th>"+stArrayAtletas[c]+"</th>");
+                                        out.print("<th>2015780589</th>");
                                         out.print("<th>BRA</th>");
                                         out.print("<th>00:01:03 s</th>");
                                         out.print("<th>100 pontos</th>");

@@ -11,7 +11,7 @@
                     <!-- form card login -->
                     <div class="card rounded-0">
                         <div class="card-header">
-                            <h3 class="mb-0"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Autenticar-se</h3>
+                            <h3 class="font-weight-light mb-0"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Autenticar-se</h3>
                         </div>
                         <div class="card-body">
                             <form class="form" action="/identificarUsuario" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
