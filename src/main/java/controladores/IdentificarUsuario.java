@@ -1,5 +1,6 @@
 package controladores;
 
+import dominio.Perfil;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "IdentificarUsuario", urlPatterns = "/identificarUsuario")
 public class IdentificarUsuario extends HttpServlet {

@@ -11,6 +11,7 @@ public class RecordeDataMapperTest {
     @Test
     public void testBuscarPorId() throws SQLException {
         ResultSet resultSet = new RecordeDataMapper().buscarPorId(1);
+        resultSet.next();
 
         assertEquals(1, resultSet.getInt("ID"));
         assertEquals(7, resultSet.getInt("PONTUACAO"));

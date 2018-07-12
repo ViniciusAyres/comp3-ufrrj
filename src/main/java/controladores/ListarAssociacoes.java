@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.sql.ResultSet;
 
 @WebServlet(name = "ListarAssociacoes", urlPatterns = "/listarAssociacoes")
@@ -21,14 +22,16 @@ public class ListarAssociacoes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-            if(Utils.autenticar(request, Perfil.SECRETARIO.getId())){
-                ResultSet resultSet = new AssociacaoDataMapper().buscar();
-                AssociacaoMD associacaoMD = new AssociacaoMD(resultSet);
+            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+            perfisAutorizados.add(Perfil.SECRETARIO.getId());
 
-                request.setAttribute("msg", "outra ");
-                request.setAttribute("associacaoMD", associacaoMD);
-                request.getRequestDispatcher("/listarAssociacoes.jsp").forward(request, response);
-            }
+            Utils.autenticar(request, perfisAutorizados);
+            ResultSet resultSet = new AssociacaoDataMapper().buscar();
+            AssociacaoMD associacaoMD = new AssociacaoMD(resultSet);
+
+            request.setAttribute("msg", "outra ");
+            request.setAttribute("associacaoMD", associacaoMD);
+            request.getRequestDispatcher("/listarAssociacoes.jsp").forward(request, response);
         } catch (UsuarioNaoAutenticadoException e) {
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);
         }

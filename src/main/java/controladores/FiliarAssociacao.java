@@ -2,7 +2,6 @@ package controladores;
 
 import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.AssociacaoFiliacaoEnderecoDataMapper;
-import dados.datamappers.EnderecoDataMapper;
 import dominio.Perfil;
 import utils.Utils;
 
@@ -13,18 +12,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 @WebServlet(name = "FiliarAssociacao", urlPatterns = "/filiarAssociacao")
 public class FiliarAssociacao extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Utils.autenticar(request, Perfil.SECRETARIO.getId());
+            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+
+            Utils.autenticar(request, perfisAutorizados);
             request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request, response);
         } catch (UsuarioNaoAutenticadoException e) {
+            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+
+            request.setAttribute("perfisAutorizados", perfisAutorizados);
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);
         }
     }
 
+    //TODO: Ajustar o UF
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String numeroOficio = request.getParameter("numeroOficio");
         Date dataOficio = Date.valueOf(request.getParameter("dataOficio"));
@@ -44,7 +52,6 @@ public class FiliarAssociacao extends HttpServlet {
         System.out.println("NOME: " + nome);
         System.out.println("DATA_OFICIO: " + dataOficio);
         System.out.println("NUMERO_LOGRADOURO: " + numeroLogradouro);
-
 
         AssociacaoFiliacaoEnderecoDataMapper associacaoFiliacaoEnderecoDataMapper = new AssociacaoFiliacaoEnderecoDataMapper();
         associacaoFiliacaoEnderecoDataMapper.criar(nome, sigla, telefone,

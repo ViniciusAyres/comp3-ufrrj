@@ -15,6 +15,7 @@ public class TipoProvaDataMapperTest {
 
         TipoProvaDataMapper tipoProva = new TipoProvaDataMapper();
         ResultSet resultSet = tipoProva.buscarPorId(1);
+        resultSet.next();
 
         assertEquals("Individual", resultSet.getString("NOME"));
         assertEquals(1, resultSet.getInt("ID"));

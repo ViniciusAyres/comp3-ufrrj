@@ -13,8 +13,6 @@ import java.sql.SQLException;
 
 public class ProvaDataMapperTest {
 
-
-
     @Test
     public void testCriarProva(){
         ProvaDataMapper provaDataMapper =

@@ -46,6 +46,8 @@ public class ResultadoDataMapperTest {
     @Test
     public void testBuscarPorMatricula() throws SQLException {
         ResultSet resultSet = new ResultadoDataMapper().buscarPorId(idResultado);
+        resultSet.next();
+
         assertEquals(idResultado, resultSet.getInt("ID"));
         assertEquals( tempo, resultSet.getTime("TEMPO"));
         assertEquals(3, resultSet.getInt("ID_COLOCACAO"));
@@ -56,12 +58,16 @@ public class ResultadoDataMapperTest {
         boolean criado = new ResultadoDataMapper().criar(tempo, 8);
 
         ResultSet resultSet = new ResultadoDataMapper().buscarPorId(idResultado+1);
+        resultSet.next();
+
         assertEquals(idResultado+1, resultSet.getInt("ID"));
         assertEquals( tempo, resultSet.getTime("TEMPO"));
         assertEquals(8, resultSet.getInt("ID_COLOCACAO"));
 
         boolean alterado = new ResultadoDataMapper().atualizar(novoTempo, 1,idResultado+1);
         resultSet = new ResultadoDataMapper().buscarPorId(idResultado+1);
+        resultSet.next();
+
         assertEquals(idResultado+1, resultSet.getInt("ID"));
         assertEquals( novoTempo, resultSet.getTime("TEMPO"));
         assertEquals(1, resultSet.getInt("ID_COLOCACAO"));

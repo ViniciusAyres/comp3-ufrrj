@@ -2,12 +2,12 @@ package utils;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
+import dominio.Perfil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.servlet.http.HttpServletRequest;
-
+import java.util.ArrayList;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -33,13 +33,15 @@ public class UtilsTest {
 
         statement.execute();
     }
+
     @Test
     public void testAutenticarIdMesmoPerfil() throws RegistroNaoEncontradoException, SQLException {
         String matricula = "2015";
-        String senha = "123456";
+        ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+        perfisAutorizados.add(Perfil.SECRETARIO.getId());
+        perfisAutorizados.add(Perfil.TECNICO_ASSOSSIACAO.getId());
 
-        assertTrue(Utils.isValido(matricula, senha));
+        assertTrue(Utils.hasAutorizacao(matricula, perfisAutorizados));
     }
-
 
 }

@@ -14,6 +14,7 @@ public class TipoCompeticaoDataMapperTest {
 
         TipoCompeticaoDataMapper tipoCompeticaoDataMapper = new TipoCompeticaoDataMapper();
         ResultSet resultSet = tipoCompeticaoDataMapper.buscarPorId(1);
+        resultSet.next();
 
         assertEquals("Festival", resultSet.getString("NOME"));
         assertEquals(1, resultSet.getInt("ID"));

@@ -36,13 +36,13 @@ public class AssociacaoDataMapperTest {
 
 
         String insert_1 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
-                " VALUES ('A', '1', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
+                " VALUES ('A', '1', '1', 'TEST', " + Integer.toString(idEndereco) + ")";
         String insert_2 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
-                " VALUES ('A', '2', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
+                " VALUES ('A', '2', '1', 'TEST', " + Integer.toString(idEndereco) + ")";
         String insert_3 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
-                " VALUES ('A', '3', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
+                " VALUES ('A', '3', '1', 'TEST', " + Integer.toString(idEndereco) + ")";
         String insert_4 = "INSERT INTO ASSOCIACAO (NOME, MATRICULA, TELEFONE, SIGLA, ID_ENDERECO)" +
-                " VALUES ('A', '4', '1', 'CBF', " + Integer.toString(idEndereco) + ")";
+                " VALUES ('A', '4', '1', 'TEST', " + Integer.toString(idEndereco) + ")";
 
         SQL.getPreparedStatement(insert_1).execute();
         SQL.getPreparedStatement(insert_2).execute();
@@ -54,7 +54,7 @@ public class AssociacaoDataMapperTest {
     @After
     public void tearDown() throws Exception {
         String sql = "DELETE FROM ASSOCIACAO\n" +
-                "WHERE TELEFONE = '1'";
+                "WHERE SIGLA = 'TEST'";
 
         PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                 .prepareStatement(sql);
@@ -76,8 +76,8 @@ public class AssociacaoDataMapperTest {
     public void testBuscar() throws SQLException {
         ResultSet resultSet = new AssociacaoDataMapper().buscar();
         int cont = 0;
+
         while(resultSet.next()){
-            assertEquals("CBF", resultSet.getString("SIGLA"));
             cont++;
         }
 
@@ -90,7 +90,7 @@ public class AssociacaoDataMapperTest {
         resultSet.next();
 
         assertEquals("1", resultSet.getString("MATRICULA"));
-        assertEquals("CBF", resultSet.getString("SIGLA"));
+        assertEquals("TEST", resultSet.getString("SIGLA"));
         assertEquals("A", resultSet.getString("NOME"));
         assertEquals(Integer.toString(idEndereco), resultSet.getString("ID_ENDERECO"));
         assertEquals("1", resultSet.getString("TELEFONE"));

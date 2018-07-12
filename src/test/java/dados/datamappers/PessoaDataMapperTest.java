@@ -16,7 +16,7 @@ public class PessoaDataMapperTest {
     @Before
     public void setUp() throws Exception {
         String insert = "INSERT INTO PESSOA (SENHA, NOME, ID_PERFIL, MATRICULA)\n" +
-                "    VALUES ('123456', 'usuario-teste', 1, '2015')";
+                "    VALUES ('senha', 'usuario-teste', 1, 'matricula')";
 
         PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                 .prepareStatement(insert);
@@ -35,25 +35,25 @@ public class PessoaDataMapperTest {
 
     @Test
     public void testBuscarPorMatricula() throws SQLException {
-        ResultSet resultSet = new PessoaDataMapper().buscarPorMatricula("2015");
+        ResultSet resultSet = new PessoaDataMapper().buscarPorMatricula("matricula");
 
         resultSet.next();
 
-        assertEquals("2015", resultSet.getString("MATRICULA"));
+        assertEquals("matricula", resultSet.getString("MATRICULA"));
         assertEquals("usuario-teste", resultSet.getString("NOME"));
-        assertEquals("123456", resultSet.getString("SENHA"));
+        assertEquals("senha", resultSet.getString("SENHA"));
         assertEquals(1, resultSet.getInt("ID_PERFIL"));
 
     }
 
 
     @Test
-    public void criarPessoa() throws SQLException {
+    public void testCriarPessoa() throws SQLException {
 
         PessoaDataMapper pessoaDataMapper = new PessoaDataMapper();
 
         Assert.assertEquals(true, pessoaDataMapper.criar("usuario-teste", "senha",
-                1, "matricula", null));
+                1, "teste-criacao", null));
 
 
     }

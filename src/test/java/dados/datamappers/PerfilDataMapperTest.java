@@ -16,6 +16,8 @@ public class PerfilDataMapperTest {
         PerfilDataMapper perfildatamapper = new PerfilDataMapper();
 
         ResultSet resultSet = perfildatamapper.buscarPorId(1);
+        resultSet.next();
+
         assertEquals(1, resultSet.getInt("ID"));
         assertEquals("Secretário", resultSet.getString("NOME"));
 

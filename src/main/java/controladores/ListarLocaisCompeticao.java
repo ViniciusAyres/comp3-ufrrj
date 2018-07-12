@@ -10,13 +10,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 @WebServlet(name = "ListarLocaisCompeticao", urlPatterns = {"/listarLocaisCompeticao"})
 public class ListarLocaisCompeticao extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            Utils.autenticar(request, Perfil.SECRETARIO.getId());
+            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+
+            Utils.autenticar(request, perfisAutorizados);
             request.getRequestDispatcher("/listarLocaisCompeticao.jsp").forward(request, response);
         } catch (UsuarioNaoAutenticadoException e) {
             request.getRequestDispatcher("/identificarUsuario").forward(request, response);

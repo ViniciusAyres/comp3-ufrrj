@@ -29,6 +29,7 @@ public class InscricaoDataMapperTest {
                 new InscricaoDataMapper();
 
         ResultSet resultSet = inscricacaoDataMapper.buscarPorNumeroOficio("111111");
+        resultSet.next();
 
         Assert.assertEquals("111111", resultSet.getString("NUMERO_OFICIO"));
         Assert.assertEquals("2222", resultSet.getString("NUMERO_PAGAMENTO"));

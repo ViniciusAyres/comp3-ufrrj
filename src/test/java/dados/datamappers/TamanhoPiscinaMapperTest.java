@@ -17,6 +17,7 @@ public class TamanhoPiscinaMapperTest {
     @Test
     public void testBuscarPorId() throws SQLException {
         ResultSet resultSet = new TamanhoPiscinaDataMapper().buscarPorId(1);
+        resultSet.next();
 
         assertEquals(1, resultSet.getInt("ID"));
         assertEquals(25, resultSet.getInt("TAMANHO"));

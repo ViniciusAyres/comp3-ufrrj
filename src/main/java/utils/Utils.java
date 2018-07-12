@@ -7,16 +7,15 @@ import dominio.PessoaMD;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Utils {
-    private static String INDEX = "index.jsp";
 
     public static boolean isValido(String matricula, String senha) {
-        PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
         try {
+            PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
             return pessoaMD.getSenha(matricula).equals(senha);
         }catch (RegistroNaoEncontradoException e) {
             return false;
@@ -25,21 +24,20 @@ public class Utils {
         }
     }
 
-    public static boolean autenticar(HttpServletRequest request, int perfilExigido) throws ServletException, IOException, UsuarioNaoAutenticadoException {
-        if(!Utils.isAutenticado(request, perfilExigido)){
+    public static boolean autenticar(HttpServletRequest request, ArrayList<Integer> perfisAceitos) throws ServletException, IOException, UsuarioNaoAutenticadoException {
+        if(!Utils.isAutenticado(request)){
             throw new UsuarioNaoAutenticadoException();
-        }else if (!Utils.hasAutorizacao((String) request.getSession().getAttribute("matricula"), perfilExigido)){
+        }else if (!Utils.hasAutorizacao((String) request.getSession().getAttribute("matricula"), perfisAceitos)){
             throw new UsuarioNaoAutenticadoException();
         }else {
             return true;
         }
     }
 
-    private static boolean hasAutorizacao(String matricula, int perfilExigido) {
-        PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
-
+    public static boolean hasAutorizacao(String matricula, ArrayList<Integer> perfisAceitos) {
         try {
-            return pessoaMD.getPerfil(matricula) == perfilExigido;
+            PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
+            return perfisAceitos.contains(pessoaMD.getPerfil(matricula));
         } catch (SQLException e) {
             return false;
         } catch (RegistroNaoEncontradoException e) {
@@ -47,7 +45,7 @@ public class Utils {
         }
     }
 
-    public static boolean isAutenticado(HttpServletRequest request, int perfilExigido){
+    public static boolean isAutenticado(HttpServletRequest request){
         String matricula = (String) request.getSession().getAttribute("matricula");
         System.out.println("MATRICULA: " + matricula);
 
