@@ -20,14 +20,14 @@ public class IdentificarUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
-        int perfilExigido = Integer.parseInt(request.getParameter("perfilExigido"));
 
         if(Utils.isValido(matricula, senha)){
             request.getSession().setAttribute("matricula", matricula);
             request.getRequestDispatcher("index.jsp").forward(request, response);
+        }else{
+            request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
         }
 
-        request.getRequestDispatcher("/identificarUsuario").forward(request, response);
     }
 
 }

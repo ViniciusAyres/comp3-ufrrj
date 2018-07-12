@@ -14,6 +14,7 @@ public class Utils {
     private static String INDEX = "index.jsp";
 
     public static boolean isValido(String matricula, String senha) {
+        System.out.println("passei3");
         PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
         try {
             return pessoaMD.getSenha(matricula).equals(senha);
