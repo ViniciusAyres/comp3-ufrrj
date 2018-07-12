@@ -15,7 +15,7 @@
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
-                    <th>Nome</th>
+                    <th>Nome do Atleta</th>
                     <th>Matrícula</th>
                     <th></th>
                 </tr>
