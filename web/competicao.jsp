@@ -2,14 +2,13 @@
 <%@ include file="base.jsp" %>
 <html>
 <body>
-<div class="container">
-    <div class="card mt-5">
+<div class="container mt-5">
+    <div class="card">
         <div class="card-header">
-            <h3 class="font-weight-light ml-3"><i class="fa fa-trophy" aria-hidden="true"></i> Insira abaixo o nome e data da Competição</h3>
+            <h3 class="font-weight-light ml-3"><i class="fa fa-trophy" aria-hidden="true"></i> Alterar Competição</h3>
         </div>
-        <form class="form" role="form" method="POST" action="/criarCompeticao">
+        <form class="form" role="form" method="POST" action="/alterarCompeticao">
             <div class="card-body">
-            <div class="container">
                 <div class="row mx-auto">
                     <div class="col-md-12 mt-2">
                         <table class ="table table-bordered">
@@ -29,11 +28,10 @@
                     </div>
                 </div>
             </div>
-            </div>
         </form>
         <div class="card-footer">
             <div class="row mr-5" style="float:right">
-                <button class="btn btn-info" type="submit" value="/criarCompeticao/">Verificar</button>
+                <button class="btn btn-info" type="submit" value="/alterarCompeticao/">Alterar</button>
             </div>
         </div>
     </div>

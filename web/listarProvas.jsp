@@ -3,7 +3,8 @@
 <%
     String[] stArrayProvas={"Nado Sincronizado","Nado borboleta","Nado costa","Nado alguma coisa"};
 %>
-<div class="card">
+<div class="container">
+<div class="card mt-5">
             <div class="card-header">
                 <h3 class="font-weight-light mt-4 ml-2" id="exampleModalProvas">Selecione as Provas abaixo que deseja adicionar a Competição</h3>
             </div>
@@ -41,4 +42,5 @@
                     </div>
                 </div>
             </div>
+</div>
 </div>
