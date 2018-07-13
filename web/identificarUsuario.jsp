@@ -8,7 +8,6 @@
         <div class="col-md-12">
             <div class="row">
                 <div class="col-md-6 mx-auto">
-                    <!-- form card login -->
                     <div class="card rounded-0">
                         <div class="card-header">
                             <h3 class="font-weight-light mb-0"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Autenticar-se</h3>
@@ -28,17 +27,11 @@
                                 <button type="submit" class="btn btn-success btn-lg float-right" id="btnLogin">Login</button>
                             </form>
                         </div>
-                        <!--/card-block-->
                     </div>
-                    <!-- /form card login -->
                 </div>
             </div>
-            <!--/row-->
         </div>
-        <!--/col-->
     </div>
-    <!--/row-->
 </div>
-<!--/container-->
 </body>
 </html>

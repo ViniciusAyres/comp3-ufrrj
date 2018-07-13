@@ -1,6 +1,7 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import org.omg.CORBA.PUBLIC_MEMBER;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -17,6 +18,30 @@ public class CompeticaoDataMapper {
         }
 
         return  null;
+    }
+
+    public  ResultSet buscar(){
+        try{
+            return  DataMapper.buscar("COMPETICAO");
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return  null;
+        }
+    }
+
+    public ResultSet buscarProvaCompeticao() throws SQLException {
+        String sql = "SELECT CP.ID IDCOMPETICAO,P.ID IDPROVA,  CP.NOME, P.CATEGORIA, P.NOME FROM COMPETICAO AS CP\n" +
+                "JOIN PROVA_COMPETICAO PC on CP.ID = PC.ID_COMPETICAO\n" +
+                "JOIN PROVA P on PC.ID_PROVA = P.ID";
+
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        ResultSet result = statement.executeQuery();
+
+        return  result;
     }
 
     public boolean criar(int id, String nome, String categoria, Date data, int idTipoCompeticao, int idLocal){
@@ -41,6 +66,8 @@ public class CompeticaoDataMapper {
 
         return false;
     }
+
+
 
     public boolean atualizar(int id, String nome, String categoria, Date data, int idTipoCompeticao, int idLocal){
         String sql = "UPDATE COMPETICAO " +

@@ -144,15 +144,16 @@
                 <div class="collapse" id="menu2" data-parent="#sidebar">
                     <a href="/alterarCadastroAtleta" class="list-group-item text-dark">Alterar Cadastro do Atleta</a>
                     <a href="/cadastrarAtleta" class="list-group-item text-dark">Cadastrar Atleta</a>
-                    <a href="/inscreverAtletaCompeticao.jsp" class="list-group-item text-dark">Inscrever Atleta em Competição</a>
+                    <a href="/inscreverAtletaCompeticao" class="list-group-item text-dark">Inscrever Atleta em Competição</a>
                     <a href="/inserirResultadoAtleta" class="list-group-item text-dark">Inserir resultado do Atleta</a>
-                    <a href="/transferirAtleta.jsp" class="list-group-item text-dark">Transferir Atleta</a>
+                    <a href="/transferirAtleta" class="list-group-item text-dark">Transferir Atleta</a>
                 </div>
                 <a href="#menu3" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-trophy" aria-hidden="true"></i> <span class="d-none d-md-inline">Competição</span></a>
                 <div class="collapse" id="menu3" data-parent="#sidebar">
-                    <a href="#" class="list-group-item text-dark">Alterar Competição</a>
-                    <a href="#" class="list-group-item text-dark">Alterar Locais de Competição</a>
-                    <a href="#" class="list-group-item text-dark">Incluir Locais de Competição</a>
+                    <a href="/alterarCompeticao" class="list-group-item text-dark">Alterar Competição</a>
+                    <a href="/alterarLocaisCompeticao" class="list-group-item text-dark">Alterar Locais de Competição</a>
+                    <a href="/criarCompeticao" class="list-group-item text-dark">Criar Competição</a>
+                    <a href="/incluirLocaisCompeticao" class="list-group-item text-dark">Incluir Locais de Competição</a>
                     <a href="/listarCompeticoes" class="list-group-item text-dark">Listar Competições</a>
                     <a href="#" class="list-group-item text-dark">Listar Balizamento de Competição</a>
                     <a href="/listarLocaisCompeticao" class="list-group-item text-dark">Listar Locais de Competição</a>

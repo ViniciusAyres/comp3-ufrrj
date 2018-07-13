@@ -22,7 +22,7 @@ public class EnderecoDataMapper{
         public boolean criar(String logradouro, int numero, String complemento, String cep,
                              String bairro, String cidade, int idUf){
             String sql = "INSERT INTO ENDERECO (LOGRADOURO, NUMERO, COMPLEMENTO, CEP, " +
-                    "BAIRRO, CIDADE, ID_UF) " +
+                    "BAIRRO, CIDADE, UF) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             try {
@@ -50,7 +50,7 @@ public class EnderecoDataMapper{
                                  String bairro, String cidade, int idUf){
             String sql = "UPDATE ATLETA " +
                     "SET LOGRADOURO = ?, NUMERO = ?, COMPLEMENTO = ?, CEP = ?, " +
-                    "BAIRRO = ?, CIDADE = ?, ID_UF = ? " +
+                    "BAIRRO = ?, CIDADE = ?, UF = ? " +
                     "WHERE MATRICULA = ?";
 
             try {
