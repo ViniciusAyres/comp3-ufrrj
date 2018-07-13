@@ -141,7 +141,7 @@
                 <div class="col-md-8">
                     <div class="col-auto my-1">
                         <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="custom25">
+                            <input type="checkbox" class="custom-control-input" id="custom25" checked>
                             <label class="custom-control-label" for="custom25">25 metros</label>
                         </div>
                     </div>
