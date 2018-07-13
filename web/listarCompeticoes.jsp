@@ -5,8 +5,11 @@
 %>
 <html>
 <body>
-<h3 class="font-weight-light mt-4 ml-2">Selecione uma das Competições abaixo para saber dos resultados dos Atletas em suas Provas.</h3>
 <div class="container">
+<div class="card mt-5">
+    <div class="card-header">
+    <h4 class="font-weight-light mt-4 ml-2">Selecione uma das Competições abaixo para saber dos resultados dos Atletas em suas Provas.</h4>
+    </div>
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered">
@@ -25,7 +28,7 @@
                         out.print("<tr class=\"text-center\">");
                         out.print("<th>"+stArrayCompeticoes[a]+"</th>");
                         out.print("<th>12/03/2017</th>");
-                        out.print("<th><a href=\"provasResultados.jsp\"><button class=\"btn btn-outline-info\" >Selecionar</button></a></th>");
+                        out.print("<th><a href=\"provaPontuacao.jsp\"><button class=\"btn btn-outline-info\" >Selecionar</button></a></th>");
                         out.print("</tr>");
                     }
                 %>
@@ -34,6 +37,6 @@
         </div>
     </div>
 </div>
-
+</div>
 </body>
 </html>

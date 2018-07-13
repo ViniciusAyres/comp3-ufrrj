@@ -8,14 +8,17 @@
     <title>Alterar Filiações</title>
 </head>
 <body>
-<h3 class="font-weight-light mt-4 ml-2">Selecione uma das Associações abaixo para poder alterar suas Filiações.</h3>
 <div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h3 class="font-weight-light mt-4 ml-2">Selecione uma das Associações abaixo para poder alterar suas Filiações.</h3>
+        </div>
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
-                    <th>Matricula</th>
+                    <th>Matrícula</th>
                     <th>Nome</th>
                     <th></th>
                 </tr>
@@ -36,6 +39,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

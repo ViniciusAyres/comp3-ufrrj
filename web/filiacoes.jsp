@@ -3,8 +3,14 @@
 <%
     String[] stArrayFiliacoes={"A","B","C","D"};
 %>
-<h3 class="font-weight-light mt-4 ml-2">Selecione a Filiação que deseja alterar.</h3>
+<head>
+    <title>Filiações</title>
+</head>
 <div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h3 class="font-weight-light mt-4 ml-2">Selecione a Filiação que deseja alterar.</h3>
+        </div>
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered">
@@ -37,6 +43,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
