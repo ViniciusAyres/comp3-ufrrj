@@ -4,6 +4,7 @@
     String[] stArrayCompeticoes={"COMPETIÇÃO 1","COMPETIÇÃO 2","COMPETIÇÃO 3","COMPETIÇÃO 4"};
 %>
 <html>
+<title>Listar Competições</title>
 <body>
 <div class="container">
 <div class="card mt-5">

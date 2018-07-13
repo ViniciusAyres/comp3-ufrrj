@@ -3,8 +3,12 @@
 <%
     String[] stArrayProvas={"Nado Sincronizado","Nado borboleta","Nado costa","Nado alguma coisa"};
 %>
-<h3 class="font-weight-light mt-4 ml-2">Selecione uma das Competições abaixo para saber dos resultados dos Atletas em suas Provas.</h3>
+
 <div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h3 class="font-weight-light mt-4 ml-2">Selecione uma das Competições abaixo para saber dos resultados dos Atletas em suas Provas.</h3>
+        </div>
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered" >
@@ -35,6 +39,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>
