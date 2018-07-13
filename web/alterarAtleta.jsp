@@ -117,11 +117,10 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row mr-5" style="float:right">
-                <button type="submit" class="btn btn-info" value="/alterar/">
-                    Alterar</button>
-            </div>
+                <div class="bg-info clearfix" style="background-color: #ffffff !important;">
+                    <a href="alterarCadastroAtleta.jsp" class="float-left mt-2">Voltar</a>
+                    <button type="submit" class="btn btn-info float-right" value="/alterar/">Alterar</button>
+                </div>
         </div>
     </form>
 </div>
