@@ -1,31 +1,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    String[] stArrayCompeticoes={"COMPETIÇÃO 1","COMPETIÇÃO 2","COMPETIÇÃO 3","COMPETIÇÃO 4"};
+    String[] stArrayProvas={"Nado Sincronizado","Nado borboleta","Nado costa","Nado alguma coisa"};
 %>
-<html>
-<body>
 <h3 class="font-weight-light mt-4 ml-2">Selecione uma das Competições abaixo para saber dos resultados dos Atletas em suas Provas.</h3>
 <div class="container">
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
-            <table class="table table-bordered">
+            <table class="table table-bordered" >
                 <thead class="thead-light">
                 <tr>
-                    <th>Nome da Competição</th>
-                    <th>Data</th>
+                    <th>Nome da Prova</th>
+                    <th>Categoria</th>
+                    <th>Classe</th>
+                    <th>Tipo da Piscina</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
-                    int a=0;
-                    for(a=0;a<stArrayCompeticoes.length;a++)
+                    int b=0;
+                    for(b=0;b<stArrayProvas.length;b++)
                     {
                         out.print("<tr class=\"text-center\">");
-                        out.print("<th>"+stArrayCompeticoes[a]+"</th>");
-                        out.print("<th>12/03/2017</th>");
-                        out.print("<th><a href=\"provasResultados.jsp\"><button class=\"btn btn-outline-info\" >Selecionar</button></a></th>");
+                        out.print("<th>"+stArrayProvas[b]+"</th>");
+                        out.print("<th>Masculino</th>");
+                        out.print("<th>Infantil</th>");
+                        out.print("<th>50 metros</th>");
+                        out.print("<th><a href=\"atletasProva.jsp\"><button class=\"btn btn-outline-info\" >Selecionar</button></a></th>");
                         out.print("</tr>");
                     }
                 %>
@@ -34,6 +36,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
