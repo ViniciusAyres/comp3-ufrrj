@@ -1,26 +1,25 @@
 package dominio;
 
+import dados.datamappers.DataMapper;
+import dados.datamappers.LocalDataMapper;
+
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class LocalCompeticaoMD {
 
     private ResultSet resultSet;
-    private ArrayList<String> locais;
-
 
     public LocalCompeticaoMD(ResultSet resultSet){
         this.resultSet = resultSet;
     }
 
-
-    public String getEnderecoByLocal(String nomeLocal)
-    {
+    public String getEnderecoByLocal(String nomeLocal) {
         try{
             resultSet.beforeFirst();
             while(resultSet.next()){
                 String nomeLocalAux = resultSet.getString("LOCALNOME");
-                if(nomeLocalAux == nomeLocal) {
+                if(nomeLocalAux.equals(nomeLocal)) {
                     String endereco = resultSet.getString("ENDERECO");
                     return  endereco;
                 }
@@ -34,14 +33,12 @@ public class LocalCompeticaoMD {
     }
 
 
-    public  String getTamanhoPiscinaByLocal(String nomeLocal)
-    {
-        try
-        {
+    public  String getTamanhoPiscinaByLocal(String nomeLocal) {
+        try {
             resultSet.beforeFirst();
             while(resultSet.next()){
                 String nomeLocalAux = resultSet.getString("LOCALNOME");
-                if(nomeLocalAux == nomeLocal) {
+                if(nomeLocalAux.equals(nomeLocal)) {
                     int tamanho = resultSet.getInt("TAMANHO");
                     String  tamahoSTR = Integer.toString(tamanho) + " " + "metros";
                     return tamahoSTR;
@@ -49,8 +46,7 @@ public class LocalCompeticaoMD {
             }
             return  null;
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex){
             ex.printStackTrace();
             return  null;
         }
@@ -59,18 +55,17 @@ public class LocalCompeticaoMD {
     public  ArrayList<String> getLocais()
     {
         ArrayList<String> locais = null;
-        try
-        {
+        try {
             locais = new ArrayList<String>();
             resultSet.beforeFirst();
-            while (this.resultSet.next()){
+            while (resultSet.next()){
+                //LocalDataMapper local = LocalDataMapper();
                 String local = this.resultSet.getString("LOCALNOME");
                 locais.add(local);
             }
             return locais;
         }
-        catch (Exception ex)
-        {
+        catch (Exception ex) {
             ex.printStackTrace();
             return locais;
         }

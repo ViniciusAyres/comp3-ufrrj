@@ -3,8 +3,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    LocalCompeticaoMD localCompeticaoMD = (LocalCompeticaoMD) request.getAttribute("competicaoLocalMD");
-    //ArrayList<String> locais = localCompeticaoMD.getLocais();
+    LocalCompeticaoMD localCompeticaoMD = (LocalCompeticaoMD) request.getAttribute("localCompeticaoMD");
+    ArrayList<String> locais = localCompeticaoMD.getLocais();
 %>
 <html>
 <head>
@@ -23,17 +23,16 @@
                     <th>Tipo da Piscina</th>
                 </tr>
                 </thead>
-                o local de competição informado, o endereço e o tipo de piscinas.
                 <tbody>
                 <%
-      //            for(String local: locais)
-        //          {
-          //            out.print("<tr class=\"text-center\">");
-            //          out.print("<th>" + local + "</th>");
-              //        out.print("<th>" + localCompeticaoMD.getEnderecoByLocal(local) +"</th>");
-                //      out.print("<th>" + localCompeticaoMD.getTamanhoPiscinaByLocal(local) +"</th>");
-                  //    out.print("</tr>");
-                  //}
+                 for(String local: locais)
+                  {
+                      out.print("<tr class=\"text-center\">");
+                      out.print("<th>" + local + "</th>");
+                      out.print("<th>" + localCompeticaoMD.getEnderecoByLocal(local) +"</th>");
+                      out.print("<th>" + localCompeticaoMD.getTamanhoPiscinaByLocal(local) +"</th>");
+                      out.print("</tr>");
+                  }
                 %>
                 </tbody>
             </table>
