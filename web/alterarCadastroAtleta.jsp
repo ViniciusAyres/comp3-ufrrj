@@ -11,8 +11,11 @@
     <title>Atletas</title>
 </head>
 <body>
-<h3 class="font-weight-light mt-4 ml-2">Selecione abaixo o Atleta desejado para realizar a alteração.</h3>
 <div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h3 class="font-weight-light mt-4 ml-2">Selecione abaixo o Atleta desejado para realizar a alteração</h3>
+        </div>
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered">
@@ -37,6 +40,7 @@
             </table>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

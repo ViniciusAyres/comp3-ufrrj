@@ -1,18 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    String[] stArrayAtletas={"Jhonson","Cleyton","Diego","Alberto"};
+    String[] stArrayAtletas={"Jhonson","Cleyton","Mauro","Alberto"};
 %>
-<html>
-<head>
-    <title>Atletas</title>
-</head>
-<body>
+<h3 class="font-weight-light mt-4 ml-2">Resultados dos Atletas na Prova selecionada</h3>
 <div class="container">
-    <div class="card mt-5">
-        <div class="card-header">
-            <h3 class="font-weight-light mt-4 ml-2">Selecione abaixo o Atleta desejado para realizar a transferência.</h3>
-        </div>
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered">
@@ -20,18 +12,18 @@
                 <tr>
                     <th>Nome do Atleta</th>
                     <th>Matrícula</th>
-                    <th></th>
+                    <th>Tempo</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
-                    int a=0;
-                    for(a=0;a<stArrayAtletas.length;a++)
+                    int c=0;
+                    for(c=0;c<stArrayAtletas.length;c++)
                     {
                         out.print("<tr class=\"text-center\">");
-                        out.print("<th>"+stArrayAtletas[a]+"</th>");
-                        out.print("<th>123131231</th>");
-                        out.print("<th><a href=\"transferencia.jsp\"><button class=\"btn btn-outline-info\">Transferir</button></a></th>");
+                        out.print("<th>"+stArrayAtletas[c]+"</th>");
+                        out.print("<th>2015780589</th>");
+                        out.print("<th>00:01:03 s</th>");
                         out.print("</tr>");
                     }
                 %>
@@ -39,7 +31,6 @@
             </table>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
