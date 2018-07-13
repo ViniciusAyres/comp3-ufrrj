@@ -150,8 +150,9 @@
                 </div>
                 <a href="#menu3" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-trophy" aria-hidden="true"></i> <span class="d-none d-md-inline">Competição</span></a>
                 <div class="collapse" id="menu3" data-parent="#sidebar">
-                    <a href="#" class="list-group-item text-dark">Alterar Competição</a>
+                    <a href="/" class="list-group-item text-dark">Alterar Competição</a>
                     <a href="/alterarLocaisCompeticao" class="list-group-item text-dark">Alterar Locais de Competição</a>
+                    <a href="/criarCompeticao" class="list-group-item text-dark">Criar Competição</a>
                     <a href="/incluirLocaisCompeticao" class="list-group-item text-dark">Incluir Locais de Competição</a>
                     <a href="/listarCompeticoes" class="list-group-item text-dark">Listar Competições</a>
                     <a href="#" class="list-group-item text-dark">Listar Balizamento de Competição</a>
