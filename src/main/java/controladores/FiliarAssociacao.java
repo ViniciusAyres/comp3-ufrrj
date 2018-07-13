@@ -27,8 +27,10 @@ public class FiliarAssociacao extends HttpServlet {
             ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
             perfisAutorizados.add(Perfil.SECRETARIO.getId());
 
+            request.getSession().setAttribute("proximaPagina", "/filiarAssociacao");
             request.setAttribute("perfisAutorizados", perfisAutorizados);
-            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+            response.sendRedirect("/identificarUsuario");
+            //request.getRequestDispatcher("/identificarUsuario").forward(request, response);
         }
     }
 

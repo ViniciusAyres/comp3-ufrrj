@@ -32,7 +32,6 @@ public class AssociacaoFiliacaoEnderecoDataMapper {
                 idEndereco = resultSet.getInt(1);
             }
 
-
             String matricula = new AssociacaoDataMapper().gerarMatricula();
 
             String insertAssociacao = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ID_ENDERECO) " +
