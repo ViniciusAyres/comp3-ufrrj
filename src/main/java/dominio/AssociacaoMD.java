@@ -34,6 +34,17 @@ public class AssociacaoMD {
         }
     }
 
+    public boolean existe(String matricula) throws SQLException, RegistroNaoEncontradoException {
+        resultSet.beforeFirst();
+        while (resultSet.next()){
+            if(resultSet.getString("MATRICULA").equals(matricula)){
+                return true;
+            }
+        }
+
+        throw new RegistroNaoEncontradoException("Associação não encontrada", "ASSOCIAÇÃO");
+    }
+
     public String getNome(String matricula) throws SQLException, RegistroNaoEncontradoException {
         resultSet.beforeFirst();
         while (resultSet.next()){

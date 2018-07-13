@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 import static org.junit.Assert.*;
 
-public class PessoaMDTest {
+public class PessoaMTTest {
     @Before
     public void setUp() throws Exception {
         String insert = "INSERT INTO PESSOA (SENHA, NOME, ID_PERFIL, MATRICULA)\n" +
@@ -42,12 +42,12 @@ public class PessoaMDTest {
         preparedStatement.setInt(1, 1);
         ResultSet resultSet = preparedStatement.executeQuery();
 
-        PessoaMD pessoaMD = new PessoaMD(resultSet);
+        PessoaMT pessoaMT = new PessoaMT(resultSet);
 
-        assertEquals("usuario-teste", pessoaMD.getNome("2015"));
-        assertEquals("123456", pessoaMD.getSenha("2015"));
-        assertEquals(1, pessoaMD.getPerfil("2015"));
-        assertNull(pessoaMD.getMatriculaAssociacao("2015"));
+        assertEquals("usuario-teste", pessoaMT.getNome("2015"));
+        assertEquals("123456", pessoaMT.getSenha("2015"));
+        assertEquals(1, pessoaMT.getPerfil("2015"));
+        assertNull(pessoaMT.getMatriculaAssociacao("2015"));
 
     }
 
@@ -58,8 +58,8 @@ public class PessoaMDTest {
                 .createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY)
                 .executeQuery(query);
 
-        PessoaMD pessoaMD = new PessoaMD(resultSet);
+        PessoaMT pessoaMT = new PessoaMT(resultSet);
 
-        assertEquals("usuario-teste", pessoaMD.getNome("matriculaNaoExistente"));
+        assertEquals("usuario-teste", pessoaMT.getNome("matriculaNaoExistente"));
     }
 }

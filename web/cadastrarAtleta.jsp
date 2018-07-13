@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
-    <form class="form" role="form" method="POST" action="/atleta">
+    <form class="form" role="form" method="POST" action="/cadastrarAtleta">
 
         <div class="card-header text-center">
             <h4>
@@ -104,6 +104,21 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-4 field-label-responsive text-left">
+                    <label for="categoria"><i class="fa fa-venus-mars" aria-hidden="true"></i> Categoria</label>
+                    <span style="color:red">*</span>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group has-danger">
+                        <div class="input-group">
+                            <input type="text" name="categoria" class="form-control" id="categoria" placeholder="Masculina ou Feminina" required maxlength="30">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-6 field-label-responsive text-left">
                     <label for="numeroComprovante"><i class="fa fa-file-o" aria-hidden="true"></i> Número de Comprovante de Pagamento</label>
@@ -117,6 +132,7 @@
                     </div>
                 </div>
             </div>
+
 
             <div class="row mr-5" style="float:right">
                     <button type="submit" class="btn btn-info" value="/registra/">

@@ -5,10 +5,10 @@ import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class PessoaMD {
+public class PessoaMT {
     ResultSet resultSet;
 
-    public PessoaMD(ResultSet resultSet){
+    public PessoaMT(ResultSet resultSet){
         this.resultSet = resultSet;
     }
 

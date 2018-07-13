@@ -3,11 +3,12 @@ package utils;
 import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.PessoaDataMapper;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
-import dominio.PessoaMD;
+import dominio.PessoaMT;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,8 +16,8 @@ public class Utils {
 
     public static boolean isValido(String matricula, String senha) {
         try {
-            PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
-            return pessoaMD.getSenha(matricula).equals(senha);
+            PessoaMT pessoaMT = new PessoaMT(new PessoaDataMapper().buscarPorMatricula(matricula));
+            return pessoaMT.getSenha(matricula).equals(senha);
         }catch (RegistroNaoEncontradoException e) {
             return false;
         } catch (SQLException e) {
@@ -36,8 +37,8 @@ public class Utils {
 
     public static boolean hasAutorizacao(String matricula, ArrayList<Integer> perfisAceitos) {
         try {
-            PessoaMD pessoaMD = new PessoaMD(new PessoaDataMapper().buscarPorMatricula(matricula));
-            return perfisAceitos.contains(pessoaMD.getPerfil(matricula));
+            PessoaMT pessoaMT = new PessoaMT(new PessoaDataMapper().buscarPorMatricula(matricula));
+            return perfisAceitos.contains(pessoaMT.getPerfil(matricula));
         } catch (SQLException e) {
             return false;
         } catch (RegistroNaoEncontradoException e) {
@@ -54,6 +55,11 @@ public class Utils {
         }
 
         return true;
+    }
+
+    //TODO: Implementar funcao
+    public static int getIdade(Date dataNascimento){
+        return 18;
     }
 }
 
