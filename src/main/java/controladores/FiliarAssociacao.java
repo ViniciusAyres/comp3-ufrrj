@@ -56,10 +56,13 @@ public class FiliarAssociacao extends HttpServlet {
         System.out.println("NUMERO_LOGRADOURO: " + numeroLogradouro);
 
         AssociacaoFiliacaoEnderecoDataMapper associacaoFiliacaoEnderecoDataMapper = new AssociacaoFiliacaoEnderecoDataMapper();
-        associacaoFiliacaoEnderecoDataMapper.criar(nome, sigla, telefone,
+        boolean result = associacaoFiliacaoEnderecoDataMapper.criar(nome, sigla, telefone,
                                                     logradouro, numeroLogradouro, cidade, bairro, cep, 1,
                                                     numeroOficio, dataOficio, numeroComprovante);
 
+        if(result){
+            request.setAttribute("mensagemSucesso", "Associação filiada com sucesso");
+        }
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 

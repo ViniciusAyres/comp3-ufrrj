@@ -21,7 +21,7 @@ public class AssociacaoDataMapperTest {
 
     @Before
     public void setUp() throws Exception {
-        String sql2 = "INSERT INTO ENDERECO (COMPLEMENTO, NUMERO, CIDADE, BAIRRO, LOGRADOURO, CEP, ID_UF)\n" +
+        String sql2 = "INSERT INTO ENDERECO (COMPLEMENTO, NUMERO, CIDADE, BAIRRO, LOGRADOURO, CEP, UF)\n" +
                 "VALUES('CASA', 1591, 'SJM' ,'FAVELA', 'RUA DA LINHA', '25558-471', 1)";
 
 

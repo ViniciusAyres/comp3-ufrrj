@@ -94,6 +94,10 @@ public class AssociacaoDataMapper {
         return String.valueOf(new java.util.Date().getTime());
     }
 
+    public String gerarSenha() throws SQLException {
+        return "123456";
+    }
+
     public int buscarQuantidadesAssociados() throws SQLException {
 
         int quantidade = 0;

@@ -167,14 +167,9 @@
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
-                    <div class="dropdown">
-                        <button class="form-control btn-sm dropdown-toggle" type="button" name="uf" id="uf" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Selecionar UF
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="uf">
-                            <a class="dropdown-item" href="#">RJ</a>
-                            <a class="dropdown-item" href="#">SP</a>
-                            <a class="dropdown-item" href="#">AC</a>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" name="uf" class="form-control" id="uf" required maxlength="2" placeholder="UF">
                         </div>
                     </div>
                 </div>
@@ -202,7 +197,7 @@
                 <div class="col-md-6">
                     <div class="form-group has-danger">
                         <div class="input-group">
-                            <input type="text" name="numeroComprovante" class="form-control" id="numeroComprovante" placeholder="Número do Comprovante" required maxlength="30">
+                            <input type="text" name="numeroComprovante" class="form-control" id="numeroComprovante" placeholder="Número do Comprovante" required maxlength="9">
                         </div>
                     </div>
                 </div>
