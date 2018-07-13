@@ -11,16 +11,16 @@
     <title>Locais de Competição</title>
 </head>
 <body>
-<h3 class="font-weight-light mt-4 ml-2">Lista de Locais de Competição</h3>
+<h3 class="font-weight-light mt-4 ml-2 text-center">Lista de Locais de Competição</h3>
 <div class="container">
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
-                    <th>Nome do Local</th>
-                    <th>Endereço</th>
-                    <th>Tipo da Piscina</th>
+                    <th Class="text-center">Nome do Local</th>
+                    <th Class="text-center">Endereço</th>
+                    <th Class="text-center">Tipo da Piscina</th>
                 </tr>
                 </thead>
                 <tbody>
