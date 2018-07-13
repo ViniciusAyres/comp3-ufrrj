@@ -41,7 +41,7 @@
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalProvas">Selecione a Prova a qual deseja saber os resultados dos Atletas.</h5>
+                <h5 class="modal-title" id="exampleModalProvas">Selecione a Prova a qual deseja inserir os resultados dos Atletas.</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
