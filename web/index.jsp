@@ -158,7 +158,7 @@
                     <a href="/listarBalizamentoCompeticao.jsp" class="list-group-item text-dark">Listar Balizamento de Competição</a>
                     <a href="/listarLocaisCompeticao" class="list-group-item text-dark">Listar Locais de Competição</a>
                     <a href="/listarPontuacaoCompeticao.jsp" class="list-group-item text-dark">Listar Pontuação de Competição</a>
-                    <a href="/listarPontuacaoFinalCompeticao.jsp" class="list-group-item text-dark">Listar Pontuação Final de Competição</a>
+                    <a href="/listarPontuacaoFinal.jsp" class="list-group-item text-dark">Listar Pontuação Final de Competição</a>
                 </div>
             </div>
         </div>
