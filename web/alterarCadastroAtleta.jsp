@@ -1,7 +1,10 @@
+<%@ page import="dominio.AtletaMT" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    String[] stArrayAtletas={"Jhonson","Cleyton","Diego","Alberto"};
+    AtletaMT atletaMT = (AtletaMT) request.getAttribute("atletaMT");
+    ArrayList<String> matriculas = atletaMT.getMatriculas();
 %>
 <html>
 <head>
@@ -25,13 +28,11 @@
                 </thead>
                 <tbody>
                 <%
-                    int a=0;
-                    for(a=0;a<stArrayAtletas.length;a++)
-                    {
+                    for(String matricula : matriculas) {
                         out.print("<tr class=\"text-center\">");
-                        out.print("<th>"+stArrayAtletas[a]+"</th>");
-                        out.print("<th>123131231</th>");
-                        out.print("<th><a href=\"alterarAtleta.jsp\"><button class=\"btn btn-outline-info\">Alterar</button></a></th>");
+                        out.print("<th>" + atletaMT.getNome(matricula) + "</th>");
+                        out.print("<th>" + matricula +"</th>");
+                        out.print("<th><a href=\"alterarAtleta.jsp?matriculaAtleta=" + matricula + "\"><button class=\"btn btn-outline-info\">Alterar</button></a></th>");
                         out.print("</tr>");
                     }
                 %>

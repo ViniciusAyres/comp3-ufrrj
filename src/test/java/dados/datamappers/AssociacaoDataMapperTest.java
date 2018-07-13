@@ -105,12 +105,5 @@ public class AssociacaoDataMapperTest {
         assertNotEquals(0,  quantidadeAssociado);
     }
 
-    @Test
-    public void testeGerarMatricula() throws  SQLException {
-        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-        String teste = null;
-        teste = associacaoDataMapper.gerarMatricula();
-        assertNotNull(teste);
-    }
 }
 
