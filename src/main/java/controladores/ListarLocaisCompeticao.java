@@ -25,7 +25,7 @@ public class ListarLocaisCompeticao extends HttpServlet {
 
         try {
             ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
             Utils.autenticar(request, perfisAutorizados);
             ResultSet resultSet = new LocalCompeticaoDataMapper().buscar();
             LocalCompeticaoMD localCompeticaoMD = new LocalCompeticaoMD(resultSet);

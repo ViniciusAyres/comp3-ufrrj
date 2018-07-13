@@ -26,6 +26,8 @@ public class ListarAssociacoes extends HttpServlet {
             System.out.println("bb");
             ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
             perfisAutorizados.add(Perfil.SECRETARIO.getId());
+            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
+
             Utils.autenticar(request, perfisAutorizados);
             System.out.println("dd");
             ResultSet resultSet = new AssociacaoDataMapper().buscar();

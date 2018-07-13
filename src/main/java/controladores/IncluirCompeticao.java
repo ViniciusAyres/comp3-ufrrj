@@ -26,7 +26,7 @@ public class IncluirCompeticao extends HttpServlet {
 
         try {
             ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
 
             Utils.autenticar(request, perfisAutorizados);
             request.getRequestDispatcher("/incluirLocaisCompeticao.jsp").forward(request, response);

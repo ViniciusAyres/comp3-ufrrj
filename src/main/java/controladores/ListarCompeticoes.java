@@ -17,7 +17,7 @@ public class ListarCompeticoes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
 
             Utils.autenticar(request, perfisAutorizados);
             request.getRequestDispatcher("/listarCompeticoes.jsp").forward(request, response);

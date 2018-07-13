@@ -18,6 +18,8 @@ public class ListarPontuacaoCompeticao extends HttpServlet {
         try {
             ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
             perfisAutorizados.add(Perfil.SECRETARIO.getId());
+            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
+            perfisAutorizados.add(Perfil.TECNICO_ASSOSSIACAO.getId());
 
             Utils.autenticar(request, perfisAutorizados);
             request.getRequestDispatcher("/listarPontuacaoCompeticao.jsp").forward(request, response);
