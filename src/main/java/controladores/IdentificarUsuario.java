@@ -15,7 +15,6 @@ import java.util.ArrayList;
 public class IdentificarUsuario extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getSession().invalidate();
         request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
     }
 
@@ -26,7 +25,7 @@ public class IdentificarUsuario extends HttpServlet {
         if(Utils.isValido(matricula, senha)){
             request.getSession().setAttribute("matricula", matricula);
             request.setAttribute("mensagemSucesso", "Você logou");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            response.sendRedirect((String) request.getSession().getAttribute("proximaPagina"));
         }else{
             request.setAttribute("mensagemErro", "Você falhou");
             request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);

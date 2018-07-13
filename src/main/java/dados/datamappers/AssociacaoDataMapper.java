@@ -6,6 +6,7 @@ import utils.Criptografia;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 
 public class AssociacaoDataMapper {
 
@@ -90,19 +91,7 @@ public class AssociacaoDataMapper {
     }
 
     public String gerarMatricula() throws SQLException {
-
-        String matricula = null;
-        boolean  existMatriculaBD;
-
-        do {
-            int quantidadeAssociacoes =  this.buscarQuantidadesAssociados();
-            quantidadeAssociacoes =  quantidadeAssociacoes == 0  ? quantidadeAssociacoes + 1 : quantidadeAssociacoes;
-            String quantidadeAssociacoesStr = Integer.toString(quantidadeAssociacoes);
-            matricula = Criptografia.gerarMatricula(quantidadeAssociacoes);
-            existMatriculaBD = this.verficarAssociacaoPorMatricula(matricula);
-        }while (existMatriculaBD);
-
-        return  matricula;
+        return String.valueOf(new java.util.Date().getTime());
     }
 
     public int buscarQuantidadesAssociados() throws SQLException {

@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
-
+<%
+    request.getSession().invalidate();
+%>
 <style>
     #sidebar {
         overflow: hidden;
