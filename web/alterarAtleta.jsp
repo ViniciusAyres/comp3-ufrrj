@@ -1,5 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
+<%
+    String matriculaAtleta = request.getParameter("matriculaAtleta");
+    request.getSession().setAttribute("matriculaAtleta", matriculaAtleta);
+%>
 <html>
 <head>
     <style>
@@ -14,7 +18,7 @@
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
-    <form class="form" role="form" method="POST" action="/atleta">
+    <form class="form" role="form" method="POST" action="/alterarCadastroAtleta">
 
         <div class="card-header text-center">
             <h4>

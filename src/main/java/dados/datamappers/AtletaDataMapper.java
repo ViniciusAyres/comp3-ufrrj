@@ -63,4 +63,15 @@ public class AtletaDataMapper {
 
         return false;
     }
+
+    public ResultSet buscar() {
+        try{
+            return  DataMapper.buscar("ATLETA");
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+        return  null;
+    }
 }
