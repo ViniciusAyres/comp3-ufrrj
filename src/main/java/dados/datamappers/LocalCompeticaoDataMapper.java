@@ -13,10 +13,11 @@ public class LocalCompeticaoDataMapper {
 
     public ResultSet buscar() throws SQLException {
 
-        String sql = "SELECT  L.NOME LOCALNOME, L.ENDERECO, PISCINA.TAMANHO TAMANHO \n" +
+        String sql = "SELECT  L.NOME LOCALNOME,  E.LOGRADOURO ENDERECO, PISCINA.TAMANHO TAMANHO \n" +
                 "  FROM COMPETICAO AS CP\n" +
                 "  JOIN  LOCAL L on CP.ID_LOCAL = L.ID\n" +
-                "  JOIN  TAMANHO_PISCINA PISCINA on L.ID_TAMANHO_PISCINA = PISCINA.ID";
+                "  JOIN  TAMANHO_PISCINA PISCINA on L.ID_TAMANHO_PISCINA = PISCINA.ID" + "\n"
+                + "join  ENDERECO E on L.IDENDERECO = E.ID\n";
 
         PreparedStatement statement1 = SQL.getPreparedStatement(sql);
         ResultSet result = statement1.executeQuery();
