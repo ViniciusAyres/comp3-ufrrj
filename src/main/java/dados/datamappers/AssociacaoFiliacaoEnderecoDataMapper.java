@@ -1,6 +1,7 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import dominio.Perfil;
 import utils.SQL;
 
 import java.sql.*;
@@ -13,7 +14,7 @@ public class AssociacaoFiliacaoEnderecoDataMapper {
 
         try {
             PreparedStatement preparedStatement;
-            String insertEndereco = "INSERT INTO ENDERECO (LOGRADOURO, NUMERO, CIDADE, BAIRRO, CEP, ID_UF) " +
+            String insertEndereco = "INSERT INTO ENDERECO (LOGRADOURO, NUMERO, CIDADE, BAIRRO, CEP, UF) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
 
             preparedStatement = ConnectionSingleton.getInstance().prepareStatement(insertEndereco, Statement.RETURN_GENERATED_KEYS);
@@ -32,13 +33,13 @@ public class AssociacaoFiliacaoEnderecoDataMapper {
                 idEndereco = resultSet.getInt(1);
             }
 
-            String matricula = new AssociacaoDataMapper().gerarMatricula();
+            String matriculaAssociacao = new AssociacaoDataMapper().gerarMatricula();
 
             String insertAssociacao = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ID_ENDERECO) " +
                     "VALUES(?, ?, ?, ?, ?)";
 
             preparedStatement = SQL.getPreparedStatement(insertAssociacao);
-            preparedStatement.setString(1, matricula);
+            preparedStatement.setString(1, matriculaAssociacao);
             preparedStatement.setString(2, nome);
             preparedStatement.setString(3, sigla);
             preparedStatement.setString(4, telefone);
@@ -46,16 +47,30 @@ public class AssociacaoFiliacaoEnderecoDataMapper {
             preparedStatement.execute();
 
 
-            String insertFiliacao = "INSERT INTO FILIACAO (NUMERO_OFICIO, DATA_OFICIO, NUMERO_PAGAMENTO) " +
-                    "VALUES (?, ?, ?)";
+            String insertFiliacao = "INSERT INTO FILIACAO (NUMERO_OFICIO, MATRICULA_ASSOCIACAO, DATA_OFICIO, NUMERO_PAGAMENTO) " +
+                    "VALUES (?, ?, ?, ?)";
 
             preparedStatement = SQL.getPreparedStatement(insertFiliacao);
             preparedStatement.setString(1, numeroOficio);
-            preparedStatement.setDate(2, dataOficio);
-            preparedStatement.setString(3, numeroComprovante);
+            preparedStatement.setString(2, matriculaAssociacao);
+            preparedStatement.setDate(3, dataOficio);
+            preparedStatement.setString(4, numeroComprovante);
             preparedStatement.execute();
 
-            System.out.println("MATRICULA GERADA: " + matricula);
+            String matriculaTecnico = new AssociacaoDataMapper().gerarMatricula();
+            Perfil perfil = Perfil.TECNICO_ASSOSSIACAO;
+            String senhaTecnico = new AssociacaoDataMapper().gerarSenha();
+
+            String insertTecnico = "INSERT INTO PESSOA (ID_PERFIL, MATRICULA, MATRICULA_ASSOCIACAO, SENHA)" +
+                    "VALUES (?, ?, ?, ?)";
+            preparedStatement = SQL.getPreparedStatement(insertTecnico);
+            preparedStatement.setInt(1, perfil.getId());
+            preparedStatement.setString(2, matriculaTecnico);
+            preparedStatement.setString(3, matriculaAssociacao);
+            preparedStatement.setString(4, senhaTecnico);
+            preparedStatement.execute();
+
+            System.out.println("MATRICULA DA ASSOCIACAO GERADA: " + matriculaAssociacao);
 
         } catch (SQLException e) {
             e.printStackTrace();

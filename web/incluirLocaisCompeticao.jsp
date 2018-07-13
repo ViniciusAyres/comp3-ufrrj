@@ -29,8 +29,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="nome" class="form-control" maxlength="50" id="nome" placeholder="Nome"
-                                   required >
+                            <input type="text" name="nome" class="form-control" maxlength="50" id="nome" placeholder="Nome">
                         </div>
                     </div>
                 </div>
