@@ -79,97 +79,13 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="logradouro"> Logradouro</label>
+                    <label for="endereco"> Endereço</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="logradouro" class="form-control" id="logradouro" required maxlength="30" placeholder="Logradouro">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="numeroLogradouro"> Número do Logradouro</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" name="numeroLogradouro" class="form-control" id="numeroLogradouro" maxlength="30" placeholder="Número do Logradouro" required>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="complemento"> Complemento</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" name="complemento" class="form-control" id="complemento" maxlength="30" placeholder="Complemento" required>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="cidade"> Cidade</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" name="cidade" class="form-control" id="cidade" required maxlength="30" placeholder="Cidade">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="bairro"> Bairro</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" name="bairro" class="form-control" id="bairro" required maxlength="30" placeholder="Bairro">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="cep"> CEP</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" name="cep" class="form-control" id="cep" required maxlength="8" placeholder="CEP">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="uf"> UF</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" name="uf" class="form-control" id="uf" required maxlength="2" placeholder="UF">
+                            <input type="text" name="endereco" class="form-control" id="endereco" required maxlength="30" placeholder="Endereco">
                         </div>
                     </div>
                 </div>
