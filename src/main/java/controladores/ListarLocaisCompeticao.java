@@ -1,9 +1,7 @@
 package controladores;
 
 import controladores.exceptions.UsuarioNaoAutenticadoException;
-import dados.datamappers.AssociacaoDataMapper;
 import dados.datamappers.LocalCompeticaoDataMapper;
-import dominio.AssociacaoMD;
 import dominio.LocalCompeticaoMD;
 import dominio.Perfil;
 import utils.Utils;

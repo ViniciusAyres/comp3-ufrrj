@@ -1,61 +1,22 @@
 package dominio;
 
+import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
+import utils.RecordSet;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class PessoaMT {
-    ResultSet resultSet;
+    private RecordSet recordSet;
 
-    public PessoaMT(ResultSet resultSet){
-        this.resultSet = resultSet;
+    public PessoaMT(RecordSet recordSet) {
+        this.recordSet = recordSet;
     }
 
-    public String getSenha(String matricula) throws SQLException, RegistroNaoEncontradoException {
-        this.resultSet.beforeFirst();
-        while (resultSet.next()){
-            if(resultSet.getString("MATRICULA").equals(matricula)){
-                return resultSet.getString("SENHA");
-            }
-        }
+    public static void autenticar(String matricula, String senha) throws UsuarioNaoAutenticadoException {
 
-        throw new RegistroNaoEncontradoException("Pessoa não encontrada", "PESSOA");
+        if (!"ADMIN".equals(matricula)) throw new UsuarioNaoAutenticadoException();
+        if (!"ADMIN".equals(senha)) throw new UsuarioNaoAutenticadoException();
     }
-
-    public String getNome(String matricula) throws SQLException, RegistroNaoEncontradoException {
-        this.resultSet.beforeFirst();
-        while (resultSet.next()){
-            if(resultSet.getString("MATRICULA").equals(matricula)){
-                return resultSet.getString("NOME");
-            }
-        }
-
-        throw new RegistroNaoEncontradoException("Pessoa não encontrada", "PESSOA");
-    }
-
-    public int getPerfil(String matricula) throws SQLException, RegistroNaoEncontradoException {
-        this.resultSet.beforeFirst();
-        while (resultSet.next()){
-            if(resultSet.getString("MATRICULA").equals(matricula)){
-                return resultSet.getInt("ID_PERFIL");
-            }
-        }
-
-        throw new RegistroNaoEncontradoException("Pessoa não encontrada", "PESSOA");
-
-    }
-
-    public String getMatriculaAssociacao(String matricula) throws SQLException, RegistroNaoEncontradoException {
-        this.resultSet.beforeFirst();
-        while (resultSet.next()){
-            if(resultSet.getString("MATRICULA").equals(matricula)){
-                return resultSet.getString("MATRICULA_ASSOCIACAO");
-            }
-        }
-
-        throw new RegistroNaoEncontradoException("Pessoa não encontrada", "PESSOA");
-
-    }
-
 }

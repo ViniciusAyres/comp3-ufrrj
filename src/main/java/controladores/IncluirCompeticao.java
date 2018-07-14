@@ -1,9 +1,6 @@
 package controladores;
 
-import dados.datamappers.CompeticaoDataMapper;
 import dados.datamappers.EnderecoCompeticaoMapper;
-import dados.datamappers.EnderecoDataMapper;
-import dados.datamappers.LocalDataMapper;
 import dominio.CompeticaoMD;
 import dominio.Perfil;
 import utils.Utils;
@@ -14,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 @WebServlet(name = "IncluirCompeticao", urlPatterns = "/incluirLocaisCompeticao")
@@ -42,31 +40,17 @@ public class IncluirCompeticao extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try {
-
+            
             String nome = request.getParameter("nome");
-            String logradouro = request.getParameter("logradouro");
-            int    numeroLograduro = Integer.parseInt(request.getParameter("numeroLogradouro"));
-            String complemento = request.getParameter("complemento");
-            String cidade = request.getParameter("cidade");
-            String cep = request.getParameter("cep");
-            String uf = request.getParameter("uf");
-            String bairro = request.getParameter("bairro");
+            String endereco = request.getParameter("endereco");
 
-
-            if(logradouro.isEmpty())
-                request.setAttribute("menssagemErro", "Preencha o campo logradouro");
-
-            if(nome.isEmpty())
-                request.setAttribute("mensagemErro", "Preencha o campo nome");
-
+            ResultSet resultSet = null;
 
             EnderecoCompeticaoMapper enderecoCompeticaoMapper = new EnderecoCompeticaoMapper();
-            boolean result = enderecoCompeticaoMapper.criar(nome, logradouro, numeroLograduro,
-                    complemento, cep, bairro, cidade, uf);
+            CompeticaoMD competicaoMd = new CompeticaoMD(resultSet);
 
-            if (!result) {
-                request.setAttribute("mensagemSucesso", "Local de competição criado com sucesso");
-            }
+            request.setAttribute("mensagemSucesso", "Local de competição criado com sucesso");
+
             request.getRequestDispatcher("/index.jsp").forward(request, response);
 
         }
