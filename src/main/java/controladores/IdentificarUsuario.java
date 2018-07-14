@@ -1,6 +1,8 @@
 package controladores;
 
+import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dominio.Perfil;
+import dominio.PessoaMT;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -22,15 +24,14 @@ public class IdentificarUsuario extends HttpServlet {
         String matricula = request.getParameter("matricula");
         String senha = request.getParameter("senha");
 
-        if(Utils.isValido(matricula, senha)){
-            request.getSession().setAttribute("matricula", matricula);
-            request.setAttribute("mensagemSucesso", "Conta autenticada com sucesso.");
+        try {
+            PessoaMT.autenticar(matricula, senha);
             response.sendRedirect((String) request.getSession().getAttribute("proximaPagina"));
-        }else{
+
+        } catch (UsuarioNaoAutenticadoException ex) {
             request.setAttribute("mensagemErro", "Erro ao identificar a Conta. Favor, tente novamente mais tarde");
             request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
         }
-
     }
 
 }

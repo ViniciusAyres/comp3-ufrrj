@@ -14,7 +14,6 @@ public class AssociacaoMT {
         this.resultSet = resultSet;
     }
 
-
     public ArrayList<String> getMatriculas() throws SQLException {
 
         ArrayList<String> matriculas = new ArrayList<String>();
