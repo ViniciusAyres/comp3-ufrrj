@@ -1,6 +1,7 @@
 package dominio;
 
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
+import utils.Validacao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +12,26 @@ public class CompeticaoMD {
 
     public CompeticaoMD(ResultSet resultSet) {
         this.resultSet = resultSet;
+    }
+
+
+    public ResultSet criar(String nome, String endereco) throws Exception {
+
+        ResultSet resultSet = null;
+
+        /*Validacao campos*/
+        if(nome == null)
+            throw  new Exception("Nome invalido");
+        if(nome.isEmpty())
+            throw new  Exception("Nome invalido");
+        if(endereco == null)
+            throw new Exception("Endereco invalido");
+        if(endereco.isEmpty())
+            throw  new Exception("Endereco invalido");
+
+        resultSet = this.resultSet;
+
+        return resultSet;
     }
 
     public ArrayList<String> getCompeticoes(){
