@@ -6,32 +6,27 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class AssociacaoMD {
+public class AssociacaoMT {
 
     private ResultSet resultSet;
 
-    public AssociacaoMD(ResultSet resultSet) {
+    public AssociacaoMT(ResultSet resultSet) {
         this.resultSet = resultSet;
     }
 
 
-    public ArrayList<String> getMatriculas(){
+    public ArrayList<String> getMatriculas() throws SQLException {
 
         ArrayList<String> matriculas = new ArrayList<String>();
 
-        try {
-
-            resultSet.beforeFirst();
-            while (resultSet.next()){
-                String matricula = resultSet.getString("MATRICULA");
-                matriculas.add(matricula);
-            }
-
-            return matriculas;
-
-        } catch (SQLException e) {
-            return null;
+        resultSet.beforeFirst();
+        while (resultSet.next()){
+            String matricula = resultSet.getString("MATRICULA");
+            matriculas.add(matricula);
         }
+
+        return matriculas;
+
     }
 
     public boolean existe(String matricula) throws SQLException, RegistroNaoEncontradoException {
@@ -54,9 +49,5 @@ public class AssociacaoMD {
         }
 
         throw new RegistroNaoEncontradoException("Associação não encontrada", "ASSOCIAÇÃO");
-    }
-
-    public String test(){
-        return "LEO";
     }
 }

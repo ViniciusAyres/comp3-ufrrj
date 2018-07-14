@@ -5,7 +5,7 @@ import dados.datamappers.AssociacaoDataMapper;
 import dados.datamappers.AtletaDataMapper;
 import dados.datamappers.AtletaInscricaoDataMapper;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
-import dominio.AssociacaoMD;
+import dominio.AssociacaoMT;
 import dominio.AtletaMT;
 import dominio.Perfil;
 import utils.Utils;
@@ -59,7 +59,7 @@ public class AlterarCadastroAtleta extends HttpServlet {
         String categoria = request.getParameter("categoria");
         try {
             AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-            AssociacaoMD associacaoMD = new AssociacaoMD(associacaoDataMapper.buscar());
+            AssociacaoMT associacaoMD = new AssociacaoMT(associacaoDataMapper.buscar());
             associacaoMD.existe(matriculaAssociacao);
             System.out.println("aqui");
             AtletaInscricaoDataMapper atletaInscricaoDataMapper = new AtletaInscricaoDataMapper();

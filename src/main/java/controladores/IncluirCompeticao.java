@@ -1,10 +1,6 @@
 package controladores;
 
-import dados.datamappers.CompeticaoDataMapper;
 import dados.datamappers.EnderecoCompeticaoMapper;
-import dados.datamappers.EnderecoDataMapper;
-import dados.datamappers.LocalDataMapper;
-import dominio.CompeticaoMD;
 import dominio.Perfil;
 import utils.Utils;
 

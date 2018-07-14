@@ -2,7 +2,7 @@ package controladores;
 
 import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.AssociacaoDataMapper;
-import dominio.AssociacaoMD;
+import dominio.AssociacaoMT;
 import dominio.Perfil;
 import utils.Utils;
 
@@ -31,7 +31,7 @@ public class ListarAssociacoes extends HttpServlet {
             Utils.autenticar(request, perfisAutorizados);
             System.out.println("dd");
             ResultSet resultSet = new AssociacaoDataMapper().buscar();
-            AssociacaoMD associacaoMD = new AssociacaoMD(resultSet);
+            AssociacaoMT associacaoMD = new AssociacaoMT(resultSet);
             request.setAttribute("associacaoMD", associacaoMD);
             request.getRequestDispatcher("/listarAssociacoes.jsp").forward(request, response);
         } catch (UsuarioNaoAutenticadoException e) {
