@@ -26,6 +26,7 @@ public class IdentificarUsuario extends HttpServlet {
 
         try {
             PessoaMT.autenticar(matricula, senha);
+            System.out.println();
             response.sendRedirect((String) request.getSession().getAttribute("proximaPagina"));
 
         } catch (UsuarioNaoAutenticadoException ex) {

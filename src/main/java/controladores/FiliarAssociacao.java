@@ -16,23 +16,17 @@ import java.util.ArrayList;
 
 @WebServlet(name = "FiliarAssociacao", urlPatterns = "/filiarAssociacao")
 public class FiliarAssociacao extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         try {
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
-
-            Utils.autenticar(request, perfisAutorizados);
-            request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request, response);
-        } catch (UsuarioNaoAutenticadoException e) {
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-
-            request.getSession().setAttribute("proximaPagina", "/filiarAssociacao");
-            request.setAttribute("perfisAutorizados", perfisAutorizados);
-            response.sendRedirect("/identificarUsuario");
-            //request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+            request.getSession().setAttribute("proximaPagina", "/filiarAssociacao.jsp");
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("mensagemErro","Ocorreu um erro inesperado");
+            response.sendRedirect("/index.jsp");
         }
+
     }
 
     //TODO: Ajustar o UF
@@ -66,5 +60,4 @@ public class FiliarAssociacao extends HttpServlet {
         }
         request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
-
 }

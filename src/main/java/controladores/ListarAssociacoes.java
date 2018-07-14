@@ -20,27 +20,27 @@ public class ListarAssociacoes extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("proxima pagina: " + request.getSession().getAttribute("proximaPagina"));
-        System.out.println("Oi");
-        try {
-            System.out.println("bb");
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
-
-            Utils.autenticar(request, perfisAutorizados);
-            System.out.println("dd");
-            ResultSet resultSet = new AssociacaoDataMapper().buscar();
-            AssociacaoMT associacaoMD = new AssociacaoMT(resultSet);
-            request.setAttribute("associacaoMD", associacaoMD);
-            request.getRequestDispatcher("/listarAssociacoes.jsp").forward(request, response);
-        } catch (UsuarioNaoAutenticadoException e) {
-            System.out.println("listar usuario nao autenticado excecao");
-            request.getSession().setAttribute("proximaPagina", "/listarAssociacoes");
-            response.sendRedirect("/identificarUsuario");
-//            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-
-        }
+//        System.out.println("proxima pagina: " + request.getSession().getAttribute("proximaPagina"));
+//        System.out.println("Oi");
+//        try {
+//            System.out.println("bb");
+//            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+//            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+//            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
+//
+//            Utils.autenticar(request, perfisAutorizados);
+//            System.out.println("dd");
+//            ResultSet resultSet = new AssociacaoDataMapper().buscar();
+//            AssociacaoMT associacaoMD = new AssociacaoMT(resultSet);
+//            request.setAttribute("associacaoMD", associacaoMD);
+//            request.getRequestDispatcher("/listarAssociacoes.jsp").forward(request, response);
+//        } catch (UsuarioNaoAutenticadoException e) {
+//            System.out.println("listar usuario nao autenticado excecao");
+//            request.getSession().setAttribute("proximaPagina", "/listarAssociacoes");
+//            response.sendRedirect("/identificarUsuario");
+////            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+//
+//        }
 
         }
 

@@ -15,8 +15,8 @@ public class AtletaInscricaoDataMapper {
                 "VALUES (?, ?, ?, ?)";
 
         PreparedStatement statement = SQL.getPreparedStatement(insertAtleta);
-        String matriculaAtleta = new AssociacaoDataMapper().gerarMatricula();
-        statement.setString(1, matriculaAtleta);
+       // String matriculaAtleta = new AssociacaoDataMapper().gerarMatricula();
+        //statement.setString(1, matriculaAtleta);
         statement.setString(2, nome);
         statement.setDate(3, dataNascimento);
         statement.setString(4, categoria);
@@ -31,7 +31,7 @@ public class AtletaInscricaoDataMapper {
         statement.setString(3, numeroPagamento);
         statement.setString(4, numeroOficio);
         statement.setDate(5, dataOficio);
-        statement.setString(6, matriculaAtleta);
+     //   statement.setString(6, matriculaAtleta);
         statement.execute();
         System.out.println("grava inscricao");
         return true;

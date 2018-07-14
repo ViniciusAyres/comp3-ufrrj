@@ -15,14 +15,14 @@ import java.util.ArrayList;
 public class Utils {
 
     public static boolean isValido(String matricula, String senha) {
-        try {
-            PessoaMT pessoaMT = new PessoaMT(new PessoaDataMapper().buscarPorMatricula(matricula));
-            return pessoaMT.getSenha(matricula).equals(senha);
-        }catch (RegistroNaoEncontradoException e) {
+//        try {
+//            PessoaMT pessoaMT = new PessoaMT(new PessoaDataMapper().buscarPorMatricula(matricula));
+//            return pessoaMT.getSenha(matricula).equals(senha);
+//        }catch (RegistroNaoEncontradoException e) {
+//            return false;
+//        } catch (SQLException e) {
             return false;
-        } catch (SQLException e) {
-            return false;
-        }
+//        }
     }
 
     public static boolean autenticar(HttpServletRequest request, ArrayList<Integer> perfisAceitos) throws ServletException, IOException, UsuarioNaoAutenticadoException {
@@ -36,23 +36,23 @@ public class Utils {
     }
 
     public static boolean hasAutorizacao(String matricula, ArrayList<Integer> perfisAceitos) {
-        try {
-            PessoaMT pessoaMT = new PessoaMT(new PessoaDataMapper().buscarPorMatricula(matricula));
-            return perfisAceitos.contains(pessoaMT.getPerfil(matricula));
-        } catch (SQLException e) {
+//        try {
+//            PessoaMT pessoaMT = new PessoaMT(new PessoaDataMapper().buscarPorMatricula(matricula));
+//            return perfisAceitos.contains(pessoaMT.getPerfil(matricula));
+//        } catch (SQLException e) {
+//            return false;
+//        } catch (RegistroNaoEncontradoException e) {
             return false;
-        } catch (RegistroNaoEncontradoException e) {
-            return false;
-        }
-    }
+//        }
+   }
 
     public static boolean isAutenticado(HttpServletRequest request){
-        String matricula = (String) request.getSession().getAttribute("matricula");
-        System.out.println("MATRICULA: " + matricula);
-
-        if(matricula == null){
-            return false;
-        }
+//        String matricula = (String) request.getSession().getAttribute("matricula");
+//        System.out.println("MATRICULA: " + matricula);
+//
+//        if(matricula == null){
+//            return false;
+//        }
 
         return true;
     }

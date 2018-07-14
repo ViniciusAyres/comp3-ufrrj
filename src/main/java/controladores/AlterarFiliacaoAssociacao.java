@@ -4,7 +4,6 @@ package controladores;
 import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.AssociacaoDataMapper;
 import dados.datamappers.AssociacaoFiliacaoEnderecoDataMapper;
-import dominio.AssociacaoMD;
 import dominio.Perfil;
 import utils.Utils;
 
@@ -21,23 +20,23 @@ import java.util.ArrayList;
 @WebServlet(name = "AlterarFiliacaoAssociacao", urlPatterns = "/alterarFiliacaoAssociacao")
 public class AlterarFiliacaoAssociacao extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-            ResultSet resultSet = new AssociacaoDataMapper().buscar();
-            AssociacaoMD associacaoMD = new AssociacaoMD(resultSet);
-            request.setAttribute("associacaoMD", associacaoMD);
-            Utils.autenticar(request, perfisAutorizados);
-            request.getRequestDispatcher("/alterarFiliacaoAssociacao.jsp").forward(request, response);
-        } catch (UsuarioNaoAutenticadoException e) {
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-
-            request.getSession().setAttribute("proximaPagina", "/alterarFiliacaoAssociacao");
-            request.setAttribute("perfisAutorizados", perfisAutorizados);
-            response.sendRedirect("/identificarUsuario");
-            //request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-        }
+//        try {
+//            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+//            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+//            ResultSet resultSet = new AssociacaoDataMapper().buscar();
+//            AssociacaoMD associacaoMD = new AssociacaoMD(resultSet);
+//            request.setAttribute("associacaoMD", associacaoMD);
+//            Utils.autenticar(request, perfisAutorizados);
+//            request.getRequestDispatcher("/alterarFiliacaoAssociacao.jsp").forward(request, response);
+//        } catch (UsuarioNaoAutenticadoException e) {
+//            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+//            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+//
+//            request.getSession().setAttribute("proximaPagina", "/alterarFiliacaoAssociacao");
+//            request.setAttribute("perfisAutorizados", perfisAutorizados);
+//            response.sendRedirect("/identificarUsuario");
+//            //request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+//        }
     }
 
     /* protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
