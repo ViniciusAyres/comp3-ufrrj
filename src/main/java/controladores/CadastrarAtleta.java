@@ -3,11 +3,8 @@ package controladores;
 import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.AssociacaoDataMapper;
 import dados.datamappers.AtletaInscricaoDataMapper;
-import dados.datamappers.ClasseDataMapper;
-import dados.datamappers.excecoes.ClasseNaoEncontradaException;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
-import dominio.AssociacaoMD;
-import dominio.ClasseMT;
+import dominio.AssociacaoMT;
 import dominio.Perfil;
 import utils.Utils;
 
@@ -18,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -52,7 +48,7 @@ public class CadastrarAtleta extends HttpServlet {
         String categoria = request.getParameter("categoria");
         try {
             AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-            AssociacaoMD associacaoMD = new AssociacaoMD(associacaoDataMapper.buscar());
+            AssociacaoMT associacaoMD = new AssociacaoMT(associacaoDataMapper.buscar());
             associacaoMD.existe(matriculaAssociacao);
 
             AtletaInscricaoDataMapper atletaInscricaoDataMapper = new AtletaInscricaoDataMapper();

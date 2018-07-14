@@ -10,108 +10,47 @@ import java.sql.Time;
 
 public class AssociacaoDataMapper {
 
-    public ResultSet buscarPorMatricula(String matricula){
-        try{
-            return  DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public ResultSet buscarPorMatricula(String matricula) throws SQLException {
+        return DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
     }
 
-    public ResultSet buscar(){
-        try{
-            return  DataMapper.buscar("ASSOCIACAO");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public ResultSet buscar() throws SQLException {
+        return  DataMapper.buscar("ASSOCIACAO");
     }
 
 
-    public boolean verficarAssociacaoPorMatricula(String matricula) {
-        try {
-            ResultSet resultSet = DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
-            return  resultSet.next();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return  false;
-        }
-    }
-
-    public boolean criar(String matricula, String nome, String sigla, String telefone, int idEndereco){
-        String sql = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ID_ENDERECO) " +
+    public int criar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {
+        String sql = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ENDERECO) " +
                 "VALUES (?, ?, ?, ?, ?)";
 
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
-
-            statement.setString(1, matricula);
-            statement.setString(2, nome);
-            statement.setString(3, sigla);
-            statement.setString(4, telefone);
-            statement.setInt(5, idEndereco);
-            return statement.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-    public boolean atualizar(String matricula, String nome, String sigla, String telefone, int idEndereco){
-        String sql = "UPDATE ASSOCIACAO " +
-                "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ID_ENDERECO = ? " +
-                "WHERE MATRICULA = ?";
-
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
-
-            statement.setString(1, nome);
-            statement.setString(2, sigla);
-            statement.setString(3, telefone);
-            statement.setInt(4, idEndereco);
-            statement.setString(5, matricula);
-
-            return statement.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
-
-    public String gerarMatricula() throws SQLException {
-        return String.valueOf(new java.util.Date().getTime());
-    }
-
-    public String gerarSenha() throws SQLException {
-        return "123456";
-    }
-
-    public int buscarQuantidadesAssociados() throws SQLException {
-
-        int quantidade = 0;
-        String sql = "SELECT COUNT(*) AS TOTAL FROM ASSOCIACAO";
         PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                 .prepareStatement(sql);
-        ResultSet result = statement.executeQuery();
 
-        while (result.next()) {
-            quantidade = result.getInt(1);
-        }
+        statement.setString(1, matricula);
+        statement.setString(2, nome);
+        statement.setString(3, sigla);
+        statement.setString(4, telefone);
+        statement.setString(5, endereco);
+        return statement.executeUpdate();
 
-        return quantidade;
+    }
 
+    public int atualizar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {
+        String sql = "UPDATE ASSOCIACAO " +
+                "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ENDERECO = ? " +
+                "WHERE MATRICULA = ?";
+
+
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        statement.setString(1, nome);
+        statement.setString(2, sigla);
+        statement.setString(3, telefone);
+        statement.setString(4, endereco);
+        statement.setString(5, matricula);
+
+        return statement.executeUpdate();
     }
 
 }

@@ -1,9 +1,9 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="dominio.AssociacaoMD" %>
+<%@ page import="dominio.AssociacaoMT" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    AssociacaoMD associacaoMD = (AssociacaoMD) request.getAttribute("associacaoMD");
+    AssociacaoMT associacaoMD = (AssociacaoMT) request.getAttribute("associacaoMD");
     ArrayList<String> matriculas = associacaoMD.getMatriculas();
 %>
 <html>
