@@ -104,7 +104,7 @@ public class AssociacaoDataMapper {
             try {
                 PreparedStatement statement = ConnectionSingleton.getInstance()
                         .prepareStatement(sql);
-                row.put("matricula", AssociacaoMT.gerarMatricula());
+
                 statement.setString(1, row.getString("nome"));
                 statement.setString(2, row.getString("sigla"));
                 statement.setString(3, row.getString("telefone"));
