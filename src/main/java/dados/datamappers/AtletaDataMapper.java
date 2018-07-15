@@ -83,19 +83,18 @@ public class AtletaDataMapper {
 
         String sql = "SELECT * FROM ATLETA WHERE MATRICULA = ? ";
 
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
-
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
 
         statement.setString(1, matricula);
 
-        ResultSet rs = statement.getResultSet();
+        ResultSet rs = statement.executeQuery();
 
         if(!rs.next())
             throw new RegistroNaoEncontradoException("Matrícula não encontrada","ATLETA");
 
         Row row = new Row();
         RecordSet dataset = new RecordSet();
+        rs.beforeFirst();
         while (rs.next()) {
 
             row.put("matricula", rs.getString("matricula"));

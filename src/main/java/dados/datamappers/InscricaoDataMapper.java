@@ -31,18 +31,21 @@ public class InscricaoDataMapper {
 
         int linhasAfetadas = 0;
         for(Row row : recordSet) {
-            String sql = "INSERT INTO INSCRICAO (NUMERO_OFICIO, DATA_OFICIO, NUMERO_PAGAMENTO," +
+            String sql = "INSERT INTO INSCRICAO (NUMERO_OFICIO, DATA_OFICIO, DATA_ENTRADA, NUMERO_PAGAMENTO," +
                     " MATRICULA_ASSOCIACAO, MATRICULA_ATLETA)" +
-                    "VALUES (?,?,?,?,?)";
+                    "VALUES (?,?,?,?,?,?)";
 
             PreparedStatement statement = SQL.getPreparedStatement(sql);
 
+
             statement.setString(1, row.getString("numeroOficio"));
             Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
+            Timestamp dataEntrada = new Timestamp(simpleDateFormat.parse(row.getString("dataAssociacao")).getTime());
             statement.setTimestamp(2, dataOficio);
-            statement.setString(3, row.getString("numeroPagamento"));
-            statement.setString(4, row.getString("matriculaAssociado"));
-            statement.setString(5, row.getString("matriculaAtleta"));
+            statement.setTimestamp(3, dataEntrada);
+            statement.setString(4, row.getString("numeroComprovante"));
+            statement.setString(5, row.getString("matriculaAssociacao"));
+            statement.setString(6,(row.getString(("matricula"))));
 
             linhasAfetadas += statement.executeUpdate();
         }
