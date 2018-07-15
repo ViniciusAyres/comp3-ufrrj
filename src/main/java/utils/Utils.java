@@ -70,7 +70,7 @@ public class Utils {
         else if (rd1 == null && rd2 != null)
             return  2;
         else
-            return 0;
+            return 3;
     }
 }
 
