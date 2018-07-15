@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class LocalCompeticaoDataMapper {
 
-    public ResultSet buscar() throws SQLException {
+    public static ResultSet buscar() throws SQLException {
 
         String sql = "SELECT  L.NOME LOCALNOME,  E.LOGRADOURO ENDERECO, PISCINA.TAMANHO TAMANHO \n" +
                 "  FROM COMPETICAO AS CP\n" +

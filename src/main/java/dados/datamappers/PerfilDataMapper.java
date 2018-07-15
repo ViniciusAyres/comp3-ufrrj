@@ -4,24 +4,12 @@ import dados.bancos.derbyDB.ConnectionSingleton;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class PerfilDataMapper   {
 
-
-    public ResultSet buscarPorId(int id){
-
-        try{
-
-            return  DataMapper.buscarPorId(id, "PERFIL");
-
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public static ResultSet buscarPorId(int id) throws SQLException {
+        return  DataMapper.buscarPorId(id, "PERFIL");
     }
-
-
 
 }

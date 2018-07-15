@@ -44,7 +44,7 @@ public class AssociacaoDataMapper {
         return dataset;
     }
 
-    public RecordSet buscar() throws SQLException {
+    public static RecordSet buscar() throws SQLException {
 
         String sql = "SELECT * FROM ASSOCIACAO";
         PreparedStatement statement = SQL.getPreparedStatement(sql);
@@ -65,7 +65,7 @@ public class AssociacaoDataMapper {
     }
 
 
-    public void criar(RecordSet recordSet) throws SQLException {
+    public static void criar(RecordSet recordSet) throws SQLException {
 
         int linhasAfetadas = 0;
         for(Row row : recordSet)
@@ -92,7 +92,7 @@ public class AssociacaoDataMapper {
         }
     }
 
-    public int atualizar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {
+    public static int atualizar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {
         String sql = "UPDATE ASSOCIACAO " +
                 "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ENDERECO = ? " +
                 "WHERE MATRICULA = ?";
