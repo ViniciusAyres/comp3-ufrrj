@@ -22,6 +22,15 @@ public class AssociacaoFiliacaoDataMapper {
         filiacaoDataMapper.criar(recordSet);
     }
 
+    public static void atualizar(RecordSet recordSet) throws SQLException, ParseException {
+
+        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
+        FiliacaoDataMapper  filiacaoDataMapper =  new FiliacaoDataMapper();
+
+//        associacaoDataMapper.atualizar(recordSet);
+//        filiacaoDataMapper.atualizar(recordSet);
+    }
+
 
     public static RecordSet buscarPorMatricula(String matricula) throws SQLException,RegistroNaoEncontradoException {
 

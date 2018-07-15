@@ -3,7 +3,10 @@ package controladores;
 
 import dados.datamappers.AssociacaoDataMapper;
 import dados.datamappers.AssociacaoFiliacaoDataMapper;
+import dominio.AssociacaoMT;
+import dominio.FiliacaoMT;
 import utils.RecordSet;
+import utils.Row;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,7 +41,32 @@ public class AlterarFiliacaoAssociacao extends HttpServlet {
     }
 
      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         RecordSet recordSet = new RecordSet();
+         Row row = new Row();
 
+         row.put("numeroOficio", request.getParameter("numeroOficio"));
+         row.put("dataOficio", request.getParameter("dataOficio"));
+         row.put("numeroComprovante", request.getParameter("numeroComprovante"));
+
+         row.put("nome", request.getParameter("nome"));
+         row.put("sigla", request.getParameter("sigla"));
+         row.put("telefone", request.getParameter("telefone"));
+         row.put("endereco", request.getParameter("endereco"));
+
+         recordSet.add(row);
+         try {
+             AssociacaoMT associacaoMT = new AssociacaoMT(recordSet);
+             FiliacaoMT filiacaoMT = new FiliacaoMT(recordSet);
+
+
+             AssociacaoFiliacaoDataMapper.criar(recordSet);
+             request.getSession().setAttribute("mensagemSucesso","Associação filiada com sucesso!");
+             response.sendRedirect("/index.jsp");
+     } catch (Exception e) {
+        e.printStackTrace();
+        request.getSession().setAttribute("mensagemErro", "Ocorreu um erro inesperado");
+        response.sendRedirect("/index.jsp");
+    }
     }
 }
 

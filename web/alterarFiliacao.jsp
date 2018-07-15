@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" id="numeroOficio" name="numeroOficio" class="form-control" placeholder="Número de Ofício"
-                                   required maxlength="50" value="<%= recordSet.get(0).getString("nome") %>" >
+                                   required maxlength="50" value="<%= recordSet.get(0).getString("numeroOficio") %>" >
                         </div>
                     </div>
                 </div>
