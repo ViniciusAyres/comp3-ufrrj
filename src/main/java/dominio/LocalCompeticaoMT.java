@@ -20,45 +20,6 @@ public class LocalCompeticaoMT {
         this.recordSet = recordSet;
     }
 
-    public String getEnderecoByLocal(String nomeLocal) throws SQLException {
-
-        LocalDataMapper localDataMapper = new LocalDataMapper();
-           RecordSet recordSet = localDataMapper.buscarPorNome(nomeLocal);
-
-           for (Row row : recordSet) {
-               String nomeLocalBD = row.getString("nome");
-               if(nomeLocalBD == nomeLocalBD)
-                   return row.getString("endereco");
-           }
-           return "";
-    }
-
-    public  String getTamanhoPiscinaByLocal(String nomeLocal) throws SQLException {
-
-        LocalDataMapper localDataMapper = new LocalDataMapper();
-        RecordSet recordSet = localDataMapper.buscarPorNome(nomeLocal);
-
-        for (Row row : recordSet) {
-            String nomeLocalBD = row.getString("nome");
-            if(nomeLocalBD == nomeLocalBD)
-                return Utils.piscinaToString(row.getInt("tamanhoPiscina"));
-        }
-        return "";
-    }
-
-    public  ArrayList<String> getLocais(RecordSet recordSet) throws SQLException {
-
-        ArrayList<String> nomesLocais = new ArrayList<String>();
-
-        for(Row row : recordSet)
-        {
-            String nomeLocal = row.getString("nome");
-            nomesLocais.add(nomeLocal);
-        }
-        return nomesLocais;
-    }
-
-
     private void validar(RecordSet recordSet)  throws RegistroInvalido {
         for (Row row : recordSet) {
 
