@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class LocalDataMapperTest {
 
@@ -44,6 +45,42 @@ public class LocalDataMapperTest {
         assertEquals("LOCAL_TEST", row.getString("nome"));
         assertEquals("ENDERECO_TEST", row.getString("endereco"));
         assertEquals(1, row.getInt("tamanhoPiscina"));
+
+    }
+
+    @Test
+    public void testCriar() throws SQLException {
+
+        RecordSet recordSet = new RecordSet();
+        LocalDataMapper localDataMapper = new LocalDataMapper();
+        Row row = new Row();
+
+        String dadoNome = "CRIAR_NOME_TEST";
+        String dadoEndereco = "CRIAR_ENDERECO_TEST";
+        int    dadoTamanhoPiscina = 3;
+
+        row.put("nome", dadoNome);
+        row.put("endereco",dadoEndereco);
+        row.put("tamanhoPiscina", dadoTamanhoPiscina);
+
+        recordSet.add(row);
+
+        localDataMapper.criar(recordSet);
+        RecordSet recordSetTodos = LocalDataMapper.buscarTodos();
+        Row row1 = recordSet.get(0);
+
+        assertEquals(dadoNome, row.getString("nome"));
+        assertEquals(dadoEndereco, row.getString("endereco"));
+        assertEquals(dadoTamanhoPiscina, row.getInt("tamanhoPiscina"));
+
+        String sql = "DELETE FROM LOCAL\n" +
+                "WHERE NOME = 'CRIAR_NOME_TEST' and  " +
+                "ENDERECO = 'CRIAR_ENDERECO_TEST'";
+
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+        statement.executeUpdate();
 
     }
 

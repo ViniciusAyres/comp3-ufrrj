@@ -8,6 +8,7 @@
 <%@ include file="base.jsp" %>
 
 <%
+
     RecordSet recordSet = (RecordSet)request.getSession().getAttribute("dados");
 %>
 <html>
