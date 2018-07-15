@@ -7,6 +7,7 @@ import utils.Row;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class AtletaMT {
@@ -38,6 +39,11 @@ public class AtletaMT {
             if(row.getDate("dataNascimento") == null)
                 throw new RegistroInvalido("Data de nascimento inválida.");
         }
+    }
+
+    public static String gerarMatricula() {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        return timestamp.toString();
     }
 
 //    public String getNome(String matricula) throws RegistroNaoEncontradoException, SQLException {

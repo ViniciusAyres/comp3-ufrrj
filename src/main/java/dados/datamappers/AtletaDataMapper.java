@@ -2,6 +2,8 @@ package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
+import dominio.AssociacaoMT;
+import dominio.AtletaMT;
 import utils.RecordSet;
 import utils.Row;
 import utils.SQL;
@@ -33,6 +35,7 @@ public class AtletaDataMapper {
             PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
+            row.put("matricula", AtletaMT.gerarMatricula());
             statement.setString(1, row.getString("matricula"));
             statement.setString(2, row.getString("nome"));
             statement.setString(3, row.getString("categoria"));
