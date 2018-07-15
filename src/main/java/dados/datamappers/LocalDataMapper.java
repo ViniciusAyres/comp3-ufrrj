@@ -3,21 +3,39 @@ package dados.datamappers;
 import dados.bancos.derbyDB.ConnectionSingleton;
 import utils.RecordSet;
 import utils.Row;
+import utils.SQL;
+import utils.Utils;
 
+import java.nio.FloatBuffer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class LocalDataMapper {
-    public ResultSet buscarPorId(int id){
-        try{
-            return  DataMapper.buscarPorId(id, "LOCAL");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
 
-        return  null;
+
+    public RecordSet buscarPorNome(String nome) throws SQLException {
+
+        String sql = "SELECT * FROM LOCAL WHERE ID = ? ";
+
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+        statement.setString(1, nome);
+
+        ResultSet resultSet =  statement.executeQuery();
+
+        return this.resultSetToRecordSetMatricula(resultSet);
+
+    }
+
+
+    public RecordSet buscarTodos() throws SQLException {
+
+        String sql = "SELECT * FROM LOCAL";
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+
+        ResultSet resultSet =  statement.executeQuery();
+
+        return  this.resultSetToRecordSetMatricula(resultSet);
     }
 
     public void  criar(RecordSet recordSet) throws SQLException {
@@ -60,4 +78,25 @@ public class LocalDataMapper {
 
         return false;
     }
+
+    private RecordSet resultSetToRecordSetMatricula(ResultSet resultSet) throws SQLException {
+
+        resultSet.beforeFirst();
+        RecordSet recordSet = new RecordSet();
+
+        while(resultSet.next()) {
+
+                Row row = new Row();
+
+                row.put("nome", resultSet.getString("NOME"));
+                row.put("endereco", resultSet.getString("ENDERECO"));
+                row.put("tamanhoPiscina", resultSet.getInt("TAMANHO_PISCINA"));
+
+                recordSet.add(row);
+            }
+
+        return recordSet;
+    }
+
+
 }

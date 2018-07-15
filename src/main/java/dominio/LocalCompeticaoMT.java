@@ -5,8 +5,10 @@ import dados.datamappers.LocalDataMapper;
 import dominio.excecoes.RegistroInvalido;
 import utils.RecordSet;
 import utils.Row;
+import utils.Utils;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class LocalCompeticaoMT {
@@ -18,63 +20,43 @@ public class LocalCompeticaoMT {
         this.recordSet = recordSet;
     }
 
-    public String getEnderecoByLocal(String nomeLocal) {
-//        try{
-//            resultSet.beforeFirst();
-//            while(resultSet.next()){
-//                String nomeLocalAux = resultSet.getString("LOCALNOME");
-//                if(nomeLocalAux.equals(nomeLocal)) {
-//                    String endereco = resultSet.getString("ENDERECO");
-//                    return  endereco;
-//                }
-//            }
-//            return  null;
-//        }
-//        catch (Exception ex) {
-//            ex.printStackTrace();
-            return  null;
-//        }
+    public String getEnderecoByLocal(String nomeLocal) throws SQLException {
+
+        LocalDataMapper localDataMapper = new LocalDataMapper();
+           RecordSet recordSet = localDataMapper.buscarPorNome(nomeLocal);
+
+           for (Row row : recordSet) {
+               String nomeLocalBD = row.getString("nome");
+               if(nomeLocalBD == nomeLocalBD)
+                   return row.getString("endereco");
+           }
+           return "";
     }
 
+    public  String getTamanhoPiscinaByLocal(String nomeLocal) throws SQLException {
 
-    public  String getTamanhoPiscinaByLocal(String nomeLocal) {
-//        try {
-//            resultSet.beforeFirst();
-//            while(resultSet.next()){
-//                String nomeLocalAux = resultSet.getString("LOCALNOME");
-//                if(nomeLocalAux.equals(nomeLocal)) {
-//                    int tamanho = resultSet.getInt("TAMANHO");
-//                    String  tamahoSTR = Integer.toString(tamanho) + " " + "metros";
-//                    return tamahoSTR;
-//                }
-//            }
-            return  null;
-//        }
-//        catch (Exception ex){
-//            ex.printStackTrace();
-//            return  null;
-//        }
+        LocalDataMapper localDataMapper = new LocalDataMapper();
+        RecordSet recordSet = localDataMapper.buscarPorNome(nomeLocal);
+
+        for (Row row : recordSet) {
+            String nomeLocalBD = row.getString("nome");
+            if(nomeLocalBD == nomeLocalBD)
+                return Utils.piscinaToString(row.getInt("tamanhoPiscina"));
+        }
+        return "";
     }
-//
-//    public  ArrayList<String> getLocais()
-//    {
-////        ArrayList<String> locais = null;
-////        try {
-////            locais = new ArrayList<String>();
-////            resultSet.beforeFirst();
-////            while (resultSet.next()){
-////                //LocalDataMapper local = LocalDataMapper();
-////                String local = this.resultSet.getString("LOCALNOME");
-////                locais.add(local);
-////            }
-////            return locais;
-////        }
-////        catch (Exception ex) {
-////            ex.printStackTrace();
-//            return locais;
-////        }
-//
-//    }
+
+    public  ArrayList<String> getLocais(RecordSet recordSet) throws SQLException {
+
+        ArrayList<String> nomesLocais = new ArrayList<String>();
+
+        for(Row row : recordSet)
+        {
+            String nomeLocal = row.getString("nome");
+            nomesLocais.add(nomeLocal);
+        }
+        return nomesLocais;
+    }
 
 
     private void validar(RecordSet recordSet)  throws RegistroInvalido {

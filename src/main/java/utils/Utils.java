@@ -73,7 +73,7 @@ public class Utils {
             return 3;
     }
 
-    public String piscinaToString(int idTamanhoPiscina) {
+    public static String piscinaToString(int idTamanhoPiscina) {
         String tamanho = null;
 
         if (idTamanhoPiscina == 1)
