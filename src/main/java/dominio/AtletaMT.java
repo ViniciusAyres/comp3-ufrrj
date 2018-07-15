@@ -18,16 +18,6 @@ public class AtletaMT {
         this.recordSet = recordSet;
     }
 
-//    public ArrayList<String> getMatriculas() throws SQLException {
-//        ArrayList<String> matriculas = new ArrayList<String>();
-//        resultSet.beforeFirst();
-//        while(resultSet.next()){
-//            String matricula = resultSet.getString("MATRICULA");
-//            matriculas.add(matricula);
-//        }
-//
-//        return matriculas;
-//    }
 
     private void validar(RecordSet recordSet) throws RegistroInvalido {
 
@@ -49,16 +39,5 @@ public class AtletaMT {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         return String.valueOf(timestamp.getTime());
     }
-
-//    public String getNome(String matricula) throws RegistroNaoEncontradoException, SQLException {
-//        resultSet.beforeFirst();
-//        while(resultSet.next()){
-//            if ( resultSet.getString("MATRICULA").equals(matricula) ) {
-//                return resultSet.getString("NOME");
-//            }
-//        }
-//
-//        throw new RegistroNaoEncontradoException("Atleta não encontrado", "ATLETA");
-//    }
 
 }
