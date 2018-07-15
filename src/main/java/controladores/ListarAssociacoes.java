@@ -4,6 +4,7 @@ import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dados.datamappers.AssociacaoDataMapper;
 import dominio.AssociacaoMT;
 import dominio.Perfil;
+import utils.RecordSet;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -20,6 +21,17 @@ public class ListarAssociacoes extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            RecordSet recordSet = new AssociacaoDataMapper().buscar();
+            request.getSession().setAttribute("dados", recordSet);
+            request.getSession().setAttribute("proximaPagina", "/listarAssociacoes.jsp");
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("mensagemErro","Ocorreu um erro inesperado");
+            response.sendRedirect("/index.jsp");
+        }
+
 //        System.out.println("proxima pagina: " + request.getSession().getAttribute("proximaPagina"));
 //        System.out.println("Oi");
 //        try {

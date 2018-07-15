@@ -72,17 +72,17 @@ public class AssociacaoDataMapperTest {
     }
 
 
-    @Test
-    public void testBuscar() throws SQLException {
-        ResultSet resultSet = new AssociacaoDataMapper().buscar();
-        int cont = 0;
-
-        while(resultSet.next()){
-            cont++;
-        }
-
-        assertEquals(4, cont);
-    }
+//    @Test
+//    public void testBuscar() throws SQLException {
+//        ResultSet resultSet = new AssociacaoDataMapper().buscar();
+//        int cont = 0;
+//
+//        while(resultSet.next()){
+//            cont++;
+//        }
+//
+//        assertEquals(4, cont);
+//    }
 
     @Test
     public void testBuscarPorMatricula() throws SQLException {

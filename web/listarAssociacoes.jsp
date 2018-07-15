@@ -1,10 +1,11 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="dominio.AssociacaoMT" %>
+<%@ page import="utils.RecordSet" %>
+<%@ page import="utils.Row" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    AssociacaoMT associacaoMD = (AssociacaoMT) request.getAttribute("associacaoMD");
-    ArrayList<String> matriculas = associacaoMD.getMatriculas();
+    RecordSet recordSet = (RecordSet) request.getSession().getAttribute("dados");
 %>
 <html>
 <head>
@@ -27,10 +28,10 @@
                     </thead>
                     <tbody>
                     <%
-                        for(String matricula : matriculas) {
+                        for(Row row : recordSet) {
                             out.print("<tr class=\"text-center\">");
-                            out.print("<th>" + matricula + "</th>");
-                            out.print("<th>" + associacaoMD.getNome(matricula) +"</th>");
+                            out.print("<th>" + row.getString("matricula") + "</th>");
+                            out.print("<th>" + row.getString("nome") +"</th>");
                             out.print("</tr>");
                         }
                     %>

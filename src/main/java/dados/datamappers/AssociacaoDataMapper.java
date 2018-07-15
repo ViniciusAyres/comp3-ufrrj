@@ -44,8 +44,24 @@ public class AssociacaoDataMapper {
         return dataset;
     }
 
-    public ResultSet buscar() throws SQLException {
-        return  DataMapper.buscar("ASSOCIACAO");
+    public RecordSet buscar() throws SQLException {
+
+        String sql = "SELECT * FROM ASSOCIACAO";
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        RecordSet recordSet = new RecordSet();
+
+        while(resultSet.next()){
+            Row row = new Row();
+            row.put("matricula", resultSet.getString("MATRICULA"));
+            row.put("nome", resultSet.getString("NOME"));
+            row.put("telefone", resultSet.getString("TELEFONE"));
+            row.put("endereco", resultSet.getString("ENDERECO"));
+
+            recordSet.add(row);
+        }
+
+        return recordSet;
     }
 
 
@@ -92,6 +108,14 @@ public class AssociacaoDataMapper {
         statement.setString(5, matricula);
 
         return statement.executeUpdate();
+    }
+
+    public static void main(String[] args) throws SQLException {
+        System.out.println("1");
+        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
+        System.out.println("2");
+        RecordSet recordSet = associacaoDataMapper.buscar();
+        System.out.println(recordSet);
     }
 
 }

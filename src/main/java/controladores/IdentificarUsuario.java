@@ -3,6 +3,7 @@ package controladores;
 import controladores.exceptions.UsuarioNaoAutenticadoException;
 import dominio.Perfil;
 import dominio.PessoaMT;
+import utils.RecordSet;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -27,7 +28,9 @@ public class IdentificarUsuario extends HttpServlet {
         try {
             PessoaMT.autenticar(matricula, senha);
             String proximaPagina = (String) request.getSession().getAttribute("proximaPagina");
+            RecordSet recordSet = (RecordSet) request.getSession().getAttribute("dados");
             request.getSession().invalidate();
+            request.getSession().setAttribute("dados", recordSet);
             response.sendRedirect(proximaPagina);
         } catch (UsuarioNaoAutenticadoException ex) {
             request.getSession().setAttribute("mensagemErro", "Erro ao identificar a Conta. Favor, tente novamente mais tarde");
