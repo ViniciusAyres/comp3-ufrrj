@@ -37,32 +37,32 @@ public class CadastrarAtleta extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String numeroOficio = request.getParameter("numeroOficio");
-        Date dataOficio = Date.valueOf(request.getParameter("dataOficio"));
-
-        String nome = request.getParameter("nome");
-        Date dataNascimento = Date.valueOf(request.getParameter("dataNascimento"));
-        Date dataAssociacao = Date.valueOf(request.getParameter("dataAssociacao"));
-        String matriculaAssociacao = request.getParameter("matriculaAssociacao");
-        String numeroComprovante = request.getParameter("numeroComprovante");
-        String categoria = request.getParameter("categoria");
-        try {
-            AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-            AssociacaoMT associacaoMD = new AssociacaoMT(associacaoDataMapper.buscar());
-            associacaoMD.existe(matriculaAssociacao);
-
-            AtletaInscricaoDataMapper atletaInscricaoDataMapper = new AtletaInscricaoDataMapper();
-            atletaInscricaoDataMapper.criar(nome, dataNascimento, categoria,
-                                               matriculaAssociacao, dataAssociacao, numeroComprovante, numeroOficio, dataOficio);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            request.getRequestDispatcher("/cadastrarAtleta");
-        } catch (RegistroNaoEncontradoException e) {
-            e.printStackTrace();
-            request.getRequestDispatcher("/cadastrarAtleta");
-        }
-        response.sendRedirect("/index.jsp");
+//        String numeroOficio = request.getParameter("numeroOficio");
+//        Date dataOficio = Date.valueOf(request.getParameter("dataOficio"));
+//
+//        String nome = request.getParameter("nome");
+//        Date dataNascimento = Date.valueOf(request.getParameter("dataNascimento"));
+//        Date dataAssociacao = Date.valueOf(request.getParameter("dataAssociacao"));
+//        String matriculaAssociacao = request.getParameter("matriculaAssociacao");
+//        String numeroComprovante = request.getParameter("numeroComprovante");
+//        String categoria = request.getParameter("categoria");
+//        try {
+//            AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
+//            AssociacaoMT associacaoMT = new AssociacaoMT(associacaoDataMapper.buscar());
+//            associacaoMD.existe(matriculaAssociacao);
+//
+//            AtletaInscricaoDataMapper atletaInscricaoDataMapper = new AtletaInscricaoDataMapper();
+//            atletaInscricaoDataMapper.criar(nome, dataNascimento, categoria,
+//                                               matriculaAssociacao, dataAssociacao, numeroComprovante, numeroOficio, dataOficio);
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            request.getRequestDispatcher("/cadastrarAtleta");
+//        } catch (RegistroNaoEncontradoException e) {
+//            e.printStackTrace();
+//            request.getRequestDispatcher("/cadastrarAtleta");
+//        }
+//        response.sendRedirect("/index.jsp");
 
     }
 }

@@ -1,7 +1,6 @@
 package dominio;
 
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
-import utils.Validacao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,26 +19,26 @@ public class CompeticaoMD {
         ResultSet resultSet = null;
 
         /*Validacao campos*/
-        if(nome == null)
-            throw  new Exception("Nome invalido");
-        if(nome.isEmpty())
-            throw new  Exception("Nome invalido");
-        if(endereco == null)
+        if (nome == null)
+            throw new Exception("Nome invalido");
+        if (nome.isEmpty())
+            throw new Exception("Nome invalido");
+        if (endereco == null)
             throw new Exception("Endereco invalido");
-        if(endereco.isEmpty())
-            throw  new Exception("Endereco invalido");
+        if (endereco.isEmpty())
+            throw new Exception("Endereco invalido");
 
         resultSet = this.resultSet;
 
         return resultSet;
     }
 
-    public ArrayList<String> getCompeticoes(){
+    public ArrayList<String> getCompeticoes() {
         ArrayList<String> competicoes = new ArrayList<String>();
 
         try {
             resultSet.beforeFirst();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 String competicao = resultSet.getString("NOME");
                 competicoes.add(competicao);
             }
@@ -56,8 +55,8 @@ public class CompeticaoMD {
         resultSet.beforeFirst();
         int id = Integer.parseInt(idstr);
 
-        while (resultSet.next()){
-            if(resultSet.getInt("ID") == id){
+        while (resultSet.next()) {
+            if (resultSet.getInt("ID") == id) {
                 return resultSet.getString("NOME");
             }
         }

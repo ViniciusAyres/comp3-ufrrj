@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
-    <form class="form" role="form" method="POST" action="">
+    <form class="form" role="form" method="POST" action="/filiarAssociacao">
 
         <div class="card-header text-center">
             <h4>
@@ -29,7 +29,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" id="numeroOficio" name="numeroOficio" class="form-control" placeholder="Número de Ofício"
-                                   required maxlength="50">
+                                   maxlength="50">
                         </div>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="date" name="dataOficio" class="form-control" id="dataOficio" required>
+                            <input type="date" name="dataOficio" class="form-control" id="dataOficio" >
                         </div>
                     </div>
                 </div>

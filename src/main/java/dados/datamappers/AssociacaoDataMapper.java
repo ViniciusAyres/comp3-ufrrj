@@ -1,7 +1,10 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import dominio.AssociacaoMT;
 import utils.Criptografia;
+import utils.RecordSet;
+import utils.Row;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,20 +22,26 @@ public class AssociacaoDataMapper {
     }
 
 
-    public int criar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {
-        String sql = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ENDERECO) " +
-                "VALUES (?, ?, ?, ?, ?)";
+    public void criar(RecordSet recordSet) throws SQLException {
 
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ENDERECO) " +
+                    "VALUES (?, ?, ?, ?, ?)";
 
-        statement.setString(1, matricula);
-        statement.setString(2, nome);
-        statement.setString(3, sigla);
-        statement.setString(4, telefone);
-        statement.setString(5, endereco);
-        return statement.executeUpdate();
+            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                    .prepareStatement(sql);
 
+            row.put("matricula", AssociacaoMT.gerarMatricula());
+            statement.setString(1, row.getString("matricula"));
+            statement.setString(2, row.getString("nome"));
+            statement.setString(3, row.getString("sigla"));
+            statement.setString(4, row.getString("telefone"));
+            statement.setString(5, row.getString("endereco"));
+
+            linhasAfetadas += statement.executeUpdate();
+        }
     }
 
     public int atualizar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {

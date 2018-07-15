@@ -1,21 +1,12 @@
 package controladores;
 
 
-import controladores.exceptions.UsuarioNaoAutenticadoException;
-import dados.datamappers.AssociacaoDataMapper;
-import dados.datamappers.AssociacaoFiliacaoEnderecoDataMapper;
-import dominio.Perfil;
-import utils.Utils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 @WebServlet(name = "AlterarFiliacaoAssociacao", urlPatterns = "/alterarFiliacaoAssociacao")
 public class AlterarFiliacaoAssociacao extends HttpServlet {
@@ -59,7 +50,7 @@ public class AlterarFiliacaoAssociacao extends HttpServlet {
         System.out.println("DATA_OFICIO: " + dataOficio);
         System.out.println("NUMERO_LOGRADOURO: " + numeroLogradouro);
 
-        AssociacaoFiliacaoEnderecoDataMapper associacaoFiliacaoEnderecoDataMapper = new AssociacaoFiliacaoEnderecoDataMapper();
+        AssociacaoFiliacaoDataMapper associacaoFiliacaoEnderecoDataMapper = new AssociacaoFiliacaoDataMapper();
         boolean result = associacaoFiliacaoEnderecoDataMapper.criar(nome, sigla, telefone,
                 logradouro, numeroLogradouro, cidade, bairro, cep, 1,
                 numeroOficio, dataOficio, numeroComprovante);

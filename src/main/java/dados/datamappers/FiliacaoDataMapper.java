@@ -1,8 +1,11 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import utils.RecordSet;
+import utils.Row;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class FiliacaoDataMapper {
 
@@ -17,51 +20,28 @@ public class FiliacaoDataMapper {
         return  null;
     }
 
-    public boolean criar(String numero_oficio, SQLData dataoficio, String numeropagamento,SQLData dataentrada, String matriculaassociacao){
-        String sql = "INSERT INTO FILIACAO(NUMERO_OFICIO, DATA_OFICIO, NUMERO_PAGAMENTO, DATA_ENTRADA, MATRICULA_ASSOCIACAO) " +
-                "VALUES (?, ?, ?, ?, ?)";
+    public void criar(RecordSet recordSet) throws SQLException {
 
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+        PreparedStatement preparedStatement;
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "INSERT INTO FILIACAO(NUMERO_OFICIO, DATA_OFICIO, NUMERO_PAGAMENTO,  MATRICULA_ASSOCIACAO) " +
+            "VALUES (?, ?, ?, ?)";
+
+            preparedStatement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setString(1, numero_oficio);
-            statement.setDate(2, (Date) dataoficio);
-            statement.setString(3, numeropagamento);
-            statement.setDate(4, (Date) dataentrada);
-            statement.setString(5, matriculaassociacao);
-            return statement.execute();
+            preparedStatement.setString(1, row.getString("numeroOficio"));
+            preparedStatement.setString(2, row.getString("dataOficio"));
+            preparedStatement.setString(3, row.getString("numeroComprovante"));
+            preparedStatement.setString(4, row.getString("matricula"));
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+            linhasAfetadas += preparedStatement.executeUpdate();
         }
-
-        return false;
     }
 
-    public boolean atualizar(String numero_oficio, Date dataoficio, String numeropagamento,Date dataentrada, String matriculaassociacao){
-        String sql = "UPDATE ASSOCIACAO " +
-                "SET DATA_OFICIO = ?, NUMERO_PAGAMENTO = ?, DATA_ENTRADA = ?, MATRICULA_ASSOCIACAO = ? " +
-                "WHERE NUMERO_OFICIO = ?";
-
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
-
-            statement.setDate(1,  dataoficio);
-            statement.setString(2, numeropagamento);
-            statement.setDate(3,  dataentrada);
-            statement.setString(4, matriculaassociacao);
-            statement.setString(5, numero_oficio);
-
-            return statement.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
-    }
 
 
 }
