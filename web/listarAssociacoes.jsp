@@ -3,8 +3,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    AssociacaoMT associacaoMD = (AssociacaoMT) request.getAttribute("associacaoMD");
-    ArrayList<String> matriculas = associacaoMD.getMatriculas();
+    //AssociacaoMT associacaoMD = (AssociacaoMT) request.getAttribute("associacaoMD");
+    //ArrayList<String> matriculas = associacaoMD.getMatriculas();
 %>
 <html>
 <head>
@@ -26,13 +26,13 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <%
+                    <%/*
                         for(String matricula : matriculas) {
                             out.print("<tr class=\"text-center\">");
                             out.print("<th>" + matricula + "</th>");
                             out.print("<th>" + associacaoMD.getNome(matricula) +"</th>");
                             out.print("</tr>");
-                        }
+                        }*/
                     %>
                     </tbody>
                 </table>

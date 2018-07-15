@@ -20,13 +20,17 @@ public class ListarAssociacoes extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        System.out.println("proxima pagina: " + request.getSession().getAttribute("proximaPagina"));
-//        System.out.println("Oi");
+
+        try {
+            request.getSession().setAttribute("proximaPagina", "/listarAssociacoes.jsp");
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("mensagemErro","Ocorreu um erro inesperado");
+            response.sendRedirect("/index.jsp");
+        }
+
 //        try {
-//            System.out.println("bb");
-//            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-//            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-//            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
 //
 //            Utils.autenticar(request, perfisAutorizados);
 //            System.out.println("dd");
@@ -44,4 +48,8 @@ public class ListarAssociacoes extends HttpServlet {
 
         }
 
-}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    }
