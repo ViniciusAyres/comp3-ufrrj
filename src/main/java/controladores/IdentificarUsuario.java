@@ -1,6 +1,8 @@
 package controladores;
 
 import controladores.exceptions.UsuarioNaoAutenticadoException;
+import dados.datamappers.excecoes.RegistroNaoEncontradoException;
+import dominio.AssociacaoMT;
 import dominio.PessoaMT;
 import utils.RecordSet;
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 
 @WebServlet(name = "IdentificarUsuario", urlPatterns = "/identificarUsuario")
 public class IdentificarUsuario extends HttpServlet {
@@ -22,7 +25,7 @@ public class IdentificarUsuario extends HttpServlet {
         String senha = request.getParameter("senha");
 
         try {
-            PessoaMT.autenticar(matricula, senha);
+            AssociacaoMT.autenticar(matricula, senha);
             String proximaPagina = (String) request.getSession().getAttribute("proximaPagina");
             RecordSet recordSet = (RecordSet) request.getSession().getAttribute("dados");
             request.getSession().invalidate();
@@ -30,6 +33,11 @@ public class IdentificarUsuario extends HttpServlet {
             response.sendRedirect(proximaPagina);
         } catch (UsuarioNaoAutenticadoException ex) {
             request.getSession().setAttribute("mensagemErro", "Erro ao identificar a Conta. Favor, tente novamente mais tarde");
+            request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (RegistroNaoEncontradoException e) {
+            request.getSession().setAttribute("mensagemErro", "Usuário ou senha não existe");
             request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
         }
     }

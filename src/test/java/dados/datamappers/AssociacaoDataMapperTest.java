@@ -67,7 +67,7 @@ public class AssociacaoDataMapperTest {
     }
 
     @Test
-    public void testAtualizar() throws SQLException, RegistroNaoEncontradoException {
+    public void testAtualizar() throws SQLException {
         RecordSet recordSet = new RecordSet();
         Row row = new Row();
 
@@ -79,7 +79,6 @@ public class AssociacaoDataMapperTest {
         recordSet.add(row);
 
         AssociacaoDataMapper.atualizar(recordSet);
-        row = AssociacaoDataMapper.buscarPorMatricula("1").get(0);
 
         assertEquals("ASSOCIACAO-MODIFICADA", row.getString("nome"));
         assertEquals("1", row.getString("matricula"));

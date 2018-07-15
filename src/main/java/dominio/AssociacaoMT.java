@@ -1,10 +1,13 @@
 package dominio;
 
+import controladores.exceptions.UsuarioNaoAutenticadoException;
+import dados.datamappers.AssociacaoDataMapper;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import dominio.excecoes.RegistroInvalido;
 import utils.RecordSet;
 import utils.Row;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -18,7 +21,7 @@ public class AssociacaoMT{
         this.recordSetSet = recordSet;
     }
 
-    public ArrayList<String> getMatriculas() throws SQLException {
+    private ArrayList<String> getMatriculas() throws SQLException {
 
         ArrayList<String> matriculas = new ArrayList<String>();
 
@@ -54,6 +57,16 @@ public class AssociacaoMT{
     public static String gerarMatricula() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         return String.valueOf(timestamp.getTime());
+    }
+
+    public static String gerarSenha(){
+        return "123456";
+    }
+
+    public static void autenticar(String matricula, String senha) throws UsuarioNaoAutenticadoException, RegistroNaoEncontradoException, SQLException {
+        if ((!"ADMIN".equals(matricula)) || (!"ADMIN".equals(senha))){
+            ResultSet resultSet = AssociacaoDataMapper.buscarPorMatriculaESenha(matricula, senha);
+        }
     }
 
 

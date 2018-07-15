@@ -44,7 +44,24 @@ public class AssociacaoDataMapper {
         return dataset;
     }
 
-    public static RecordSet buscar() throws SQLException {
+    public static ResultSet buscarPorMatriculaESenha(String matricula, String senha) throws SQLException,RegistroNaoEncontradoException {
+
+        String sql = "SELECT * FROM ASSOCIACAO WHERE MATRICULA = ? AND SENHA = ? ";
+
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+
+        statement.setString(1, matricula);
+        statement.setString(2, senha);
+
+        ResultSet rs = statement.executeQuery();
+
+        if(!rs.next())
+            throw new RegistroNaoEncontradoException("Matrícula ou senha incorreta.","ASSOCIACAO");
+
+        return rs;
+    }
+
+    public RecordSet buscar() throws SQLException {
 
         String sql = "SELECT * FROM ASSOCIACAO ORDER BY NOME";
         PreparedStatement statement = SQL.getPreparedStatement(sql);
@@ -116,5 +133,15 @@ public class AssociacaoDataMapper {
             }
         }
     }
+
+
+    public static void main(String[] args) throws SQLException {
+        System.out.println("1");
+        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
+        System.out.println("2");
+        RecordSet recordSet = associacaoDataMapper.buscar();
+        System.out.println(recordSet);
+    }
+
 }
 

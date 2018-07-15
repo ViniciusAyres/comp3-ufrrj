@@ -3,7 +3,6 @@ package dados.datamappers;
 import dados.bancos.derbyDB.ConnectionSingleton;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import dominio.AssociacaoMT;
-import dominio.Perfil;
 import utils.RecordSet;
 import utils.Row;
 import utils.SQL;

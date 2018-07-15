@@ -13,10 +13,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class AtletaDataMapper {
-    public static ResultSet buscarPorId(int id) throws SQLException {
-        return  DataMapper.buscarPorId(id, "ATLETA");
-
-    }
 
     public static void criar(RecordSet recordSet) throws SQLException, ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,7 +53,7 @@ public class AtletaDataMapper {
         }
     }
 
-    public static RecordSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException,RegistroNaoEncontradoException {
+    public static RecordSet buscarPorMatricula(String matricula) throws SQLException,RegistroNaoEncontradoException {
 
         String sql = "SELECT * FROM ATLETA WHERE MATRICULA = ? ";
 
@@ -75,10 +71,10 @@ public class AtletaDataMapper {
         rs.beforeFirst();
         while (rs.next()) {
 
-            row.put("matricula", rs.getString("matricula"));
-            row.put("nome", rs.getString("nome"));
-            row.put("categoria", rs.getString("categoria"));
-            row.put("dataNascimento", rs.getString("dataNascimento"));
+            row.put("matricula", rs.getString("MATRICULA"));
+            row.put("nome", rs.getString("NOME"));
+            row.put("categoria", rs.getString("CATEGORIA"));
+            row.put("dataNascimento", rs.getString("DATA_NASCIMENTO"));
             dataset.add(row);
         }
 

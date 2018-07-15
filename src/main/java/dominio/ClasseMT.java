@@ -12,7 +12,7 @@ public class ClasseMT {
         this.resultSet = resultSet;
     }
 
-    public String getClasse(int idade) throws SQLException, ClasseNaoEncontradaException {
+    protected String getClasse(int idade) throws SQLException, ClasseNaoEncontradaException {
         resultSet.beforeFirst();
         while (resultSet.next()){
             int min = resultSet.getInt("IDADE_MINIMA");

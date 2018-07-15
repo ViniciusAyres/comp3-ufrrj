@@ -19,7 +19,7 @@ public class FiliacaoMT{
         }
 
 
-        public ArrayList<String> getAtributo(String atributo){
+    protected ArrayList<String> getAtributo(String atributo){
 
 //            ArrayList<String> filiacoes = new ArrayList<String>();
 //
@@ -39,7 +39,7 @@ public class FiliacaoMT{
         }
 
 
-        public void validar(RecordSet recordSet) throws RegistroInvalido{
+    private void validar(RecordSet recordSet) throws RegistroInvalido{
 
                 for(Row row : recordSet) {
                     if (row.getString("numeroComprovante") == null || row.getString("numeroComprovante").isEmpty())
