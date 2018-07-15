@@ -53,7 +53,7 @@ public class AssociacaoMT{
 
     public static String gerarMatricula() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        return timestamp.toString();
+        return String.valueOf(timestamp.getTime());
     }
 
 

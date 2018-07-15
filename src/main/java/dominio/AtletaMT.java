@@ -43,7 +43,7 @@ public class AtletaMT {
 
     public static String gerarMatricula() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        return timestamp.toString();
+        return String.valueOf(timestamp.getTime());
     }
 
 //    public String getNome(String matricula) throws RegistroNaoEncontradoException, SQLException {
@@ -56,4 +56,5 @@ public class AtletaMT {
 //
 //        throw new RegistroNaoEncontradoException("Atleta não encontrado", "ATLETA");
 //    }
+
 }
