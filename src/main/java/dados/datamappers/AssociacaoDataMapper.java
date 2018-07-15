@@ -64,7 +64,6 @@ public class AssociacaoDataMapper {
         return recordSet;
     }
 
-
     public static void criar(RecordSet recordSet) throws SQLException {
 
         int linhasAfetadas = 0;

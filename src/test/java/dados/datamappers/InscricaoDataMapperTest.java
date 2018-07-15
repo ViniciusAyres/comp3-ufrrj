@@ -57,8 +57,6 @@ public class InscricaoDataMapperTest {
 
         InscricaoDataMapper inscricacaoDataMapper =
                 new InscricaoDataMapper();
-
-        inscricacaoDataMapper.excluir("111111");
     }
 
 }

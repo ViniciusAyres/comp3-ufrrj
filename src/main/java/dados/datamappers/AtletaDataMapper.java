@@ -39,27 +39,22 @@ public class AtletaDataMapper {
         }
     }
 
-    public static boolean atualizar(String matricula, String nome, String categoria, Date dataNascimento) throws SQLException {
-        String sql = "UPDATE ATLETA " +
-                "SET NOME = ?, CATEGORIA = ?, DATA_NASCIMENTO = ? " +
-                "WHERE MATRICULA = ?";
+    public static void atualizar(RecordSet recordSet) throws SQLException, ParseException {
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "UPDATE ATLETA " +
+                    "SET NOME = ?" +
+                    "WHERE MATRICULA = ?";
 
+            PreparedStatement statement = ConnectionSingleton.getInstance()
+                    .prepareStatement(sql);
 
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+            statement.setString(1, row.getString("nome"));
+            statement.setString(2, row.getString("matricula"));
 
-        statement.setString(1, nome);
-        statement.setString(2, categoria);
-        statement.setDate(3, dataNascimento);
-        statement.setString(4, matricula);
-
-        return statement.execute();
-
-    }
-
-    public static ResultSet buscar() throws SQLException {
-        return  DataMapper.buscar("ATLETA");
-
+            linhasAfetadas += statement.executeUpdate();
+        }
     }
 
     public static RecordSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException,RegistroNaoEncontradoException {
@@ -88,5 +83,24 @@ public class AtletaDataMapper {
         }
 
         return dataset;
+    }
+
+    public static RecordSet buscar() throws SQLException {
+
+        String sql = "SELECT * FROM ATLETA ORDER BY NOME";
+
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        RecordSet recordSet = new RecordSet();
+
+        while(resultSet.next()){
+            Row row = new Row();
+            row.put("matricula", resultSet.getString("MATRICULA"));
+            row.put("nome", resultSet.getString("NOME"));
+
+            recordSet.add(row);
+        }
+
+        return recordSet;
     }
 }

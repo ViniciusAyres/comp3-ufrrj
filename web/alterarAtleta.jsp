@@ -1,8 +1,8 @@
+<%@ page import="utils.RecordSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    String matriculaAtleta = request.getParameter("matriculaAtleta");
-    request.getSession().setAttribute("matriculaAtleta", matriculaAtleta);
+    RecordSet recordSet = (RecordSet) request.getSession().getAttribute("dados");
 %>
 <html>
 <head>
@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
-    <form class="form" role="form" method="POST" action="/alterarCadastroAtleta">
+    <form class="form" role="form" method="POST" action="alterarCadastroAtleta?matricula=<%= recordSet.get(0).getString("matricula") %>">
 
         <div class="card-header text-center">
             <h4>
@@ -27,13 +27,13 @@
         <div class="card-body">
             <div class="row mt-4">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="numeroOficio"><i class="fa fa-file-text" aria-hidden="true"></i> Número de Ofício</label>
+                    <label for="numero_oficio"><i class="fa fa-file-text" aria-hidden="true"></i> Número de Ofício</label>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" id="numeroOficio" name="numeroOficio" class="form-control" placeholder="Número de Ofício"
-                                   maxlength="50">
+                            <input type="text" id="numero_oficio" name="numero_oficio" class="form-control" placeholder="Número de Ofício"
+                                   maxlength="50" value="<%= recordSet.get(0).getString("numero_oficio") %>">
                         </div>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="date" name="dataOficio" class="form-control" id="dataOficio"  maxlength="50">
+                            <input type="date" name="dataOficio" class="form-control" id="dataOficio"  maxlength="50" value="<%= recordSet.get(0).getString("data_oficio") %>">
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" name="nome" class="form-control" maxlength="50" id="nome" placeholder="Cesar Ciélo"
-                                   required >
+                                   required value="<%= recordSet.get(0).getString("nome") %>">
                         </div>
                     </div>
                 </div>
@@ -69,75 +69,20 @@
 
             <div class="row">
                 <div class="col-md-4 field-label-responsive text-left">
-                    <label for="dataNascimento"><i class="fa fa-calendar-o" aria-hidden="true"></i> Data de Nascimento</label>
+                    <label for="data_entrada"><i class="fa fa-calendar-o" aria-hidden="true"></i> Entrada na Associação</label>
                     <span style="color:red">*</span>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="date" name="dataNascimento" class="form-control" id="dataNascimento" required>
+                            <input type="date" name="data_entrada" class="form-control" id="data_entrada" required
+                                   value="<%= recordSet.get(0).getString("data_entrada") %>" >
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="dataAssociacao"><i class="fa fa-calendar-o" aria-hidden="true"></i> Entrada na Associação</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="date" name="dataAssociacao" class="form-control" id="dataAssociacao" required>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="matriculaAssociacao"><i class="fa fa-id-card" aria-hidden="true"></i> Matrícula da Associação</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" name="matriculaAssociacao" class="form-control" id="matriculaAssociacao" placeholder="Matrícula"
-                                   required maxlength="60">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4 field-label-responsive text-left">
-                    <label for="categoria"><i class="fa fa-venus-mars" aria-hidden="true"></i> Categoria</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group has-danger">
-                        <div class="input-group">
-                            <input type="text" name="categoria" class="form-control" id="categoria" placeholder="Masculina ou Feminina" required maxlength="30">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 field-label-responsive text-left">
-                    <label for="numeroComprovante"><i class="fa fa-file-o" aria-hidden="true"></i> Número de Comprovante de Pagamento</label>
-                    <span style="color:red">*</span>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group has-danger">
-                        <div class="input-group">
-                            <input type="text" name="numeroComprovante" class="form-control" id="numeroComprovante" placeholder="Número do Comprovante" required maxlength="30">
-                        </div>
-                    </div>
-                </div>
-            </div>
                 <div class="bg-info clearfix" style="background-color: #ffffff !important;">
-                    <a href="alterarCadastroAtleta.jsp" class="float-left mt-2">Voltar</a>
                     <button type="submit" class="btn btn-info float-right" value="/alterar/">Alterar</button>
                 </div>
         </div>
