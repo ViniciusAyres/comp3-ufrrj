@@ -36,7 +36,7 @@ public class AtletaMT {
             if(row.getString("nome") == null ||  row.getString("nome").isEmpty())
                 throw new RegistroInvalido("Nome inválido.");
 
-            if(row.getDate("dataNascimento") == null)
+            if(row.getString("dataNascimento") == null)
                 throw new RegistroInvalido("Data de nascimento inválida.");
         }
     }

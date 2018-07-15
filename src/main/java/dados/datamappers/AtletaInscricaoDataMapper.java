@@ -7,9 +7,10 @@ import utils.Utils;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 public class AtletaInscricaoDataMapper {
-    public static void criar(RecordSet recordSet) throws SQLException {
+    public static void criar(RecordSet recordSet) throws SQLException, ParseException {
 
         AtletaDataMapper at = new AtletaDataMapper();
         InscricaoDataMapper is = new InscricaoDataMapper();

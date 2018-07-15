@@ -6,6 +6,7 @@ import dominio.AssociacaoMT;
 import utils.Criptografia;
 import utils.RecordSet;
 import utils.Row;
+import utils.SQL;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,19 +19,18 @@ public class AssociacaoDataMapper {
 
         String sql = "SELECT * FROM ASSOCIACAO WHERE MATRICULA = ? ";
 
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
-
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
 
         statement.setString(1, matricula);
 
-        ResultSet rs = statement.getResultSet();
+        ResultSet rs = statement.executeQuery();
 
         if(!rs.next())
             throw new RegistroNaoEncontradoException("Matrícula não encontrada","ASSOCIACAO");
 
         Row row = new Row();
         RecordSet dataset = new RecordSet();
+        rs.beforeFirst();
         while (rs.next()) {
 
             row.put("matricula", rs.getString("matricula"));

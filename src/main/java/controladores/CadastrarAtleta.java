@@ -21,6 +21,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 @WebServlet(name = "CadastrarAtleta", urlPatterns = "/cadastrarAtleta")
@@ -37,28 +39,34 @@ public class CadastrarAtleta extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RecordSet recordSet = new RecordSet();
-        Row row = new Row();
-
-        row.put("numeroOficio", request.getParameter("numeroOficio"));
-        row.put("dataOficio", Date.valueOf(request.getParameter("dataOficio")));
-        row.put("dataAssociacao", Date.valueOf(request.getParameter("dataAssociacao")));
-        row.put("matriculaAssociacao", request.getParameter("matriculaAssociacao"));
-        row.put("numeroComprovante", request.getParameter("numeroComprovante"));
-
-
-        row.put("nome", request.getParameter("nome"));
-        row.put("dataNascimento", Date.valueOf(request.getParameter("dataNascimento")));
-        row.put("categoria", request.getParameter("categoria"));
-        recordSet.add(row);
 
         try {
+            RecordSet recordSet = new RecordSet();
+            Row row = new Row();
+
+            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            row.put("numeroOficio", request.getParameter("numeroOficio"));
+            row.put("dataOficio", request.getParameter("dataOficio"));
+            row.put("dataAssociacao", request.getParameter("dataAssociacao"));
+            row.put("matriculaAssociacao", request.getParameter("matriculaAssociacao"));
+            row.put("numeroComprovante", request.getParameter("numeroComprovante"));
+
+
+            row.put("nome", request.getParameter("nome"));
+            System.out.println("DATA NASCIMENTO: " + request.getParameter("dataNascimento"));
+            row.put("dataNascimento", request.getParameter("dataNascimento"));
+            row.put("categoria", request.getParameter("categoria"));
+            recordSet.add(row);
+
             AtletaMT atletaMT = new AtletaMT(recordSet);
             InscricaoMT inscricaoMT = new InscricaoMT(recordSet);
 
             new AssociacaoDataMapper().buscarPorMatricula(request.getParameter("matriculaAssociacao"));
             AtletaInscricaoDataMapper atletaInscricaoDataMapper = new AtletaInscricaoDataMapper();
             atletaInscricaoDataMapper.criar(recordSet);
+            request.getSession().setAttribute("mensagemSucesso","Atleta cadastrado com sucesso");
+            response.sendRedirect("/index.jsp");
         } catch (RegistroInvalido registroInvalido) {
             registroInvalido.printStackTrace();
             request.getSession().setAttribute("mensagemErro", registroInvalido.getMessage());
@@ -71,6 +79,9 @@ public class CadastrarAtleta extends HttpServlet {
             e.printStackTrace();
             request.getSession().setAttribute("mensagemErro", e.getMessage());
             request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            //TODO: Colocar mensagem de erro de conversao de data
         }
 
     }

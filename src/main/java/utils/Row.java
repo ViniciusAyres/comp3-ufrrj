@@ -23,8 +23,6 @@ public class Row extends HashMap<String, Object> {
         return (String) this.get(column);
     }
 
-    public Date getDate(String column) { return (Date) this.get(column); }
-
     public Timestamp getTimestamp(String column) {
         return (Timestamp) this.get(column);
     }

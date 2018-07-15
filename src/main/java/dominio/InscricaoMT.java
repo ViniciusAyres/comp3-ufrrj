@@ -17,10 +17,10 @@ public class InscricaoMT {
             if(row.getString("nome") == null ||  row.getString("nome").isEmpty())
                 throw new RegistroInvalido("Nome inválido.");
 
-            if(row.getDate("dataNascimento") == null)
+            if(row.getString("dataNascimento") == null)
                 throw new RegistroInvalido("Data de nascimento inválida.");
 
-            if(row.getDate("dataAssociacao") == null)
+            if(row.getString("dataAssociacao") == null)
                 throw new RegistroInvalido("Data de entrada inválida.");
 
             if(row.getString("matriculaAssociacao") == null ||  row.getString("matriculaAssociacao").isEmpty())

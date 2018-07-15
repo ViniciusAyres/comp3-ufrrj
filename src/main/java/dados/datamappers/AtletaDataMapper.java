@@ -8,10 +8,9 @@ import utils.RecordSet;
 import utils.Row;
 import utils.SQL;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class AtletaDataMapper {
     public ResultSet buscarPorId(int id){
@@ -25,21 +24,22 @@ public class AtletaDataMapper {
         return  null;
     }
 
-    public void criar(RecordSet recordSet) throws SQLException{
+    public void criar(RecordSet recordSet) throws SQLException, ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         int linhasAfetadas = 0;
         for(Row row : recordSet) {
             String sql = "INSERT INTO ATLETA (MATRICULA, NOME, CATEGORIA, DATA_NASCIMENTO) " +
                     "VALUES (?, ?, ?, ?)";
 
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
+            PreparedStatement statement = SQL.getPreparedStatement(sql);
 
             row.put("matricula", AtletaMT.gerarMatricula());
             statement.setString(1, row.getString("matricula"));
             statement.setString(2, row.getString("nome"));
             statement.setString(3, row.getString("categoria"));
-            statement.setDate(4, row.getDate("dataNascimento"));
+            Timestamp dataNascimento = new Timestamp(simpleDateFormat.parse(row.getString("dataNascimento")).getTime());
+            statement.setTimestamp(4, dataNascimento);
 
             linhasAfetadas += statement.executeUpdate();
         }

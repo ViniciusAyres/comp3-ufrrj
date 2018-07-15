@@ -3,11 +3,11 @@ package dados.datamappers;
 import dados.bancos.derbyDB.ConnectionSingleton;
 import utils.RecordSet;
 import utils.Row;
+import utils.SQL;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class InscricaoDataMapper {
 
@@ -26,22 +26,23 @@ public class InscricaoDataMapper {
         return null;
     }
 
-    public void criar(RecordSet recordSet) throws SQLException{
+    public void criar(RecordSet recordSet) throws SQLException, ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         int linhasAfetadas = 0;
         for(Row row : recordSet) {
-            String sql = "INSERT INTO INSCRICAO (NUMERO_OFICIO, DATA_ENTRADA, NUMERO_PAGAMENTO," +
+            String sql = "INSERT INTO INSCRICAO (NUMERO_OFICIO, DATA_OFICIO, NUMERO_PAGAMENTO," +
                     " MATRICULA_ASSOCIACAO, MATRICULA_ATLETA)" +
                     "VALUES (?,?,?,?,?)";
 
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
+            PreparedStatement statement = SQL.getPreparedStatement(sql);
 
             statement.setString(1, row.getString("numeroOficio"));
-            statement.setDate(2, row.getDate("dataEntrada"));
+            Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
+            statement.setTimestamp(2, dataOficio);
             statement.setString(3, row.getString("numeroPagamento"));
             statement.setString(4, row.getString("matriculaAssociado"));
-            statement.setString(4, row.getString("matriculaAtleta"));
+            statement.setString(5, row.getString("matriculaAtleta"));
 
             linhasAfetadas += statement.executeUpdate();
         }
