@@ -1,6 +1,7 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import utils.RecordSet;
 import utils.Row;
 import utils.SQL;
@@ -75,7 +76,7 @@ public class AtletaDataMapper {
         return  null;
     }
 
-    public static RecordSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException {
+    public static RecordSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException,RegistroNaoEncontradoException {
 
         String sql = "SELECT * FROM ATLETA WHERE MATRICULA = ? ";
 
@@ -86,6 +87,9 @@ public class AtletaDataMapper {
         statement.setString(1, matricula);
 
         ResultSet rs = statement.getResultSet();
+
+        if(!rs.next())
+            throw new RegistroNaoEncontradoException("Matrícula não encontrada","ATLETA");
 
         Row row = new Row();
         RecordSet dataset = new RecordSet();

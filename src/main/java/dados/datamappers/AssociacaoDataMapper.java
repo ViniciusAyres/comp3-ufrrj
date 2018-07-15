@@ -1,6 +1,7 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import dominio.AssociacaoMT;
 import utils.Criptografia;
 import utils.RecordSet;
@@ -13,8 +14,34 @@ import java.sql.Time;
 
 public class AssociacaoDataMapper {
 
-    public ResultSet buscarPorMatricula(String matricula) throws SQLException {
-        return DataMapper.buscarPorMatricula(matricula, "ASSOCIACAO");
+    public static RecordSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException,RegistroNaoEncontradoException {
+
+        String sql = "SELECT * FROM ASSOCIACAO WHERE MATRICULA = ? ";
+
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
+
+
+        statement.setString(1, matricula);
+
+        ResultSet rs = statement.getResultSet();
+
+        if(!rs.next())
+            throw new RegistroNaoEncontradoException("Matrícula não encontrada","ASSOCIACAO");
+
+        Row row = new Row();
+        RecordSet dataset = new RecordSet();
+        while (rs.next()) {
+
+            row.put("matricula", rs.getString("matricula"));
+            row.put("nome", rs.getString("nome"));
+            row.put("sigla", rs.getString("sigla"));
+            row.put("telefone", rs.getString("telefone"));
+            row.put("endereco", rs.getString("endereco"));
+            dataset.add(row);
+        }
+
+        return dataset;
     }
 
     public ResultSet buscar() throws SQLException {
