@@ -8,6 +8,7 @@ import utils.Row;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class FiliacaoMT{
         private RecordSet recordSet;
@@ -43,6 +44,9 @@ public class FiliacaoMT{
                 for(Row row : recordSet) {
                     if (row.getString("numeroComprovante") == null || row.getString("numeroComprovante").isEmpty())
                         throw new RegistroInvalido("Número do Comprovante inválido.");
+
+                    if(row.getString("dataOficio") == null)
+                        row.put("dataOficio", new Date(1900,01,01));
                 }
         }
 }

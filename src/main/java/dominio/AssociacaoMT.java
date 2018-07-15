@@ -6,6 +6,7 @@ import utils.RecordSet;
 import utils.Row;
 
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public class AssociacaoMT{
@@ -50,32 +51,33 @@ public class AssociacaoMT{
         }
     }
 
-    public static String gerarMatricula(){
-        return "2";
+    public static String gerarMatricula() {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        return timestamp.toString();
     }
 
 
-    public boolean existe(String matricula) throws SQLException, RegistroNaoEncontradoException {
+  //  public boolean existe(String matricula) throws SQLException, RegistroNaoEncontradoException {
 //        resultSet.beforeFirst();
 //        while (resultSet.next()){
 //            if(resultSet.getString("MATRICULA").equals(matricula)){
-                return true;
+    //            return true;
 //            }
 //        }
 
         //throw new RegistroNaoEncontradoException("Associação não encontrada", "ASSOCIAÇÃO");
-    }
+    //}
 
-    public String getNome(String matricula) throws SQLException, RegistroNaoEncontradoException {
+    //public String getNome(String matricula) throws SQLException, RegistroNaoEncontradoException {
 //        resultSet.beforeFirst();
 //        while (resultSet.next()){
 //            if(resultSet.getString("MATRICULA").equals(matricula)){
                 //return resultSet.getString("NOME");
         //    }
         //}
-        return  null;
+      //  return  null;
         //throw new RegistroNaoEncontradoException("Associação não encontrada", "ASSOCIAÇÃO");
-    }
+    //}
 
 
 }

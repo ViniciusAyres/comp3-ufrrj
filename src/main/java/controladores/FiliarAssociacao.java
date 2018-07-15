@@ -50,6 +50,7 @@ public class FiliarAssociacao extends HttpServlet {
              FiliacaoMT filiacaoMT = new FiliacaoMT(recordSet);
 
              AssociacaoFiliacaoDataMapper.criar(recordSet);
+             request.setAttribute("mensagemSucesso","Associação filiada com sucesso!");
              response.sendRedirect("/index.jsp");
         } catch (RegistroInvalido registroInvalido) {
             registroInvalido.printStackTrace();
