@@ -26,11 +26,11 @@ public class IdentificarUsuario extends HttpServlet {
 
         try {
             PessoaMT.autenticar(matricula, senha);
-            System.out.println();
-            response.sendRedirect((String) request.getSession().getAttribute("proximaPagina"));
-
+            String proximaPagina = (String) request.getSession().getAttribute("proximaPagina");
+            request.getSession().invalidate();
+            response.sendRedirect(proximaPagina);
         } catch (UsuarioNaoAutenticadoException ex) {
-            request.setAttribute("mensagemErro", "Erro ao identificar a Conta. Favor, tente novamente mais tarde");
+            request.getSession().setAttribute("mensagemErro", "Erro ao identificar a Conta. Favor, tente novamente mais tarde");
             request.getRequestDispatcher("/identificarUsuario.jsp").forward(request, response);
         }
     }
