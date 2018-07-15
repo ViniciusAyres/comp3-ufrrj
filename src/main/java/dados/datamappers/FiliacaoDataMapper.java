@@ -41,7 +41,7 @@ public class FiliacaoDataMapper {
         }
     }
 
-    public static void atualizar(RecordSet recordSet) throws SQLException {
+    public static void atualizar(RecordSet recordSet) throws SQLException, ParseException {
 
         int linhasAfetadas = 0;
         for(Row row : recordSet)
@@ -50,7 +50,6 @@ public class FiliacaoDataMapper {
                     "SET DATA_OFICIO = ?, NUMERO_OFICIO = ?, NUMERO_PAGAMENTO = ? " +
                     "WHERE MATRICULA_ASSOCIACAO = ?";
 
-            try {
                 PreparedStatement statement = ConnectionSingleton.getInstance()
                         .prepareStatement(sql);
 
@@ -58,16 +57,12 @@ public class FiliacaoDataMapper {
                 Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
 
 
-                statement.setString(1, row.getString("numeroOficio"));
-                statement.setTimestamp(2, dataOficio);
+                statement.setTimestamp(1, dataOficio);
+                statement.setString(2, row.getString("numeroOficio"));
                 statement.setString(3, row.getString("numeroComprovante"));
                 statement.setString(4, row.getString("matricula"));
 
                 linhasAfetadas += statement.executeUpdate();
-
-            }catch (Exception e){
-                String message = e.getMessage();
-            }
         }
     }
 }
