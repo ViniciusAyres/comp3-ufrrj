@@ -82,7 +82,7 @@ public class AssociacaoDataMapper {
     }
 
 
-    public void criar(RecordSet recordSet) throws SQLException {
+    public static void criar(RecordSet recordSet) throws SQLException {
 
         int linhasAfetadas = 0;
         for(Row row : recordSet)
@@ -109,23 +109,32 @@ public class AssociacaoDataMapper {
         }
     }
 
-    public int atualizar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {
-        String sql = "UPDATE ASSOCIACAO " +
-                "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ENDERECO = ? " +
-                "WHERE MATRICULA = ?";
+    public static void atualizar(RecordSet recordSet) throws SQLException {
 
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "UPDATE ASSOCIACAO " +
+                    "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ENDERECO = ? " +
+                    "WHERE MATRICULA = ?";
 
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+            try {
+                PreparedStatement statement = ConnectionSingleton.getInstance()
+                        .prepareStatement(sql);
 
-        statement.setString(1, nome);
-        statement.setString(2, sigla);
-        statement.setString(3, telefone);
-        statement.setString(4, endereco);
-        statement.setString(5, matricula);
+                statement.setString(1, row.getString("nome"));
+                statement.setString(2, row.getString("sigla"));
+                statement.setString(3, row.getString("telefone"));
+                statement.setString(4, row.getString("endereco"));
+                statement.setString(5, row.getString("matricula"));
 
-        return statement.executeUpdate();
+                linhasAfetadas += statement.executeUpdate();
+            }catch (Exception e){
+                String message = e.getMessage();
+            }
+        }
     }
+
 
     public static void main(String[] args) throws SQLException {
         System.out.println("1");

@@ -7,7 +7,7 @@ import dados.datamappers.AtletaInscricaoDataMapper;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import dominio.AssociacaoMT;
 import dominio.AtletaMT;
-import dominio.Perfil;
+import utils.RecordSet;
 import utils.Utils;
 
 import javax.servlet.ServletException;
