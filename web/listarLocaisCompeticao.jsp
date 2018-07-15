@@ -1,11 +1,14 @@
 <%@ page import="dominio.LocalCompeticaoMT" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="utils.RecordSet" %>
+<%@ page import="dados.datamappers.LocalDataMapper" %>
+<%@ page import="utils.Row" %>
+<%@ page import="utils.Utils" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 
 <%
-    LocalCompeticaoMT localCompeticaoMD = (LocalCompeticaoMT) request.getAttribute("localCompeticaoMD");
-    ArrayList<String> locais = localCompeticaoMD.getLocais();
+    RecordSet recordSet = (RecordSet)request.getSession().getAttribute("dados");
 %>
 <html>
 <head>
@@ -26,12 +29,12 @@
                 </thead>
                 <tbody>
                 <%
-                 for(String local: locais)
+                for(Row row: recordSet)
                   {
                       out.print("<tr class=\"text-center\">");
-                      out.print("<th>" + local + "</th>");
-                      out.print("<th>" + localCompeticaoMD.getEnderecoByLocal(local) +"</th>");
-                      out.print("<th>" + localCompeticaoMD.getTamanhoPiscinaByLocal(local) +"</th>");
+                      out.print("<th>" + row.getString("nome") + "</th>");
+                      out.print("<th>" + row.getString("endereco") +"</th>");
+                      out.print("<th>" + Utils.piscinaToString(row.getInt("tamanhoPiscina")) +"</th>");
                       out.print("</tr>");
                   }
                 %>

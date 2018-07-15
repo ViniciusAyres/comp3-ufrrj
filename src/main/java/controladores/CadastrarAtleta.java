@@ -68,22 +68,21 @@ public class CadastrarAtleta extends HttpServlet {
             response.sendRedirect("/index.jsp");
         } catch (RegistroInvalido registroInvalido) {
             registroInvalido.printStackTrace();
-            request.getSession().setAttribute("mensagemErro", registroInvalido.getMessage());
+            request.getSession().setAttribute("mensagemErro", "Esse registro não é valido.");
             request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
         } catch (SQLException e) {
             e.printStackTrace();
-            request.getSession().setAttribute("mensagemErro",e.getMessage());
+            request.getSession().setAttribute("mensagemErro","Esses dados são invlálidos");
             request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
         } catch (RegistroNaoEncontradoException e) {
             e.printStackTrace();
-            request.getSession().setAttribute("mensagemErro", e.getMessage());
+            request.getSession().setAttribute("mensagemErro", "Erro ao buscar a matrícula.");
             request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
         } catch (ParseException e) {
             e.printStackTrace();
             request.getSession().setAttribute("mensagemErro", "Formato de data inválido");
             request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
         }
-
     }
 }
 

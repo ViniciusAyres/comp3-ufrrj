@@ -1,18 +1,14 @@
 package controladores;
 
 import controladores.exceptions.UsuarioNaoAutenticadoException;
-import dominio.Perfil;
 import dominio.PessoaMT;
 import utils.RecordSet;
-import utils.Utils;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet(name = "IdentificarUsuario", urlPatterns = "/identificarUsuario")
 public class IdentificarUsuario extends HttpServlet {

@@ -37,10 +37,10 @@ public class InscricaoDataMapper {
 
             PreparedStatement statement = SQL.getPreparedStatement(sql);
 
-
-            statement.setString(1, row.getString("numeroOficio"));
             Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
             Timestamp dataEntrada = new Timestamp(simpleDateFormat.parse(row.getString("dataAssociacao")).getTime());
+
+            statement.setString(1, row.getString("numeroOficio"));
             statement.setTimestamp(2, dataOficio);
             statement.setTimestamp(3, dataEntrada);
             statement.setString(4, row.getString("numeroComprovante"));
