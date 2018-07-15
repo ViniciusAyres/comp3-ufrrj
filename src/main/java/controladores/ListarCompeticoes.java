@@ -1,7 +1,6 @@
 package controladores;
 
 import controladores.exceptions.UsuarioNaoAutenticadoException;
-import dominio.Perfil;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -15,14 +14,10 @@ import java.util.ArrayList;
 @WebServlet(name = "ListarCompeticoes", urlPatterns = "/listarCompeticoes")
 public class ListarCompeticoes extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
+        ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+        //perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
 
-            Utils.autenticar(request, perfisAutorizados);
-            request.getRequestDispatcher("/listarCompeticoes.jsp").forward(request, response);
-        } catch (UsuarioNaoAutenticadoException e) {
-            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-        }
+        //Utils.autenticar(request, perfisAutorizados);
+        request.getRequestDispatcher("/listarCompeticoes.jsp").forward(request, response);
     }
 }

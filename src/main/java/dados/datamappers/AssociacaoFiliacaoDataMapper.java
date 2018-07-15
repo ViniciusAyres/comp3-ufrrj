@@ -1,11 +1,6 @@
 package dados.datamappers;
 
-import dados.bancos.derbyDB.ConnectionSingleton;
-import dominio.AssociacaoMT;
-import dominio.Perfil;
 import utils.RecordSet;
-import utils.Row;
-import utils.SQL;
 
 import java.sql.*;
 import java.text.ParseException;

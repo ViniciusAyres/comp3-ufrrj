@@ -14,7 +14,7 @@ public class CompeticaoMD {
     }
 
 
-    public ResultSet criar(String nome, String endereco) throws Exception {
+    protected ResultSet criar(String nome, String endereco) throws Exception {
 
         ResultSet resultSet = null;
 
@@ -33,7 +33,7 @@ public class CompeticaoMD {
         return resultSet;
     }
 
-    public ArrayList<String> getCompeticoes() {
+    protected ArrayList<String> getCompeticoes() {
         ArrayList<String> competicoes = new ArrayList<String>();
 
         try {
@@ -50,7 +50,7 @@ public class CompeticaoMD {
         }
     }
 
-    public String getNome(String idstr) throws SQLException, RegistroNaoEncontradoException {
+    protected String getNome(String idstr) throws SQLException, RegistroNaoEncontradoException {
 
         resultSet.beforeFirst();
         int id = Integer.parseInt(idstr);

@@ -16,7 +16,7 @@ public class PessoaMT {
 
     public static void autenticar(String matricula, String senha) throws UsuarioNaoAutenticadoException {
 
-        if (!"ADMIN".equals(matricula)) throw new UsuarioNaoAutenticadoException();
-        if (!"ADMIN".equals(senha)) throw new UsuarioNaoAutenticadoException();
+        if ((!"ADMIN".equals(matricula)) || (!"ADMIN".equals(senha))) throw new UsuarioNaoAutenticadoException();
+
     }
 }

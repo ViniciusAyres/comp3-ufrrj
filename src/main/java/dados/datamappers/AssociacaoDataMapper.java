@@ -44,6 +44,23 @@ public class AssociacaoDataMapper {
         return dataset;
     }
 
+    public static ResultSet buscarPorMatriculaESenha(String matricula, String senha) throws SQLException,RegistroNaoEncontradoException {
+
+        String sql = "SELECT * FROM ASSOCIACAO WHERE MATRICULA = ? AND SENHA = ? ";
+
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+
+        statement.setString(1, matricula);
+        statement.setString(2, senha);
+
+        ResultSet rs = statement.executeQuery();
+
+        if(!rs.next())
+            throw new RegistroNaoEncontradoException("Matrícula ou senha incorreta.","ASSOCIACAO");
+
+        return rs;
+    }
+
     public RecordSet buscar() throws SQLException {
 
         String sql = "SELECT * FROM ASSOCIACAO";
@@ -70,18 +87,20 @@ public class AssociacaoDataMapper {
         int linhasAfetadas = 0;
         for(Row row : recordSet)
         {
-            String sql = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ENDERECO) " +
-                    "VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO ASSOCIACAO (MATRICULA, SENHA, NOME, SIGLA, TELEFONE, ENDERECO) " +
+                    "VALUES (?, ?, ?, ?, ?, ?)";
 
             try {
                 PreparedStatement statement = ConnectionSingleton.getInstance()
                         .prepareStatement(sql);
                 row.put("matricula", AssociacaoMT.gerarMatricula());
+                row.put("senha", AssociacaoMT.gerarSenha());
                 statement.setString(1, row.getString("matricula"));
-                statement.setString(2, row.getString("nome"));
-                statement.setString(3, row.getString("sigla"));
-                statement.setString(4, row.getString("telefone"));
-                statement.setString(5, row.getString("endereco"));
+                statement.setString(2, row.getString("senha"));
+                statement.setString(3, row.getString("nome"));
+                statement.setString(4, row.getString("sigla"));
+                statement.setString(5, row.getString("telefone"));
+                statement.setString(6, row.getString("endereco"));
 
                 linhasAfetadas += statement.executeUpdate();
             }catch (Exception e){
@@ -111,11 +130,8 @@ public class AssociacaoDataMapper {
     }
 
     public static void main(String[] args) throws SQLException {
-        System.out.println("1");
         AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-        System.out.println("2");
         RecordSet recordSet = associacaoDataMapper.buscar();
-        System.out.println(recordSet);
     }
 
 }
