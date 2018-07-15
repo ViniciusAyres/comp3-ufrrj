@@ -14,7 +14,7 @@ import java.sql.Time;
 
 public class AssociacaoDataMapper {
 
-    public static RecordSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException,RegistroNaoEncontradoException {
+    public static RecordSet buscarPorMatricula(String matricula) throws SQLException,RegistroNaoEncontradoException {
 
         String sql = "SELECT * FROM ASSOCIACAO WHERE MATRICULA = ? ";
 

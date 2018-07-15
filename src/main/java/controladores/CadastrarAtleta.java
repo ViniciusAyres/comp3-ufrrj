@@ -5,7 +5,12 @@ import dados.datamappers.AssociacaoDataMapper;
 import dados.datamappers.AtletaInscricaoDataMapper;
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
 import dominio.AssociacaoMT;
+import dominio.AtletaMT;
+import dominio.InscricaoMT;
 import dominio.Perfil;
+import dominio.excecoes.RegistroInvalido;
+import utils.RecordSet;
+import utils.Row;
 import utils.Utils;
 
 import javax.servlet.ServletException;
@@ -32,32 +37,41 @@ public class CadastrarAtleta extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        String numeroOficio = request.getParameter("numeroOficio");
-//        Date dataOficio = Date.valueOf(request.getParameter("dataOficio"));
-//
-//        String nome = request.getParameter("nome");
-//        Date dataNascimento = Date.valueOf(request.getParameter("dataNascimento"));
-//        Date dataAssociacao = Date.valueOf(request.getParameter("dataAssociacao"));
-//        String matriculaAssociacao = request.getParameter("matriculaAssociacao");
-//        String numeroComprovante = request.getParameter("numeroComprovante");
-//        String categoria = request.getParameter("categoria");
-//        try {
-//            AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-//            AssociacaoMT associacaoMT = new AssociacaoMT(associacaoDataMapper.buscar());
-//            associacaoMD.existe(matriculaAssociacao);
-//
-//            AtletaInscricaoDataMapper atletaInscricaoDataMapper = new AtletaInscricaoDataMapper();
-//            atletaInscricaoDataMapper.criar(nome, dataNascimento, categoria,
-//                                               matriculaAssociacao, dataAssociacao, numeroComprovante, numeroOficio, dataOficio);
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            request.getRequestDispatcher("/cadastrarAtleta");
-//        } catch (RegistroNaoEncontradoException e) {
-//            e.printStackTrace();
-//            request.getRequestDispatcher("/cadastrarAtleta");
-//        }
-//        response.sendRedirect("/index.jsp");
+        RecordSet recordSet = new RecordSet();
+        Row row = new Row();
+
+        row.put("numeroOficio", request.getParameter("numeroOficio"));
+        row.put("dataOficio", Date.valueOf(request.getParameter("dataOficio")));
+        row.put("dataAssociacao", Date.valueOf(request.getParameter("dataAssociacao")));
+        row.put("matriculaAssociacao", request.getParameter("matriculaAssociacao"));
+        row.put("numeroComprovante", request.getParameter("numeroComprovante"));
+
+
+        row.put("nome", request.getParameter("nome"));
+        row.put("dataNascimento", Date.valueOf(request.getParameter("dataNascimento")));
+        row.put("categoria", request.getParameter("categoria"));
+        recordSet.add(row);
+
+        try {
+            AtletaMT atletaMT = new AtletaMT(recordSet);
+            InscricaoMT inscricaoMT = new InscricaoMT(recordSet);
+
+            new AssociacaoDataMapper().buscarPorMatricula(request.getParameter("matriculaAssociacao"));
+            AtletaInscricaoDataMapper atletaInscricaoDataMapper = new AtletaInscricaoDataMapper();
+            atletaInscricaoDataMapper.criar(recordSet);
+        } catch (RegistroInvalido registroInvalido) {
+            registroInvalido.printStackTrace();
+            request.getSession().setAttribute("mensagemErro", registroInvalido.getMessage());
+            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.getSession().setAttribute("mensagemErro",e.getMessage());
+            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
+        } catch (RegistroNaoEncontradoException e) {
+            e.printStackTrace();
+            request.getSession().setAttribute("mensagemErro", e.getMessage());
+            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
+        }
 
     }
 }
