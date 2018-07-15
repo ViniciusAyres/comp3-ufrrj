@@ -46,7 +46,7 @@ public class AssociacaoDataMapper {
 
     public static RecordSet buscar() throws SQLException {
 
-        String sql = "SELECT * FROM ASSOCIACAO";
+        String sql = "SELECT * FROM ASSOCIACAO ORDER BY NOME";
         PreparedStatement statement = SQL.getPreparedStatement(sql);
         ResultSet resultSet = statement.executeQuery();
         RecordSet recordSet = new RecordSet();

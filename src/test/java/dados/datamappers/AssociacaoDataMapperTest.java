@@ -67,7 +67,7 @@ public class AssociacaoDataMapperTest {
     }
 
     @Test
-    public void testAtualizar() {
+    public void testAtualizar() throws SQLException {
         RecordSet recordSet = new RecordSet();
         Row row = new Row();
 
