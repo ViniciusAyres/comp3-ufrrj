@@ -47,7 +47,7 @@ public class AlterarFiliacaoAssociacao extends HttpServlet {
          row.put("numeroOficio", request.getParameter("numeroOficio"));
          row.put("dataOficio", request.getParameter("dataOficio"));
          row.put("numeroComprovante", request.getParameter("numeroComprovante"));
-
+         row.put("matricula", request.getParameter("matricula"));
          row.put("nome", request.getParameter("nome"));
          row.put("sigla", request.getParameter("sigla"));
          row.put("telefone", request.getParameter("telefone"));
@@ -58,9 +58,8 @@ public class AlterarFiliacaoAssociacao extends HttpServlet {
              AssociacaoMT associacaoMT = new AssociacaoMT(recordSet);
              FiliacaoMT filiacaoMT = new FiliacaoMT(recordSet);
 
-
-             AssociacaoFiliacaoDataMapper.criar(recordSet);
-             request.getSession().setAttribute("mensagemSucesso","Associação filiada com sucesso!");
+             AssociacaoFiliacaoDataMapper.atualizar(recordSet);
+             request.getSession().setAttribute("mensagemSucesso","Associação Atualizada com sucesso!");
              response.sendRedirect("/index.jsp");
      } catch (Exception e) {
         e.printStackTrace();

@@ -92,23 +92,30 @@ public class AssociacaoDataMapper {
         }
     }
 
-    public static int atualizar(String matricula, String nome, String sigla, String telefone, String endereco) throws SQLException {
-        String sql = "UPDATE ASSOCIACAO " +
-                "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ENDERECO = ? " +
-                "WHERE MATRICULA = ?";
+    public static void atualizar(RecordSet recordSet) throws SQLException {
 
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "UPDATE ASSOCIACAO " +
+                    "SET NOME = ?, SIGLA = ?, TELEFONE = ?, ENDERECO = ? " +
+                    "WHERE MATRICULA = ?";
 
-        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                .prepareStatement(sql);
+            try {
+                PreparedStatement statement = ConnectionSingleton.getInstance()
+                        .prepareStatement(sql);
+                row.put("matricula", AssociacaoMT.gerarMatricula());
+                statement.setString(1, row.getString("nome"));
+                statement.setString(2, row.getString("sigla"));
+                statement.setString(3, row.getString("telefone"));
+                statement.setString(4, row.getString("endereco"));
+                statement.setString(5, row.getString("matricula"));
 
-        statement.setString(1, nome);
-        statement.setString(2, sigla);
-        statement.setString(3, telefone);
-        statement.setString(4, endereco);
-        statement.setString(5, matricula);
-
-        return statement.executeUpdate();
+                linhasAfetadas += statement.executeUpdate();
+            }catch (Exception e){
+                String message = e.getMessage();
+            }
+        }
     }
-
 }
 

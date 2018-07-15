@@ -14,14 +14,12 @@ import java.sql.SQLException;
 public class ProvaDataMapperTest {
 
     @Test
-    public void testCriarProva(){
-        ProvaDataMapper provaDataMapper =
-                new ProvaDataMapper();
+    public void testCriarProva() throws SQLException {
 
         Date data = new Date(1995, 6, 4);
 
         Assert.assertEquals(true,
-                provaDataMapper.criar("Borboleta", data,
+                ProvaDataMapper.criar("Borboleta", data,
                         "Masculino", 4,
                         1, 2));
     }

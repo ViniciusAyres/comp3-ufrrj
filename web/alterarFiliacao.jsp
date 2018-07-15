@@ -18,7 +18,7 @@
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
-    <form class="form" role="form" method="POST" action="">
+    <form class="form" role="form" method="POST" action="alterarFiliacaoAssociacao?matricula=<%= recordSet.get(0).getString("matricula") %>">
 
         <div class="card-header text-center">
             <h4>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" id="numeroOficio" name="numeroOficio" class="form-control" placeholder="Número de Ofício"
-                                   required maxlength="50" value="<%= recordSet.get(0).getString("numeroOficio") %>" >
+                                   required maxlength="50" value="<%= recordSet.get(0).getString("numero_oficio") %>" >
                         </div>
                     </div>
                 </div>
