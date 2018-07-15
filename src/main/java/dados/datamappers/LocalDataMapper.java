@@ -1,6 +1,8 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import utils.RecordSet;
+import utils.Row;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,25 +20,22 @@ public class LocalDataMapper {
         return  null;
     }
 
-    public boolean criar(int id, String nome, int idTamanhoPiscina, int idEndereco){
-        String sql = "INSERT INTO LOCAL (ID, NOME, ID_TAMANHO_PISCINA, ID_ENDERECO) " +
-                "VALUES (?, ?, ?, ?, ?)";
+    public void  criar(RecordSet recordSet) throws SQLException {
+        String sql = "INSERT INTO LOCAL (NOME, TAMANHO_PISCINA, ENDERECO) " +
+                "VALUES (?, ?, ?)";
 
-        try {
+        int linhasAfetadas = 0;
+        for(Row row : recordSet) {
+
             PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
-            statement.setInt(1, id);
-            statement.setString(2, nome);
-            statement.setInt(3, idTamanhoPiscina);
-            statement.setInt(4, idEndereco);
-            return statement.execute();
+            statement.setString(1, row.getString("nome"));
+            statement.setInt(2, row.getInt("tamanhoPiscina"));
+            statement.setString(3, row.getString("endereco"));
 
-        } catch (SQLException e) {
-            e.printStackTrace();
+            linhasAfetadas += statement.executeUpdate();
         }
-
-        return false;
     }
 
     public boolean atualizar(int id, String nome, int idTamanhoPiscina, int idEndereco){

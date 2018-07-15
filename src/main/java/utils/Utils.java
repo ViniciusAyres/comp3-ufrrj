@@ -61,5 +61,16 @@ public class Utils {
     public static int getIdade(Date dataNascimento){
         return 18;
     }
+
+    public static int getTamanhoPiscinaId (String rd1, String rd2){
+        if(rd1 == null && rd2 ==  null)
+            return 0;
+        else if(rd1 != null && rd2 == null)
+            return  1;
+        else if (rd1 == null && rd2 != null)
+            return  2;
+        else
+            return 0;
+    }
 }
 

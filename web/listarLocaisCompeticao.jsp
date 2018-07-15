@@ -1,10 +1,10 @@
-<%@ page import="dominio.LocalCompeticaoMD" %>
+<%@ page import="dominio.LocalCompeticaoMT" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 
 <%
-    LocalCompeticaoMD localCompeticaoMD = (LocalCompeticaoMD) request.getAttribute("localCompeticaoMD");
+    LocalCompeticaoMT localCompeticaoMD = (LocalCompeticaoMT) request.getAttribute("localCompeticaoMD");
     ArrayList<String> locais = localCompeticaoMD.getLocais();
 %>
 <html>
