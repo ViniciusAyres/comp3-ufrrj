@@ -34,8 +34,8 @@ public class AlterarCadastroAtleta extends HttpServlet {
             //System.out.println("matricula atleta" + matriculaAtleta);
             AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
             ResultSet resultSet = atletaDataMapper.buscar();
-            AtletaMT atletaMT = new AtletaMT(resultSet);
-            request.setAttribute("atletaMT", atletaMT);
+           // AtletaMT atletaMT = new AtletaMT(resultSet);
+            //request.setAttribute("atletaMT", atletaMT);
             request.getRequestDispatcher("/alterarCadastroAtleta.jsp").forward(request, response);
         } catch (UsuarioNaoAutenticadoException e) {
             request.getSession().setAttribute("proximaPagina", "/alterarCadastroAtleta");

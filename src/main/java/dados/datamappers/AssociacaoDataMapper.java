@@ -30,17 +30,22 @@ public class AssociacaoDataMapper {
             String sql = "INSERT INTO ASSOCIACAO (MATRICULA, NOME, SIGLA, TELEFONE, ENDERECO) " +
                     "VALUES (?, ?, ?, ?, ?)";
 
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
+            try {
+                PreparedStatement statement = ConnectionSingleton.getInstance()
+                        .prepareStatement(sql);
+                row.put("matricula", AssociacaoMT.gerarMatricula());
+                statement.setString(1, row.getString("matricula"));
+                statement.setString(2, row.getString("nome"));
+                statement.setString(3, row.getString("sigla"));
+                statement.setString(4, row.getString("telefone"));
+                statement.setString(5, row.getString("endereco"));
 
-            row.put("matricula", AssociacaoMT.gerarMatricula());
-            statement.setString(1, row.getString("matricula"));
-            statement.setString(2, row.getString("nome"));
-            statement.setString(3, row.getString("sigla"));
-            statement.setString(4, row.getString("telefone"));
-            statement.setString(5, row.getString("endereco"));
+                linhasAfetadas += statement.executeUpdate();
+            }catch (Exception e){
+                String message = e.getMessage();
+            }
 
-            linhasAfetadas += statement.executeUpdate();
+
         }
     }
 

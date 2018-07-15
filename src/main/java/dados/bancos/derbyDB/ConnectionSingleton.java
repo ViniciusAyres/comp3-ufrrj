@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionSingleton {
-    private static String dbURL = "jdbc:derby://192.168.120:1527/NatacaoDB;create=true;";
+    private static String dbURL = "jdbc:derby://192.168.1.120:1527/NatacaoDB;create=true;";
     private static Connection connection = null;
 
     protected ConnectionSingleton(){
