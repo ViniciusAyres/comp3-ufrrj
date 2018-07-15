@@ -48,19 +48,23 @@ public class FiliarAssociacao extends HttpServlet {
 
         try {
             AssociacaoMT associacaoMT = new AssociacaoMT(recordSet);
-             FiliacaoMT filiacaoMT = new FiliacaoMT(recordSet);
+            FiliacaoMT filiacaoMT = new FiliacaoMT(recordSet);
 
-             AssociacaoFiliacaoDataMapper.criar(recordSet);
-             request.getSession().setAttribute("mensagemSucesso","Associação filiada com sucesso!");
-             response.sendRedirect("/index.jsp");
+            AssociacaoFiliacaoDataMapper.criar(recordSet);
+            request.getSession().setAttribute("mensagemSucesso","Associação filiada com sucesso!");
+            response.sendRedirect("/index.jsp");
         } catch (RegistroInvalido registroInvalido) {
             registroInvalido.printStackTrace();
             request.getSession().setAttribute("mensagemErro",registroInvalido.getMessage());
             request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request,response);
         } catch (SQLException e) {
             e.printStackTrace();
+            request.getSession().setAttribute("mensagemErro","Erro inesperado");
+            request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request,response);
         } catch (ParseException e) {
             e.printStackTrace();
+            request.getSession().setAttribute("mensagemErro","Formato de data inválido");
+            request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request,response);
         }
 
     }

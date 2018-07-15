@@ -33,11 +33,15 @@ public class AtletaMT {
 
         for(Row row : recordSet){
 
-            if(row.getString("nome") == null ||  row.getString("nome").isEmpty())
+            if(row.getString("nome") == null || row.getString("nome").isEmpty())
                 throw new RegistroInvalido("Nome inválido.");
 
             if(row.getString("dataNascimento") == null)
                 throw new RegistroInvalido("Data de nascimento inválida.");
+
+            if(row.getString("categoria") == null || row.getString("categoria").isEmpty())
+                throw new RegistroInvalido("Categoria inválida.");
+
         }
     }
 

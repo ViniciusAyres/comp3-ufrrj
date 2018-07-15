@@ -14,17 +14,16 @@ public class InscricaoMT {
 
     private void validar(RecordSet recordSet) throws RegistroInvalido {
         for(Row row : recordSet) {
-            if(row.getString("nome") == null ||  row.getString("nome").isEmpty())
-                throw new RegistroInvalido("Nome inválido.");
-
-            if(row.getString("dataNascimento") == null)
-                throw new RegistroInvalido("Data de nascimento inválida.");
 
             if(row.getString("dataAssociacao") == null)
                 throw new RegistroInvalido("Data de entrada inválida.");
 
             if(row.getString("matriculaAssociacao") == null ||  row.getString("matriculaAssociacao").isEmpty())
                 throw new RegistroInvalido("Matricula da associação inválida.");
+
+            if(row.getString("numeroComprovante") == null ||  row.getString("numeroComprovante").isEmpty())
+                throw new RegistroInvalido("Comprovante de pagamento inválido.");
+
         }
     }
 }
