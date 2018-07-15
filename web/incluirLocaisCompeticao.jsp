@@ -43,7 +43,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="endereco" class="form-control" id="endereco" required maxlength="8" placeholder="Endereço">
+                            <input type="text" name="endereco" class="form-control" id="endereco" required maxlength="100" placeholder="Endereço">
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-auto my-1">
                         <div class="custom-control custom-checkbox mr-sm-2">
-                            <input type="checkbox" class="custom-control-input" id="custom50">
+                            <input type="checkbox" class="custom-control-input" name ="custon50" id="custom50">
                             <label class="custom-control-label" for="custom50">50 metros</label>
                         </div>
                     </div>

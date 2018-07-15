@@ -21,16 +21,16 @@ public class Utils {
 //        }catch (RegistroNaoEncontradoException e) {
 //            return false;
 //        } catch (SQLException e) {
-            return false;
+        return false;
 //        }
     }
 
     public static boolean autenticar(HttpServletRequest request, ArrayList<Integer> perfisAceitos) throws ServletException, IOException, UsuarioNaoAutenticadoException {
-        if(!Utils.isAutenticado(request)){
+        if (!Utils.isAutenticado(request)) {
             throw new UsuarioNaoAutenticadoException();
-        }else if (!Utils.hasAutorizacao((String) request.getSession().getAttribute("matricula"), perfisAceitos)){
+        } else if (!Utils.hasAutorizacao((String) request.getSession().getAttribute("matricula"), perfisAceitos)) {
             throw new UsuarioNaoAutenticadoException();
-        }else {
+        } else {
             return true;
         }
     }
@@ -42,11 +42,11 @@ public class Utils {
 //        } catch (SQLException e) {
 //            return false;
 //        } catch (RegistroNaoEncontradoException e) {
-            return false;
+        return false;
 //        }
-   }
+    }
 
-    public static boolean isAutenticado(HttpServletRequest request){
+    public static boolean isAutenticado(HttpServletRequest request) {
 //        String matricula = (String) request.getSession().getAttribute("matricula");
 //        System.out.println("MATRICULA: " + matricula);
 //
@@ -58,19 +58,33 @@ public class Utils {
     }
 
     //TODO: Implementar funcao
-    public static int getIdade(Date dataNascimento){
+    public static int getIdade(Date dataNascimento) {
         return 18;
     }
 
-    public static int getTamanhoPiscinaId (String rd1, String rd2){
-        if(rd1 == null && rd2 ==  null)
+    public static int getTamanhoPiscinaId(String rd1, String rd2) {
+        if (rd1 == null && rd2 == null)
             return 0;
-        else if(rd1 != null && rd2 == null)
-            return  1;
+        else if (rd1 != null && rd2 == null)
+            return 1;
         else if (rd1 == null && rd2 != null)
-            return  2;
+            return 2;
         else
-            return 0;
+            return 3;
     }
+
+    public String piscinaToString(int idTamanhoPiscina) {
+        String tamanho = null;
+
+        if (idTamanhoPiscina == 1)
+            tamanho = "25 metros";
+        else if (idTamanhoPiscina == 2)
+            tamanho = "50 metros";
+        else
+            tamanho = "25 e 50 metros";
+
+        return  tamanho;
+    }
+
 }
 
