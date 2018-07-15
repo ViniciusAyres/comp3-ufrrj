@@ -43,10 +43,10 @@ public class FiliacaoMT{
 
                 for(Row row : recordSet) {
                     if (row.getString("numeroComprovante") == null || row.getString("numeroComprovante").isEmpty())
-                        throw new RegistroInvalido("Número do Comprovante inválido.");
+                        throw new RegistroInvalido("Número do Comprovante obrigatório.");
 
-                    if(row.getString("dataOficio") == null)
-                        row.put("dataOficio", new Date(1900,01,01));
+                    if(row.getString("dataOficio") == null || row.getString("dataOficio") == "")
+                        row.put("dataOficio", "1900-01-01");
                 }
         }
 }

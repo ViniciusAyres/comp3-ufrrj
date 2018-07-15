@@ -32,12 +32,12 @@
 </html>
 
 <script type="text/javascript">
-    var mensagemErro = "<%=request.getAttribute("mensagemErro")%>"
+    var mensagemErro = "<%=request.getSession().getAttribute("mensagemErro")%>"
     if(mensagemErro != "null"){
         swal("Ops, algo deu errado...", mensagemErro, "error")
     }
 
-    var mensagemSucesso = "<%=request.getAttribute("mensagemSucesso")%>"
+    var mensagemSucesso = "<%=request.getSession().getAttribute("mensagemSucesso")%>"
     if(mensagemSucesso != "null"){
         swal("Sucesso!!", mensagemSucesso, "success")
     }
