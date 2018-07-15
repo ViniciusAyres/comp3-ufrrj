@@ -36,14 +36,14 @@ public class AtletaDominio extends HttpServlet{
         String numeroComprovante = request.getParameter("numeroComprovante");
 
 
-        AssociacaoDataMapper associacaoDM = new AssociacaoDataMapper();
-        ResultSet resultSet = associacaoDM.buscarPorMatricula(matriculaAssociacao);
-        if (resultSet.next() == false){
-            request.setAttribute("erro", "Matricula da associação não existe.");
-            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request, response);
-        }else{
+        //AssociacaoDataMapper associacaoDM = new AssociacaoDataMapper();
+        //ResultSet resultSet = associacaoDM.buscarPorMatricula(matriculaAssociacao);
+        //if (resultSet.next() == false){
+        //    request.setAttribute("erro", "Matricula da associação não existe.");
+        //    request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request, response);
+        //}else{
             
-        }
+        //}
 
 
     }

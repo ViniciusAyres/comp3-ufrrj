@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.ParseException;
 
 @WebServlet(name = "FiliarAssociacao", urlPatterns = "/filiarAssociacao")
 public class FiliarAssociacao extends HttpServlet {
@@ -57,6 +58,8 @@ public class FiliarAssociacao extends HttpServlet {
             request.getSession().setAttribute("mensagemErro",registroInvalido.getMessage());
             request.getRequestDispatcher("/filiarAssociacao.jsp").forward(request,response);
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 

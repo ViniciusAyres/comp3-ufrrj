@@ -5,6 +5,8 @@ import utils.RecordSet;
 import utils.Row;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class FiliacaoDataMapper {
@@ -20,7 +22,7 @@ public class FiliacaoDataMapper {
         return  null;
     }
 
-    public void criar(RecordSet recordSet) throws SQLException {
+    public void criar(RecordSet recordSet) throws SQLException, ParseException {
 
         PreparedStatement preparedStatement;
         int linhasAfetadas = 0;
@@ -32,8 +34,11 @@ public class FiliacaoDataMapper {
             preparedStatement = (PreparedStatement) ConnectionSingleton.getInstance()
                     .prepareStatement(sql);
 
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
+
             preparedStatement.setString(1, row.getString("numeroOficio"));
-            preparedStatement.setDate(2, row.getDate("dataOficio"));
+            preparedStatement.setTimestamp(2, dataOficio);
             preparedStatement.setString(3, row.getString("numeroComprovante"));
             preparedStatement.setString(4, row.getString("matricula"));
 
