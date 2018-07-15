@@ -25,23 +25,23 @@ import java.util.ArrayList;
 public class AlterarCadastroAtleta extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
-            Utils.autenticar(request, perfisAutorizados);
-            //String matriculaAtleta = request.getRequestURL().toString().split("=")[1];
-            //System.out.println("matricula atleta" + matriculaAtleta);
-            AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
-            ResultSet resultSet = atletaDataMapper.buscar();
-           // AtletaMT atletaMT = new AtletaMT(resultSet);
-            //request.setAttribute("atletaMT", atletaMT);
-            request.getRequestDispatcher("/alterarCadastroAtleta.jsp").forward(request, response);
-        } catch (UsuarioNaoAutenticadoException e) {
-            request.getSession().setAttribute("proximaPagina", "/alterarCadastroAtleta");
-            response.sendRedirect("/identificarUsuario");
-            //request.getRequestDispatcher("/identificarUsuario").forward(request, response);
-        }
+//        try {
+//            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
+//            perfisAutorizados.add(Perfil.SECRETARIO.getId());
+//            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
+//            Utils.autenticar(request, perfisAutorizados);
+//            //String matriculaAtleta = request.getRequestURL().toString().split("=")[1];
+//            //System.out.println("matricula atleta" + matriculaAtleta);
+//            AtletaDataMapper atletaDataMapper = new AtletaDataMapper();
+//            ResultSet resultSet = atletaDataMapper.buscar();
+//            AtletaMT atletaMT = new AtletaMT(resultSet);
+//            request.setAttribute("atletaMT", atletaMT);
+//            request.getRequestDispatcher("/alterarCadastroAtleta.jsp").forward(request, response);
+//        } catch (UsuarioNaoAutenticadoException e) {
+//            request.getSession().setAttribute("proximaPagina", "/alterarCadastroAtleta");
+//            response.sendRedirect("/identificarUsuario");
+//            //request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+//        }
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

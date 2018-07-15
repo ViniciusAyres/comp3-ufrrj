@@ -16,35 +16,35 @@ import java.util.Date;
 @WebServlet(name = "AtletaDominio", urlPatterns = "/atleta")
 public class AtletaDominio extends HttpServlet{
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            inserirAtleta(request, response);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            inserirAtleta(request, response);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 
     private void inserirAtleta(HttpServletRequest request, HttpServletResponse response) throws ParseException, SQLException, ServletException, IOException {
-
-        String numeroOficio = request.getParameter("numeroOficio");
-        Date dataOficio = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataOficio"));
-        String nome = request.getParameter("nome");
-        Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
-        Date dataAssociacao = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataAssociacao"));
-        String matriculaAssociacao = request.getParameter("matriculaAssociacao");
-        String numeroComprovante = request.getParameter("numeroComprovante");
-
-
-        //AssociacaoDataMapper associacaoDM = new AssociacaoDataMapper();
-        //ResultSet resultSet = associacaoDM.buscarPorMatricula(matriculaAssociacao);
-        //if (resultSet.next() == false){
-        //    request.setAttribute("erro", "Matricula da associação não existe.");
-        //    request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request, response);
-        //}else{
-            
-        //}
-
+//
+//        String numeroOficio = request.getParameter("numeroOficio");
+//        Date dataOficio = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataOficio"));
+//        String nome = request.getParameter("nome");
+//        Date dataNascimento = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataNascimento"));
+//        Date dataAssociacao = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("dataAssociacao"));
+//        String matriculaAssociacao = request.getParameter("matriculaAssociacao");
+//        String numeroComprovante = request.getParameter("numeroComprovante");
+//
+//
+//        AssociacaoDataMapper associacaoDM = new AssociacaoDataMapper();
+//        ResultSet resultSet = associacaoDM.buscarPorMatricula(matriculaAssociacao);
+//        if (resultSet.next() == false){
+//            request.setAttribute("erro", "Matricula da associação não existe.");
+//            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request, response);
+//        }else{
+//
+//        }
+//
 
     }
 }
