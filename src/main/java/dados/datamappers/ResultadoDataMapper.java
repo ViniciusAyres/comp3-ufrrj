@@ -9,56 +9,35 @@ import java.sql.SQLException;
 import java.sql.Time;
 
 public class ResultadoDataMapper {
-    public ResultSet buscarPorId(int id){
-        try{
-            return  DataMapper.buscarPorId(id, "RESULTADO");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public static ResultSet buscarPorId(int id) throws SQLException {
+        return  DataMapper.buscarPorId(id, "RESULTADO");
     }
 
-    public boolean criar(Time tempo, int id_colocacao){
+    public static boolean criar(Time tempo, int id_colocacao) throws SQLException {
         String sql = "INSERT INTO RESULTADO(TEMPO, ID_COLOCACAO) " +
                 "VALUES (?, ?)";
 
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
 
-            statement.setTime(1, tempo);
-            statement.setInt(2, id_colocacao);
+        statement.setTime(1, tempo);
+        statement.setInt(2, id_colocacao);
 
-            return statement.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return statement.execute();
     }
 
-    public boolean atualizar(Time tempo, int id_colocacao, int id){
+    public static boolean atualizar(Time tempo, int id_colocacao, int id) throws SQLException {
         String sql = "UPDATE RESULTADO " +
                 "SET TEMPO = ?, ID_COLOCACAO = ? " +
                 "WHERE ID = ?";
 
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
 
-            statement.setTime(1, tempo);
-            statement.setInt(2, id_colocacao);
-            statement.setInt(3, id);
+        statement.setTime(1, tempo);
+        statement.setInt(2, id_colocacao);
+        statement.setInt(3, id);
 
-            return statement.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return statement.execute();
     }
 }

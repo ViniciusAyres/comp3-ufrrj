@@ -1,26 +1,14 @@
 package dados.datamappers;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ClasseDataMapper {
-    public ResultSet buscar(){
-        try{
-            return DataMapper.buscar("CLASSE");
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
-        return null;
+    public static ResultSet buscar() throws SQLException {
+        return DataMapper.buscar("CLASSE");
     }
 
-    public ResultSet buscarPorId(int id){
-        try{
-            return  DataMapper.buscarPorId(id, "CLASSE");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public static ResultSet buscarPorId(int id) throws SQLException {
+        return  DataMapper.buscarPorId(id, "CLASSE");
     }
 }

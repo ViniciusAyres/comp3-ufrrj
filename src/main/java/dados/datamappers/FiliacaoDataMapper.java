@@ -11,23 +11,15 @@ import java.util.ArrayList;
 
 public class FiliacaoDataMapper {
 
-    public ResultSet buscarPorNumeroOficio(String numero_oficio){
-        try{
-            return  DataMapper.buscarPorNumeroOficio(numero_oficio, "FILIACAO");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public static ResultSet buscarPorNumeroOficio(String numero_oficio) throws SQLException {
+        return  DataMapper.buscarPorNumeroOficio(numero_oficio, "FILIACAO");
     }
 
-    public void criar(RecordSet recordSet) throws SQLException, ParseException {
+    public static void criar(RecordSet recordSet) throws SQLException, ParseException {
 
         PreparedStatement preparedStatement;
         int linhasAfetadas = 0;
-        for(Row row : recordSet)
-        {
+        for(Row row : recordSet) {
             String sql = "INSERT INTO FILIACAO(NUMERO_OFICIO, DATA_OFICIO, NUMERO_PAGAMENTO,  MATRICULA_ASSOCIACAO) " +
             "VALUES (?, ?, ?, ?)";
 

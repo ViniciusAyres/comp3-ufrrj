@@ -1,25 +1,18 @@
 package controladores;
 
-import dados.datamappers.EnderecoCompeticaoMapper;
-import dados.datamappers.LocalCompeticaoDataMapper;
 import dados.datamappers.LocalDataMapper;
-import dominio.CompeticaoMD;
 import dominio.LocalCompeticaoMT;
-import dominio.Perfil;
 import dominio.excecoes.RegistroInvalido;
 import utils.RecordSet;
 import utils.Row;
 import utils.Utils;
 
-import javax.print.DocFlavor;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 
 @WebServlet(name = "IncluirLocalCompeticao", urlPatterns = "/incluirLocaisCompeticao")
 public class IncluirLocalCompeticao extends HttpServlet {

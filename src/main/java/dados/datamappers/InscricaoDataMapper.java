@@ -11,22 +11,11 @@ import java.text.SimpleDateFormat;
 
 public class InscricaoDataMapper {
 
-
-
-    public  ResultSet buscarPorNumeroOficio(String numeroOficio){
-
-        try {
-
-            return DataMapper.buscarPorChave("INSCRICAO", "NUMERO_OFICIO",
-                    numeroOficio);
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-        return null;
+    public static ResultSet buscarPorNumeroOficio(String numeroOficio) throws SQLException {
+        return DataMapper.buscarPorChave("INSCRICAO", "NUMERO_OFICIO", numeroOficio);
     }
 
-    public void criar(RecordSet recordSet) throws SQLException, ParseException {
+    public static void criar(RecordSet recordSet) throws SQLException, ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         int linhasAfetadas = 0;
@@ -51,14 +40,7 @@ public class InscricaoDataMapper {
         }
     }
 
-    public  boolean excluir(String numeroOficio) throws SQLException {
-
-        try {
+    public static boolean excluir(String numeroOficio) throws SQLException {
             return  DataMapper.excluirPorChave("INSCRICAO", "NUMERO_OFICIO", numeroOficio);
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-            return  false;
-        }
     }
 }

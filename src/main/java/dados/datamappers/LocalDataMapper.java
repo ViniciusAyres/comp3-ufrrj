@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class LocalDataMapper {
 
 
-    public RecordSet buscarPorNome(String nome) throws SQLException {
+    public static RecordSet buscarPorNome(String nome) throws SQLException {
 
         String sql = "SELECT * FROM LOCAL WHERE ID = ? ";
 
@@ -23,19 +23,19 @@ public class LocalDataMapper {
 
         ResultSet resultSet =  statement.executeQuery();
 
-        return this.resultSetToRecordSetMatricula(resultSet);
+        return resultSetToRecordSetMatricula(resultSet);
 
     }
 
 
-    public RecordSet buscarTodos() throws SQLException {
+    public static RecordSet buscarTodos() throws SQLException {
 
         String sql = "SELECT * FROM LOCAL";
         PreparedStatement statement = SQL.getPreparedStatement(sql);
 
         ResultSet resultSet =  statement.executeQuery();
 
-        return  this.resultSetToRecordSetMatricula(resultSet);
+        return  LocalDataMapper.resultSetToRecordSetMatricula(resultSet);
     }
 
     public void  criar(RecordSet recordSet) throws SQLException {
@@ -56,30 +56,23 @@ public class LocalDataMapper {
         }
     }
 
-    public boolean atualizar(int id, String nome, int idTamanhoPiscina, int idEndereco){
+    public static boolean atualizar(int id, String nome, int idTamanhoPiscina, int idEndereco) throws SQLException {
         String sql = "UPDATE LOCAL " +
                 "SET NOME = ?, ID_TAMANHO_PISCINA = ?, ID_ENDERECO = ? " +
                 "WHERE ID = ?";
 
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
 
-            statement.setString(1, nome);
-            statement.setInt(2, idTamanhoPiscina);
-            statement.setInt(3, idEndereco);
-            statement.setInt(4, id);
+        statement.setString(1, nome);
+        statement.setInt(2, idTamanhoPiscina);
+        statement.setInt(3, idEndereco);
+        statement.setInt(4, id);
 
-            return statement.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
+        return statement.execute();
     }
 
-    private RecordSet resultSetToRecordSetMatricula(ResultSet resultSet) throws SQLException {
+    private static RecordSet resultSetToRecordSetMatricula(ResultSet resultSet) throws SQLException {
 
         resultSet.beforeFirst();
         RecordSet recordSet = new RecordSet();
