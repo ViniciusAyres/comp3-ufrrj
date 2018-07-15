@@ -33,7 +33,7 @@ public class FiliacaoDataMapper {
                     .prepareStatement(sql);
 
             preparedStatement.setString(1, row.getString("numeroOficio"));
-            preparedStatement.setString(2, row.getString("dataOficio"));
+            preparedStatement.setDate(2, row.getDate("dataOficio"));
             preparedStatement.setString(3, row.getString("numeroComprovante"));
             preparedStatement.setString(4, row.getString("matricula"));
 

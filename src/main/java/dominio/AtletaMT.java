@@ -1,37 +1,53 @@
 package dominio;
 
 import dados.datamappers.excecoes.RegistroNaoEncontradoException;
+import dominio.excecoes.RegistroInvalido;
+import utils.RecordSet;
+import utils.Row;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class AtletaMT {
-    private ResultSet resultSet;
+    private RecordSet recordSet;
 
-    public AtletaMT(ResultSet resultSet) {
-        this.resultSet = resultSet;
+    public AtletaMT(RecordSet recordSet) throws RegistroInvalido {
+        this.validar(recordSet);
+        this.recordSet = recordSet;
     }
 
-    public ArrayList<String> getMatriculas() throws SQLException {
-        ArrayList<String> matriculas = new ArrayList<String>();
-        resultSet.beforeFirst();
-        while(resultSet.next()){
-            String matricula = resultSet.getString("MATRICULA");
-            matriculas.add(matricula);
+//    public ArrayList<String> getMatriculas() throws SQLException {
+//        ArrayList<String> matriculas = new ArrayList<String>();
+//        resultSet.beforeFirst();
+//        while(resultSet.next()){
+//            String matricula = resultSet.getString("MATRICULA");
+//            matriculas.add(matricula);
+//        }
+//
+//        return matriculas;
+//    }
+
+    private void validar(RecordSet recordSet) throws RegistroInvalido {
+
+        for(Row row : recordSet){
+
+            if(row.getString("nome") == null ||  row.getString("nome").isEmpty())
+                throw new RegistroInvalido("Nome inválido.");
+
+            if(row.getDate("dataNascimento") == null)
+                throw new RegistroInvalido("Data de nascimento inválida.");
         }
-
-        return matriculas;
     }
 
-    public String getNome(String matricula) throws RegistroNaoEncontradoException, SQLException {
-        resultSet.beforeFirst();
-        while(resultSet.next()){
-            if ( resultSet.getString("MATRICULA").equals(matricula) ) {
-                return resultSet.getString("NOME");
-            }
-        }
-
-        throw new RegistroNaoEncontradoException("Atleta não encontrado", "ATLETA");
-    }
+//    public String getNome(String matricula) throws RegistroNaoEncontradoException, SQLException {
+//        resultSet.beforeFirst();
+//        while(resultSet.next()){
+//            if ( resultSet.getString("MATRICULA").equals(matricula) ) {
+//                return resultSet.getString("NOME");
+//            }
+//        }
+//
+//        throw new RegistroNaoEncontradoException("Atleta não encontrado", "ATLETA");
+//    }
 }

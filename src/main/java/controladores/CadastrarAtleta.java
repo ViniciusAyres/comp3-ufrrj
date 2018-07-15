@@ -22,17 +22,12 @@ import java.util.ArrayList;
 public class CadastrarAtleta extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            ArrayList<Integer> perfisAutorizados = new ArrayList<Integer>();
-            perfisAutorizados.add(Perfil.SECRETARIO.getId());
-            perfisAutorizados.add(Perfil.DIRETOR_TECNICO.getId());
-
-            Utils.autenticar(request, perfisAutorizados);
-            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request, response);
-        } catch (UsuarioNaoAutenticadoException e) {
-
-            request.getSession().setAttribute("proximaPagina", "/cadastrarAtleta");
-            response.sendRedirect("/identificarUsuario");
-            //request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+            request.getSession().setAttribute("proximaPagina", "/cadastrarAtleta.jsp");
+            request.getRequestDispatcher("/identificarUsuario").forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("mensagemErro","Ocorreu um erro inesperado");
+            response.sendRedirect("/index.jsp");
         }
     }
 
