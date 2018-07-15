@@ -14,21 +14,14 @@ import java.text.ParseException;
 public class AssociacaoFiliacaoDataMapper {
 
     public static void criar(RecordSet recordSet) throws SQLException, ParseException {
-
-        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-        FiliacaoDataMapper  filiacaoDataMapper =  new FiliacaoDataMapper();
-
-        associacaoDataMapper.criar(recordSet);
-        filiacaoDataMapper.criar(recordSet);
+        AssociacaoDataMapper.criar(recordSet);
+        FiliacaoDataMapper.criar(recordSet);
     }
 
     public static void atualizar(RecordSet recordSet) throws SQLException, ParseException {
 
-        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-        FiliacaoDataMapper  filiacaoDataMapper =  new FiliacaoDataMapper();
-
-//        associacaoDataMapper.atualizar(recordSet);
-//        filiacaoDataMapper.atualizar(recordSet);
+        AssociacaoDataMapper.atualizar(recordSet);
+        FiliacaoDataMapper.atualizar(recordSet);
     }
 
 

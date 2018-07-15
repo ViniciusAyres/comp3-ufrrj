@@ -1,6 +1,7 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import dominio.AssociacaoMT;
 import utils.RecordSet;
 import utils.Row;
 
@@ -40,4 +41,33 @@ public class FiliacaoDataMapper {
         }
     }
 
+    public static void atualizar(RecordSet recordSet) throws SQLException {
+
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "UPDATE FILIACAO " +
+                    "SET DATA_OFICIO = ?, NUMERO_OFICIO = ?, NUMERO_PAGAMENTO = ? " +
+                    "WHERE MATRICULA_ASSOCIACAO = ?";
+
+            try {
+                PreparedStatement statement = ConnectionSingleton.getInstance()
+                        .prepareStatement(sql);
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
+
+
+                statement.setString(1, row.getString("numeroOficio"));
+                statement.setTimestamp(2, dataOficio);
+                statement.setString(3, row.getString("numeroComprovante"));
+                statement.setString(4, row.getString("matricula"));
+
+                linhasAfetadas += statement.executeUpdate();
+
+            }catch (Exception e){
+                String message = e.getMessage();
+            }
+        }
+    }
 }
