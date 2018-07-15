@@ -24,6 +24,8 @@ public class InscricaoMT {
             if(row.getString("numeroComprovante") == null ||  row.getString("numeroComprovante").isEmpty())
                 throw new RegistroInvalido("Comprovante de pagamento inválido.");
 
+            if(row.getString("dataOficio") == null || row.getString("dataOficio") == "")
+                row.put("dataOficio", "1900-01-01");
         }
     }
 }
