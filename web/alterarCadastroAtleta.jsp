@@ -1,10 +1,11 @@
 <%@ page import="dominio.AtletaMT" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="utils.RecordSet" %>
+<%@ page import="utils.Row" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    AtletaMT atletaMT = (AtletaMT) request.getAttribute("atletaMT");
-    ArrayList<String> matriculas = atletaMT.getMatriculas();
+    RecordSet recordSet = (RecordSet) request.getSession().getAttribute("dados");
 %>
 <html>
 <head>
@@ -28,12 +29,14 @@
                 </thead>
                 <tbody>
                 <%
-                    for(String matricula : matriculas) {
-                        out.print("<tr class=\"text-center\">");
-                        out.print("<th>" + atletaMT.getNome(matricula) + "</th>");
-                        out.print("<th>" + matricula +"</th>");
-                        out.print("<th><a href=\"alterarAtleta.jsp?matriculaAtleta=" + matricula + "\"><button class=\"btn btn-outline-info\">Alterar</button></a></th>");
-                        out.print("</tr>");
+                    for(Row row : recordSet) {
+                %>
+                <tr class=\"text-center\">
+                    <th><%=row.getString("matricula")%></th>
+                    <th><%=row.getString("nome")%></th>
+                    <th><a href="\alterarCadastroAtleta?matriculaAtleta=<%= row.getString("matricula") %>" ><button class="btn btn-outline-info">Alterar</button></a></th>
+                </tr>
+                <%
                     }
                 %>
                 </tbody>
