@@ -33,17 +33,21 @@ public class AtletaMT {
 
         for(Row row : recordSet){
 
-            if(row.getString("nome") == null ||  row.getString("nome").isEmpty())
+            if(row.getString("nome") == null || row.getString("nome").isEmpty())
                 throw new RegistroInvalido("Nome inválido.");
 
             if(row.getString("dataNascimento") == null)
                 throw new RegistroInvalido("Data de nascimento inválida.");
+
+            if(row.getString("categoria") == null || row.getString("categoria").isEmpty())
+                throw new RegistroInvalido("Categoria inválida.");
+
         }
     }
 
     public static String gerarMatricula() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        return timestamp.toString();
+        return String.valueOf(timestamp.getTime());
     }
 
 //    public String getNome(String matricula) throws RegistroNaoEncontradoException, SQLException {
@@ -56,4 +60,5 @@ public class AtletaMT {
 //
 //        throw new RegistroNaoEncontradoException("Atleta não encontrado", "ATLETA");
 //    }
+
 }

@@ -54,7 +54,6 @@ public class CadastrarAtleta extends HttpServlet {
 
 
             row.put("nome", request.getParameter("nome"));
-            System.out.println("DATA NASCIMENTO: " + request.getParameter("dataNascimento"));
             row.put("dataNascimento", request.getParameter("dataNascimento"));
             row.put("categoria", request.getParameter("categoria"));
             recordSet.add(row);
@@ -81,7 +80,8 @@ public class CadastrarAtleta extends HttpServlet {
             request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
         } catch (ParseException e) {
             e.printStackTrace();
-            //TODO: Colocar mensagem de erro de conversao de data
+            request.getSession().setAttribute("mensagemErro", "Formato de data inválido");
+            request.getRequestDispatcher("/cadastrarAtleta.jsp").forward(request,response);
         }
 
     }
