@@ -7,34 +7,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ParticipacaoRecordeDataMapper {
-    public ResultSet buscarPorId(int id){
-        try{
-            return  DataMapper.buscarPorId(id, "PARTICIPACAO_RECORDE");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public static ResultSet buscarPorId(int id) throws SQLException {
+        return  DataMapper.buscarPorId(id, "PARTICIPACAO_RECORDE");
     }
 
-    public boolean criar(int idRecorde, int idParticipacao){
+    public static boolean criar(int idRecorde, int idParticipacao) throws SQLException {
         String sql = "INSERT INTO PARTICIPACAO_RECORDE (ID_RECORDE, ID_PARTICIPACAO) " +
                 "VALUES (?, ?)";
 
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
 
-            statement.setInt(1, idRecorde);
-            statement.setInt(2, idParticipacao);
+        statement.setInt(1, idRecorde);
+        statement.setInt(2, idParticipacao);
 
-            return statement.execute();
+        return statement.execute();
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return false;
     }
 }

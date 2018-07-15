@@ -19,7 +19,7 @@ public class AtletaInscricaoDataMapper {
         is.criar(recordSet);
     }
 
-    public boolean atualizar(String matriculaAtleta, String nome, Date dataNascimento, String categoria,
+    public static boolean atualizar(String matriculaAtleta, String nome, Date dataNascimento, String categoria,
                              String matriculaAssociacao, Date dataEntrada, String numeroPagamento, String numeroOficio, Date dataOficio ) throws SQLException {
 
         String atualizarAtleta = "UPDATE ATLETA " +

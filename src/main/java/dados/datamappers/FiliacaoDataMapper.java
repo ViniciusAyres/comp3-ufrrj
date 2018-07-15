@@ -1,6 +1,7 @@
 package dados.datamappers;
 
 import dados.bancos.derbyDB.ConnectionSingleton;
+import dominio.AssociacaoMT;
 import utils.RecordSet;
 import utils.Row;
 
@@ -11,23 +12,15 @@ import java.util.ArrayList;
 
 public class FiliacaoDataMapper {
 
-    public ResultSet buscarPorNumeroOficio(String numero_oficio){
-        try{
-            return  DataMapper.buscarPorNumeroOficio(numero_oficio, "FILIACAO");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-        return  null;
+    public static ResultSet buscarPorNumeroOficio(String numero_oficio) throws SQLException {
+        return  DataMapper.buscarPorNumeroOficio(numero_oficio, "FILIACAO");
     }
 
-    public void criar(RecordSet recordSet) throws SQLException, ParseException {
+    public static void criar(RecordSet recordSet) throws SQLException, ParseException {
 
         PreparedStatement preparedStatement;
         int linhasAfetadas = 0;
-        for(Row row : recordSet)
-        {
+        for(Row row : recordSet) {
             String sql = "INSERT INTO FILIACAO(NUMERO_OFICIO, DATA_OFICIO, NUMERO_PAGAMENTO,  MATRICULA_ASSOCIACAO) " +
             "VALUES (?, ?, ?, ?)";
 
@@ -48,4 +41,28 @@ public class FiliacaoDataMapper {
         }
     }
 
+    public static void atualizar(RecordSet recordSet) throws SQLException, ParseException {
+
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "UPDATE FILIACAO " +
+                    "SET DATA_OFICIO = ?, NUMERO_OFICIO = ?, NUMERO_PAGAMENTO = ? " +
+                    "WHERE MATRICULA_ASSOCIACAO = ?";
+
+                PreparedStatement statement = ConnectionSingleton.getInstance()
+                        .prepareStatement(sql);
+
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
+
+
+                statement.setTimestamp(1, dataOficio);
+                statement.setString(2, row.getString("numeroOficio"));
+                statement.setString(3, row.getString("numeroComprovante"));
+                statement.setString(4, row.getString("matricula"));
+
+                linhasAfetadas += statement.executeUpdate();
+        }
+    }
 }

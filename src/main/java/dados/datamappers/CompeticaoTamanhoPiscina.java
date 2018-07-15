@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class CompeticaoTamanhoPiscina {
 
-    private ResultSet buscarCompeticaoPiscina() throws SQLException {
+    private static ResultSet buscarCompeticaoPiscina() throws SQLException {
 
         String sql = "SELECT CP.ID IDCOMPETICAO,P.ID IDPROVA,  CP.NOME, P.CATEGORIA, P.NOME, PISCINA.TAMANHO Tamanho FROM COMPETICAO AS CP\n" +
                      "JOIN PROVA_COMPETICAO PC on CP.ID = PC.ID_COMPETICAO\n" +

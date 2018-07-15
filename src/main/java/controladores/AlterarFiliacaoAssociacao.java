@@ -2,7 +2,11 @@ package controladores;
 
 
 import dados.datamappers.AssociacaoDataMapper;
+import dados.datamappers.AssociacaoFiliacaoDataMapper;
+import dominio.AssociacaoMT;
+import dominio.FiliacaoMT;
 import utils.RecordSet;
+import utils.Row;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,46 +29,43 @@ public class AlterarFiliacaoAssociacao extends HttpServlet {
                 request.getRequestDispatcher("/identificarUsuario").forward(request, response);
             }
             else{
-                recordSet = new AssociacaoDataMapper().buscarPorMatricula(request.getParameter("matricula"));
+                recordSet = AssociacaoFiliacaoDataMapper.buscarPorMatricula(request.getParameter("matricula"));
                 request.getSession().setAttribute("dados", recordSet);
                 request.getRequestDispatcher("/alterarFiliacao.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("mensagemErro", "Ocorreu um erro inesperado");
+            request.getSession().setAttribute("mensagemErro", "Ocorreu um erro inesperado");
             response.sendRedirect("/index.jsp");
         }
     }
 
      protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-            String numeroOficio = request.getParameter("numeroOficio");
-//        Date dataOficio = Date.valueOf(request.getParameter("dataOficio"));
-//        String numeroComprovante = request.getParameter("numeroComprovante");
-//
-//        String nome = request.getParameter("nome");
-//        String sigla = request.getParameter("sigla");
-//        String telefone = request.getParameter("telefone");
-//
-//        String logradouro = request.getParameter("logradouro");
-//        int numeroLogradouro = Integer.parseInt(request.getParameter("numeroLogradouro"));
-//        String complemento = request.getParameter("complemento");
-//        String cidade = request.getParameter("cidade");
-//        String bairro = request.getParameter("bairro");
-//        String cep = request.getParameter("cep");
-//
-//        System.out.println("NOME: " + nome);
-//        System.out.println("DATA_OFICIO: " + dataOficio);
-//        System.out.println("NUMERO_LOGRADOURO: " + numeroLogradouro);
-//
-//        AssociacaoFiliacaoDataMapper associacaoFiliacaoEnderecoDataMapper = new AssociacaoFiliacaoDataMapper();
-//        boolean result = associacaoFiliacaoEnderecoDataMapper.criar(nome, sigla, telefone,
-//                logradouro, numeroLogradouro, cidade, bairro, cep, 1,
-//                numeroOficio, dataOficio, numeroComprovante);
-//
-//        if(result){
-//            request.setAttribute("mensagemSucesso", "Associação filiada com sucesso");
-//        }
-//        request.getRequestDispatcher("/index.jsp").forward(request, response);
+         RecordSet recordSet = new RecordSet();
+         Row row = new Row();
+
+         row.put("numeroOficio", request.getParameter("numeroOficio"));
+         row.put("dataOficio", request.getParameter("dataOficio"));
+         row.put("numeroComprovante", request.getParameter("numeroComprovante"));
+         row.put("matricula", request.getParameter("matricula"));
+         row.put("nome", request.getParameter("nome"));
+         row.put("sigla", request.getParameter("sigla"));
+         row.put("telefone", request.getParameter("telefone"));
+         row.put("endereco", request.getParameter("endereco"));
+
+         recordSet.add(row);
+         try {
+             AssociacaoMT associacaoMT = new AssociacaoMT(recordSet);
+             FiliacaoMT filiacaoMT = new FiliacaoMT(recordSet);
+
+             AssociacaoFiliacaoDataMapper.atualizar(recordSet);
+             request.getSession().setAttribute("mensagemSucesso","Associação Atualizada com sucesso!");
+             response.sendRedirect("/index.jsp");
+     } catch (Exception e) {
+        e.printStackTrace();
+        request.getSession().setAttribute("mensagemErro", "Ocorreu um erro inesperado");
+        response.sendRedirect("/index.jsp");
+    }
     }
 }
 

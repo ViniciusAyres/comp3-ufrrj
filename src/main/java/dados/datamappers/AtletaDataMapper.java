@@ -13,18 +13,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class AtletaDataMapper {
-    public ResultSet buscarPorId(int id){
-        try{
-            return  DataMapper.buscarPorId(id, "ATLETA");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
 
-        return  null;
-    }
-
-    public void criar(RecordSet recordSet) throws SQLException, ParseException {
+    public static void criar(RecordSet recordSet) throws SQLException, ParseException {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         int linhasAfetadas = 0;
@@ -45,41 +35,30 @@ public class AtletaDataMapper {
         }
     }
 
-    public boolean atualizar(String matricula, String nome, String categoria, Date dataNascimento){
+    public static boolean atualizar(String matricula, String nome, String categoria, Date dataNascimento) throws SQLException {
         String sql = "UPDATE ATLETA " +
                 "SET NOME = ?, CATEGORIA = ?, DATA_NASCIMENTO = ? " +
                 "WHERE MATRICULA = ?";
 
-        try {
-            PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
-                    .prepareStatement(sql);
 
-            statement.setString(1, nome);
-            statement.setString(2, categoria);
-            statement.setDate(3, dataNascimento);
-            statement.setString(4, matricula);
+        PreparedStatement statement = (PreparedStatement) ConnectionSingleton.getInstance()
+                .prepareStatement(sql);
 
-            return statement.execute();
+        statement.setString(1, nome);
+        statement.setString(2, categoria);
+        statement.setDate(3, dataNascimento);
+        statement.setString(4, matricula);
 
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        return statement.execute();
 
-        return false;
     }
 
-    public ResultSet buscar() {
-        try{
-            return  DataMapper.buscar("ATLETA");
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
+    public static ResultSet buscar() throws SQLException {
+        return  DataMapper.buscar("ATLETA");
 
-        return  null;
     }
 
-    public static RecordSet buscarPorMatricula(String matricula, String nomeTabela) throws SQLException,RegistroNaoEncontradoException {
+    public static RecordSet buscarPorMatricula(String matricula) throws SQLException,RegistroNaoEncontradoException {
 
         String sql = "SELECT * FROM ATLETA WHERE MATRICULA = ? ";
 
@@ -97,10 +76,10 @@ public class AtletaDataMapper {
         rs.beforeFirst();
         while (rs.next()) {
 
-            row.put("matricula", rs.getString("matricula"));
-            row.put("nome", rs.getString("nome"));
-            row.put("categoria", rs.getString("categoria"));
-            row.put("dataNascimento", rs.getString("dataNascimento"));
+            row.put("matricula", rs.getString("MATRICULA"));
+            row.put("nome", rs.getString("NOME"));
+            row.put("categoria", rs.getString("CATEGORIA"));
+            row.put("dataNascimento", rs.getString("DATA_NASCIMENTO"));
             dataset.add(row);
         }
 
