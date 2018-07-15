@@ -136,7 +136,7 @@
             <div class="list-group border-0 card text-center text-md-left">
                 <a href="#menu1" class="list-group-item d-inline-block collapsed text-dark" data-toggle="collapse" aria-expanded="false"><i class="fa fa-handshake-o" aria-hidden="true"></i> <span class="d-none d-md-inline">Associação</span></a>
                 <div class="collapse" id="menu1" data-parent="#sidebar">
-                    <a href="/alterarFiliacaoAssociacao.jsp" class="list-group-item text-dark">Alterar Filiação da Associação</a>
+                    <a href="/alterarFiliacaoAssociacao" class="list-group-item text-dark">Alterar Filiação da Associação</a>
                     <a href="/filiarAssociacao" class="list-group-item text-dark">Filiar uma Associação</a>
                     <a href="/listarAssociacoes" class="list-group-item text-dark">Listar Associações</a>
                 </div>
