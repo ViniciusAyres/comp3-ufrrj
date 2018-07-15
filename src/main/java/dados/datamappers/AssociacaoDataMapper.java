@@ -46,7 +46,7 @@ public class AssociacaoDataMapper {
 
     public static RecordSet buscar() throws SQLException {
 
-        String sql = "SELECT * FROM ASSOCIACAO";
+        String sql = "SELECT * FROM ASSOCIACAO ORDER BY NOME";
         PreparedStatement statement = SQL.getPreparedStatement(sql);
         ResultSet resultSet = statement.executeQuery();
         RecordSet recordSet = new RecordSet();
@@ -104,7 +104,7 @@ public class AssociacaoDataMapper {
             try {
                 PreparedStatement statement = ConnectionSingleton.getInstance()
                         .prepareStatement(sql);
-                row.put("matricula", AssociacaoMT.gerarMatricula());
+
                 statement.setString(1, row.getString("nome"));
                 statement.setString(2, row.getString("sigla"));
                 statement.setString(3, row.getString("telefone"));
