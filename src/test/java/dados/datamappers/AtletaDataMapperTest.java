@@ -9,6 +9,7 @@ import utils.Row;
 import utils.SQL;
 
 import java.sql.SQLException;
+import java.text.ParseException;
 
 import static org.junit.Assert.*;
 
@@ -46,7 +47,7 @@ public class AtletaDataMapperTest {
     }
 
     @Test
-    public void testAtualizar(){
+    public void testAtualizar() throws SQLException, ParseException {
         RecordSet recordSet = new RecordSet();
         Row row = new Row();
 
