@@ -13,15 +13,15 @@
 <div class="container">
     <div class="card mt-5">
         <div class="card-header">
-            <h3 class="font-weight-light mt-4 ml-2">Selecione abaixo o Atleta desejado para realizar a transferência.</h3>
+            <h3 class="font-weight-light mt-4 ml-2">Selecione abaixo o Atleta para a transferência.</h3>
         </div>
     <div class="row mx-auto">
         <div class="col-md-12 mt-2">
             <table class="table table-bordered">
                 <thead class="thead-light">
                 <tr>
-                    <th>Nome do Atleta</th>
                     <th>Matrícula</th>
+                    <th>Nome do Atleta</th>
                     <th></th>
                 </tr>
                 </thead>

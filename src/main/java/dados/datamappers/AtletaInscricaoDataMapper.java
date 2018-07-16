@@ -50,4 +50,27 @@ public class AtletaInscricaoDataMapper {
 
         return recordSet;
     }
+
+    public static RecordSet buscarParaTransferencia(String matricula) throws SQLException,RegistroNaoEncontradoException {
+
+        String sql=" SELECT ATL.NOME, ATL.MATRICULA, A.MATRICULA AS MAT FROM ATLETA ATL " +
+                "  INNER JOIN INSCRICAO I ON I.MATRICULA_ATLETA = ? " +
+                "  INNER JOIN ASSOCIACAO A on I.MATRICULA_ASSOCIACAO = A.MATRICULA";
+
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+        statement.setString(1, matricula);
+        ResultSet resultSet = statement.executeQuery();
+        RecordSet recordSet = new RecordSet();
+
+        while(resultSet.next()){
+            Row row = new Row();
+            row.put("matricula", resultSet.getString("MATRICULA"));
+            row.put("nome", resultSet.getString("NOME"));
+            row.put("matricula_ass", resultSet.getString("MAT"));
+
+            recordSet.add(row);
+        }
+
+        return recordSet;
+    }
 }
