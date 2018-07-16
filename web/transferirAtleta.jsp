@@ -32,7 +32,7 @@
                 <tr class=\"text-center\">
                     <th><%=row.getString("matricula")%></th>
                     <th><%=row.getString("nome")%></th>
-                    <th><a href="\transferirAtleta?matriculaAtleta=<%= row.getString("matricula") %>" ><button class="btn btn-outline-info">Transferir</button></a></th>
+                    <th><a href="\transferirAtleta?matricula=<%= row.getString("matricula") %>" ><button class="btn btn-outline-info">Selecionar</button></a></th>
                 </tr>
                 <%
                     }

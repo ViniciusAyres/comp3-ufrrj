@@ -50,6 +50,18 @@ public class AtletaMT {
         }
     }
 
+    public void validarTransferencia(RecordSet recordSet) throws RegistroInvalido {
+
+        for(Row row : recordSet){
+
+            if(row.getString("nome") == null || row.getString("nome").isEmpty())
+                throw new RegistroInvalido("Nome inválido.");
+
+            if(row.getString("matricula") == null || row.getString("matricula").isEmpty())
+                throw new RegistroInvalido("Matrícula inválida.");
+        }
+    }
+
     public static String gerarMatricula() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         return String.valueOf(timestamp.getTime());

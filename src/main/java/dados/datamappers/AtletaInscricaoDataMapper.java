@@ -54,8 +54,9 @@ public class AtletaInscricaoDataMapper {
     public static RecordSet buscarParaTransferencia(String matricula) throws SQLException,RegistroNaoEncontradoException {
 
         String sql=" SELECT ATL.NOME, ATL.MATRICULA, A.MATRICULA AS MAT FROM ATLETA ATL " +
-                "  INNER JOIN INSCRICAO I ON I.MATRICULA_ATLETA = ? " +
-                "  INNER JOIN ASSOCIACAO A on I.MATRICULA_ASSOCIACAO = A.MATRICULA";
+                "  INNER JOIN INSCRICAO I ON I.MATRICULA_ATLETA = ATL.MATRICULA " +
+                "  INNER JOIN ASSOCIACAO A on A.MATRICULA = I.MATRICULA_ASSOCIACAO " +
+                "  WHERE ATL.MATRICULA = ?";
 
         PreparedStatement statement = SQL.getPreparedStatement(sql);
         statement.setString(1, matricula);
@@ -66,7 +67,9 @@ public class AtletaInscricaoDataMapper {
             Row row = new Row();
             row.put("matricula", resultSet.getString("MATRICULA"));
             row.put("nome", resultSet.getString("NOME"));
-            row.put("matricula_ass", resultSet.getString("MAT"));
+            row.put("matricula_associacao", resultSet.getString("MAT"));
+            row.put("numeroComprovante", "");
+            row.put("numeroOficio", "");
 
             recordSet.add(row);
         }

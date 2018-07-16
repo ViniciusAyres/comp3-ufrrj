@@ -63,4 +63,31 @@ public class InscricaoDataMapper {
             linhasAfetadas += statement.executeUpdate();
         }
     }
+
+    public static void transferirAtleta(RecordSet recordSet) throws SQLException, ParseException {
+        int linhasAfetadas = 0;
+        for(Row row : recordSet)
+        {
+            String sql = "UPDATE INSCRICAO " +
+                    "SET MATRICULA_ASSOCIACAO = ?, DATA_OFICIO = ?, NUMERO_OFICIO = ?, DATA_ENTRADA = ?, " +
+                    "NUMERO_PAGAMENTO = ? WHERE MATRICULA_ATLETA = ?";
+
+            PreparedStatement statement = ConnectionSingleton.getInstance()
+                    .prepareStatement(sql);
+
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+            Timestamp dataOficio = new Timestamp(simpleDateFormat.parse(row.getString("dataOficio")).getTime());
+            Timestamp dataEntrada = new Timestamp(simpleDateFormat.parse(row.getString("dataAssociacao")).getTime());
+
+            statement.setString(1, row.getString("matriculaAssociacao"));
+            statement.setTimestamp(2, dataOficio);
+            statement.setString(3, row.getString("numeroOficio"));
+            statement.setTimestamp(4, dataEntrada);
+            statement.setString(5, row.getString("numeroComprovante"));
+            statement.setString(6, row.getString("matricula"));
+
+            linhasAfetadas += statement.executeUpdate();
+        }
+    }
 }

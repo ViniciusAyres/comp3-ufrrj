@@ -21,17 +21,7 @@ public class AssociacaoMT{
         this.recordSetSet = recordSet;
     }
 
-    private ArrayList<String> getMatriculas() throws SQLException {
-
-        ArrayList<String> matriculas = new ArrayList<String>();
-
-//        resultSet.beforeFirst();
-//        while (resultSet.next()){
-//            String matricula = resultSet.getString("MATRICULA");
-//            matriculas.add(matricula);
-//        }
-
-        return matriculas;
+    public AssociacaoMT(){
 
     }
 
@@ -54,6 +44,27 @@ public class AssociacaoMT{
         }
     }
 
+    public void validarTransferencia(RecordSet recordSet) throws RegistroInvalido {
+
+        for(Row row : recordSet){
+
+            if(row.getString("dataOficio") == null || row.getString("dataNascimento") == "")
+                throw new RegistroInvalido("Data de Ofício inválida.");
+
+            if(row.getString("dataAssociacao") == null || row.getString("dataAssociacao") == "")
+                throw new RegistroInvalido("Data da Associação inválida.");
+
+            if(row.getString("matriculaAssociacao") == null || row.getString("matriculaAssociacao").isEmpty())
+                throw new RegistroInvalido("Matrícula da Associação inválida.");
+
+            if(row.getString("numeroOficio") == null || row.getString("numeroOficio").isEmpty())
+                throw new RegistroInvalido("Número do Ofício inválido.");
+
+            if(row.getString("numeroComprovante") == null || row.getString("numeroComprovante").isEmpty())
+                throw new RegistroInvalido("Número de Comprovante inválido.");
+        }
+    }
+
     public static String gerarMatricula() {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         return String.valueOf(timestamp.getTime());
@@ -68,29 +79,6 @@ public class AssociacaoMT{
             ResultSet resultSet = AssociacaoDataMapper.buscarPorMatriculaESenha(matricula, senha);
         }
     }
-
-
-  //  public boolean existe(String matricula) throws SQLException, RegistroNaoEncontradoException {
-//        resultSet.beforeFirst();
-//        while (resultSet.next()){
-//            if(resultSet.getString("MATRICULA").equals(matricula)){
-    //            return true;
-//            }
-//        }
-
-        //throw new RegistroNaoEncontradoException("Associação não encontrada", "ASSOCIAÇÃO");
-    //}
-
-    //public String getNome(String matricula) throws SQLException, RegistroNaoEncontradoException {
-//        resultSet.beforeFirst();
-//        while (resultSet.next()){
-//            if(resultSet.getString("MATRICULA").equals(matricula)){
-                //return resultSet.getString("NOME");
-        //    }
-        //}
-      //  return  null;
-        //throw new RegistroNaoEncontradoException("Associação não encontrada", "ASSOCIAÇÃO");
-    //}
 
 
 }

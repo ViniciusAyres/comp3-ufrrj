@@ -1,5 +1,10 @@
+<%@ page import="utils.RecordSet" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
+<%
+    RecordSet recordSet = (RecordSet) request.getSession().getAttribute("dados");
+%>
+
 <html>
 <head>
     <style>
@@ -14,7 +19,7 @@
 </head>
 <body>
 <div class="card bg-ligth mx-auto mt-4" style="width: 50rem;">
-    <form class="form" role="form" method="POST" action="/atleta">
+    <form class="form" role="form" method="POST" action="transferirAtleta?matriculaAtleta=<%= recordSet.get(0).getString("matricula") %>">
 
         <div class="card-header text-center">
             <h4>
@@ -29,7 +34,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" id="matricula" name="matricula" class="form-control" placeholder="Matrícula do Atleta"
-                                   maxlength="50">
+                                   maxlength="50" value="<%= recordSet.get(0).getString("matricula") %>" readonly>
                         </div>
                     </div>
                 </div>
@@ -42,7 +47,8 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="text" name="nome" class="form-control" maxlength="50" id="nome" placeholder="Nome do Atleta">
+                            <input type="text" name="nome" class="form-control" maxlength="50" id="nome" placeholder="Nome do Atleta"
+                                   value="<%= recordSet.get(0).getString("nome") %>" required readonly>
                         </div>
                     </div>
                 </div>
@@ -57,7 +63,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" name="matriculaAssociacao" class="form-control" id="matriculaAssociacao" placeholder="Matrícula"
-                                   required maxlength="60">
+                                   required maxlength="60" value="<%= recordSet.get(0).getString("matricula_associacao") %>">
                         </div>
                     </div>
                 </div>
@@ -71,7 +77,8 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="date" name="numeroOficio" class="form-control" id="numeroOficio"  maxlength="50" required>
+                            <input type="text" name="numeroOficio" class="form-control" id="numeroOficio"  maxlength="50" required
+                                   value="<%= recordSet.get(0).getString("numeroOficio") %>" placeholder="Número Ofício">
                         </div>
                     </div>
                 </div>
@@ -85,7 +92,8 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="date" name="dataOficio" class="form-control" id="dataOficio"  maxlength="50" required>
+                            <input type="date" name="dataOficio" class="form-control" id="dataOficio" required
+                                   value="<%= recordSet.get(0).getString("dataOficio") %>">
                         </div>
                     </div>
                 </div>
@@ -99,7 +107,8 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="date" name="dataAssociacao" class="form-control" id="dataAssociacao" required>
+                            <input type="date" name="dataAssociacao" class="form-control" id="dataAssociacao" required
+                                   value="<%= recordSet.get(0).getString("dataEntradae") %>">
                         </div>
                     </div>
                 </div>
@@ -113,7 +122,8 @@
                 <div class="col-md-6">
                     <div class="form-group has-danger">
                         <div class="input-group">
-                            <input type="text" name="numeroComprovante" class="form-control" id="numeroComprovante" placeholder="Número do Comprovante" required maxlength="30">
+                            <input type="text" name="numeroComprovante" class="form-control" id="numeroComprovante" placeholder="Número do Comprovante" required
+                                   maxlength="30" value="<%= recordSet.get(0).getString("numeroComprovante") %>">
                         </div>
                     </div>
                 </div>
