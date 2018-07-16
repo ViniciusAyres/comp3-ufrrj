@@ -134,15 +134,5 @@ public class AssociacaoDataMapper {
             }
         }
     }
-
-
-    public static void main(String[] args) throws SQLException {
-        System.out.println("1");
-        AssociacaoDataMapper associacaoDataMapper = new AssociacaoDataMapper();
-        System.out.println("2");
-        RecordSet recordSet = associacaoDataMapper.buscar();
-        System.out.println(recordSet);
-    }
-
 }
 
