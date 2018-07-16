@@ -1,7 +1,9 @@
+<%@ page import="utils.RecordSet" %>
+<%@ page import="utils.Row" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="base.jsp" %>
 <%
-    String[] stArrayAtletas={"Jhonson","Cleyton","Diego","Alberto"};
+    RecordSet recordSet = (RecordSet) request.getSession().getAttribute("dados");
 %>
 <html>
 <head>
@@ -25,14 +27,14 @@
                 </thead>
                 <tbody>
                 <%
-                    int a=0;
-                    for(a=0;a<stArrayAtletas.length;a++)
-                    {
-                        out.print("<tr class=\"text-center\">");
-                        out.print("<th>"+stArrayAtletas[a]+"</th>");
-                        out.print("<th>123131231</th>");
-                        out.print("<th><a href=\"transferencia.jsp\"><button class=\"btn btn-outline-info\">Transferir</button></a></th>");
-                        out.print("</tr>");
+                    for(Row row : recordSet) {
+                %>
+                <tr class=\"text-center\">
+                    <th><%=row.getString("matricula")%></th>
+                    <th><%=row.getString("nome")%></th>
+                    <th><a href="\transferirAtleta?matriculaAtleta=<%= row.getString("matricula") %>" ><button class="btn btn-outline-info">Transferir</button></a></th>
+                </tr>
+                <%
                     }
                 %>
                 </tbody>

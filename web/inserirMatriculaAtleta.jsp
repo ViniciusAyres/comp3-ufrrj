@@ -25,7 +25,6 @@
             </div>
             <div class="card-footer">
                 <div class="bg-info clearfix" style="background-color:#f7f7f7 !important;">
-                    <a href="inscreverAtletaCompeticao.jsp" class="float-left mt-2">Voltar</a>
                     <button class="btn btn-info float-right" type="submit" value="/inserirMatricula/">Enviar</button>
                 </div>
             </div>

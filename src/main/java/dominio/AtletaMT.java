@@ -18,6 +18,9 @@ public class AtletaMT {
         this.recordSet = recordSet;
     }
 
+    public AtletaMT(){
+
+    }
 
     private void validar(RecordSet recordSet) throws RegistroInvalido {
 
@@ -29,9 +32,21 @@ public class AtletaMT {
             if(row.getString("dataNascimento") == null)
                 throw new RegistroInvalido("Data de nascimento inválida.");
 
+            if(row.getString("dataNascimento") == null || row.getString("dataNascimento") == "")
+                row.put("dataNascimento", "1900-01-01");
+
             if(row.getString("categoria") == null || row.getString("categoria").isEmpty())
                 throw new RegistroInvalido("Categoria inválida.");
 
+        }
+    }
+
+    public void validarEdicao(RecordSet recordSet) throws RegistroInvalido {
+
+        for(Row row : recordSet){
+
+            if(row.getString("nome") == null || row.getString("nome").isEmpty())
+                throw new RegistroInvalido("Nome inválido.");
         }
     }
 

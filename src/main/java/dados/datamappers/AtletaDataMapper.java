@@ -52,10 +52,6 @@ public class AtletaDataMapper {
             linhasAfetadas += statement.executeUpdate();
         }
     }
-    public static ResultSet buscar() throws SQLException {
-        return  DataMapper.buscar("ATLETA");
-
-    }
 
     public static RecordSet buscarPorMatricula(String matricula) throws SQLException,RegistroNaoEncontradoException {
 
@@ -83,5 +79,24 @@ public class AtletaDataMapper {
         }
 
         return dataset;
+    }
+
+    public static RecordSet buscar() throws SQLException {
+
+        String sql = "SELECT * FROM ATLETA ORDER BY NOME";
+
+        PreparedStatement statement = SQL.getPreparedStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        RecordSet recordSet = new RecordSet();
+
+        while(resultSet.next()){
+            Row row = new Row();
+            row.put("matricula", resultSet.getString("MATRICULA"));
+            row.put("nome", resultSet.getString("NOME"));
+
+            recordSet.add(row);
+        }
+
+        return recordSet;
     }
 }
